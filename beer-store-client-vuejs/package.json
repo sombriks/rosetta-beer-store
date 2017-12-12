@@ -1,0 +1,24 @@
+{
+  "name": "beer-store-client-vuejs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "material-design-icons-iconfont": "^3.0.3",
+    "vue": "^2.5.9",
+    "vue-material": "^0.8.1",
+    "vue-router": "^3.0.1"
+  },
+  "devDependencies": {
+    "browserify": "^14.5.0",
+    "browserify-css": "^0.14.0",
+    "budo": "^10.0.4",
+    "vueify": "^9.4.1"
+  }
+}
