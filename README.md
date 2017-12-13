@@ -31,3 +31,39 @@ This is not a simple language comparison, but tooling as well.
 Is there more than one way to set up a java service project? Let's have it!
 
 More than one way to set up a javascript client project! Let's go!
+
+## Tell me more about this Beer Store
+
+- The Beer Store is a modern web app
+  - It has a frontend and a backend
+  - It has two roles: customer and manager
+  - A default user called admin are available from the cold start
+    - It has both customer and manager roles
+  - New users can be created.
+    - New users have only the customer role
+    - The admin can grant the manager role for other users
+    - An user can not change their own roles
+  - **Customers** (i.e. users holding the customer role) can:
+    - Register themselves in the store
+    - Log in into the beer store
+    - List **beers**
+    - See beer details
+    - Add a beer to the **cart**
+    - Remove a beer from the cart
+    - Change beer amount in the cart   
+    - Checkout the cart (pay for the beers)
+    - List past orders
+  - **Managers** can:
+    - Log in into the beer store
+    - Add new beers
+    - Change beer stock
+    - List beer **orders**
+    - See order details
+    - Change order status
+    - List customers
+    - See customer details
+- There must have a rest api able to perform all these actions
+- Some kind of data schema must be set up to help to persist information
+- A few initial data must be present when the store goes up
+  - Some beers
+  - The admin user with both profiles (customer, manager)
