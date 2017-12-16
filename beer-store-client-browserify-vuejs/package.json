@@ -1,5 +1,5 @@
 {
-  "name": "beer-store-client-vuejs",
+  "name": "beer-store-client-browserify-vuejs",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
