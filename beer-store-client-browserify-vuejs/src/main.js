@@ -1,4 +1,4 @@
-// the entry point
+//
 require("./main.css")
 
 const Vue = require("vue")
@@ -7,6 +7,11 @@ const VueMaterial = require("vue-material")
 
 Vue.use(VueRouter)
 Vue.use(VueMaterial)
+
+Vue.component("beer-resume", require("./components/beer/beer-resume.vue"))
+
+Vue.component("topbar", require("./components/shell/topbar.vue"))
+Vue.component("searchbar", require("./components/shell/searchbar.vue"))
 
 window.rootvm = new Vue({
   render: r => r(require("./components/mountpoint.vue")),
