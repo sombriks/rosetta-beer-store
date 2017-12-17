@@ -4,6 +4,7 @@ module.exports = {
 
   development: {
     client: 'sqlite3',
+    useNullAsDefault: true,
     connection: {
       filename: './beerstore.sqlite3'
     }
@@ -13,8 +14,8 @@ module.exports = {
     client: 'postgresql',
     connection: {
       database: 'beerstore',
-      user:     'username',
-      password: 'password'
+      user: 'postgres',
+      password: 'postgres'
     },
     pool: {
       min: 2,
