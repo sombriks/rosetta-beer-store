@@ -44,7 +44,7 @@ More than one way to set up a javascript client project! Let's go!
     - The admin can grant the manager role for other users
     - An user can not change their own roles
   - **Customers** (i.e. users holding the customer role) can:
-    - Register themselves in the store
+    - Register themselves into the store
     - Log in into the beer store
     - List **beers**
     - See beer details
