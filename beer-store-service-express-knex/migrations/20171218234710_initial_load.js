@@ -7,7 +7,7 @@ const roles = [
 const user = {
   iduser: 1,
   loginuser: "admin@admin",
-
+  hashuser: "e10adc3949ba59abbe56e057f20f883e" // 123456
 }
 
 const orderstatuses = [
