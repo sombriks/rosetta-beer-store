@@ -5,6 +5,7 @@ exports.up = knex => knex.schema
     tb.timestamp("creationdatemedia").notNullable().defaultTo(knex.fn.now())
     tb.binary("datamedia").notNullable()
     tb.string("nomemedia").notNullable()
+    tb.string("mimemedia").notNullable()
   })
   .createTable("user", tb => {
     tb.increments("iduser")
@@ -41,9 +42,9 @@ exports.up = knex => knex.schema
   })
   .createTable("order", tb => {
     tb.increments("idorder")
+    tb.timestamp("creationdateorder").notNullable().defaultTo(knex.fn.now())
     tb.integer("idorderstatus").notNullable().references("orderstatus.idorderstatus").defaultTo(1)
     tb.integer("iduser").notNullable().references("user.iduser").onDelete("cascade")
-    tb.timestamp("creationdateorder").notNullable().defaultTo(knex.fn.now())
     tb.timestamp("lastupdateorder").notNullable().defaultTo(knex.fn.now())
   })
   .createTable("itemorder", tb => {

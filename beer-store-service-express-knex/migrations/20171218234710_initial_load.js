@@ -13,8 +13,7 @@ const user = {
 const orderstatuses = [
   { idorderstatus: 1, descriptionorderstatus: "CART" },
   { idorderstatus: 2, descriptionorderstatus: "CHECKOUT" },
-  { idorderstatus: 3, descriptionorderstatus: "DELIVERED" },
-
+  { idorderstatus: 3, descriptionorderstatus: "DELIVERED" }
 ]
 
 exports.up = knex => knex("role").insert(roles).then(_ => {
