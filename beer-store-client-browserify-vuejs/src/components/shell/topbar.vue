@@ -8,6 +8,8 @@
         <slot name="right">
 
         </slot>
+        <cart-resume></cart-resume>
+        <user-resume></user-resume>
       </md-layout>  
     </md-layout>
   </md-toolbar>

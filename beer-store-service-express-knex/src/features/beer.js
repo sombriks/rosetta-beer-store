@@ -2,6 +2,7 @@
 const router = require("express").Router()
 const Bookshelf = require("../components/config").Bookshelf
 const knex = require("../components/config").knex
+const commonRoutes = require("../components/common-routes")
 
 const Beer = Bookshelf.Model.extend({
   idAttribute: "idbeer",
@@ -15,6 +16,8 @@ const BeerStock = Bookshelf.Model.extend({
     return this.belongsTo(Beer, "idbeer")
   }
 })
+
+commonRoutes.apply(router, Beer)
 
 module.exports = {
   router,

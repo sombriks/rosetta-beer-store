@@ -24,7 +24,7 @@ exports.up = knex => knex.schema
     tb.primary(["iduser", "idrole"])
   })
   .createTable("beer", tb => {
-    tb.increments("idberr")
+    tb.increments("idbeer")
     tb.timestamp("creationdatebeer").notNullable().defaultTo(knex.fn.now())
     tb.string("titlebeer")
     tb.text("descriptionbeer")
