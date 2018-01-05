@@ -16,12 +16,15 @@ app.use(bodyParser.raw({ type, limit: 10 * 1024 * 1024 }))
 
 app.use(cors())
 
-app.use("/beer",require("./features/beer").router)
-app.use("/media",require("./features/media").router)
-app.use("/order",require("./features/order").router)
-app.use("/user",require("./features/user").router)
+app.use("/beer", require("./features/beer").router)
+app.use("/beerstock", require("./features/beerstock").router)
+app.use("/media", require("./features/media").router)
+app.use("/order", require("./features/order").router)
+app.use("/user", require("./features/user").router)
 
-knex.migrate.latest().then(_ => {
+exports.app = app
+
+exports.init = _ => knex.migrate.latest().then(_ => {
   app.listen(3000)
   console.log("Beer store ready")
 })

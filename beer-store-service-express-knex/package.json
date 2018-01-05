@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "cross-env NODE_ENV=development nodemon src/main.js",
-    "test": "cross-env NODE_ENV=testing mocha --timeout=30000"
+    "dev": "cross-env NODE_ENV=development nodemon index.js",
+    "test": "cross-env NODE_ENV=testing knex migrate:latest ; NODE_ENV=testing mocha --timeout=30000"
   },
   "keywords": [],
   "author": "",
@@ -22,6 +22,7 @@
   },
   "devDependencies": {
     "chai": "^4.1.2",
+    "chai-http": "^3.0.0",
     "cross-env": "^5.1.1",
     "mocha": "^4.0.1",
     "nodemon": "^1.13.3"
