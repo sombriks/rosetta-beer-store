@@ -1,4 +1,8 @@
-
+// 
+// that CRUD pattern that always repeat itself.
+//
+// const router = require("express").Router()
+// const Bookshelf = require("../components/config").Bookshelf
 const errfn = require("./config").errfn
 
 exports.apply = (router, BsModel, idAttribute, withRelated) => {
