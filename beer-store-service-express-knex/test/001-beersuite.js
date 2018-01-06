@@ -9,7 +9,7 @@ chai.use(chaiHttp)
 describe("Beers test suite", _ => {
 
   let req = chai.request(server.app)
-  
+
   let beer = {
     titlebeer: "Itaipava",
     descriptionbeer: "A cerveja 100%",
@@ -28,7 +28,7 @@ describe("Beers test suite", _ => {
 
   it("should list at least one beer", done => {
     req.get("/beer/list").end((err, ret) => {
-      ret.body.should.have.lengthOf.above(1)
+      ret.body.should.have.lengthOf.above(0)
       done(err)
     })
   })
