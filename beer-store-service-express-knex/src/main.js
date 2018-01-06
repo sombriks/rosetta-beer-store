@@ -12,7 +12,8 @@ app.use(morgan("common", "immediate"))
 
 app.use(bodyParser.json({ limit: 1024 * 1024 }))
 const type = ['application/octet-stream', 'image/*', 'application/pdf', 'audio/*']
-app.use(bodyParser.raw({ type, limit: 10 * 1024 * 1024 }))
+const limit = 10 * 1024 * 1024
+app.use(bodyParser.raw({ type, limit }))
 
 app.use(cors())
 
@@ -24,7 +25,9 @@ app.use("/user", require("./features/user").router)
 
 exports.app = app
 
-exports.init = _ => knex.migrate.latest().then(_ => {
-  app.listen(3000)
-  console.log("Beer store ready")
-})
+exports.init = _ => {
+  knex.migrate.latest().then(_ => {
+    app.listen(3000)
+    console.log("Beer store ready")
+  })
+}

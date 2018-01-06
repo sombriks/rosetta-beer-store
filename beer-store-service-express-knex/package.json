@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "cross-env NODE_ENV=development nodemon index.js",
-    "test": "cross-env NODE_ENV=testing knex migrate:latest ; NODE_ENV=testing mocha --timeout=30000"
+    "test": "cross-env NODE_ENV=testing knex migrate:latest ; cross-env NODE_ENV=testing mocha --timeout=30000 --exit"
   },
   "keywords": [],
   "author": "",

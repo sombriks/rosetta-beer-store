@@ -9,7 +9,7 @@ const Beer = Bookshelf.Model.extend({
   tableName: "beer",
 })
 
-commonRoutes.apply(router, Beer)
+commonRoutes.apply(router, Beer, "idbeer")
 
 module.exports = {
   router,
