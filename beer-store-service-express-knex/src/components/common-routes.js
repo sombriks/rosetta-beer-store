@@ -5,10 +5,15 @@
 // const Bookshelf = require("../components/config").Bookshelf
 const errfn = require("./config").errfn
 
-exports.apply = (router, BsModel, idAttribute, withRelated) => {
+exports.apply = (router, BsModel, idAttribute, withRelated, searchClause) => {
 
   const listPage = (query, page = 1, pageSize = 10) =>
-    BsModel.where(query).fetchPage({ page, pageSize, withRelated })
+    BsModel.where(qb => {
+      let search = query.search
+      delete query.search
+      if (searchClause)
+        searchClause(qb, search)
+    }).fetchPage({ page, pageSize, withRelated })
 
   const find = id => BsModel.query("where", idAttribute, id).fetch({ withRelated })
 

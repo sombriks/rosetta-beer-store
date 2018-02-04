@@ -11,18 +11,23 @@
 </template>
 
 <script>
-const beerservice = require("../components/restapi").beerservice
+const beerservice = require("../components/restapi").beerservice;
 module.exports = {
-  name:"BeerListing",
+  name: "BeerListing",
   data: _ => ({
-    page:1,
-    beerlist:[]
+    page: 1,
+    beerlist: []
   }),
-  methods:{
-    dosearch({search, page, pagesize}){
-      console.log(search)
+  created() {
+    this.dosearch({ search: "" });
+  },
+  methods: {
+    dosearch({ search, page, pageSize }) {
+      beerservice
+        .list({ search }, page, pageSize)
+        .then(ret => (this.beerlist = ret.data));
     }
   }
-}
+};
 </script>
 
