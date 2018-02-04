@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "cross-env NODE_ENV=development nodemon index.js",
-    "test": "cross-env NODE_ENV=testing knex migrate:latest ; cross-env NODE_ENV=testing mocha --timeout=30000 --exit ; cross-env NODE_ENV=testing knex migrate:rollback"
+    "test": "cross-env NODE_ENV=testing knex migrate:latest ; cross-env NODE_ENV=testing nyc mocha --timeout=30000 --exit ; cross-env NODE_ENV=testing knex migrate:rollback"
   },
   "keywords": [],
   "author": "",
@@ -25,6 +25,7 @@
     "chai-http": "^3.0.0",
     "cross-env": "^5.1.1",
     "mocha": "^4.0.1",
-    "nodemon": "^1.13.3"
+    "nodemon": "^1.13.3",
+    "nyc": "^11.4.1"
   }
 }
