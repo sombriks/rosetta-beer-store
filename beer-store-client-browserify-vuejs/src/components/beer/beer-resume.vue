@@ -1,14 +1,19 @@
 <template>
   <md-card>
-    <md-card-header></md-card-header>
-    <md-card-content></md-card-content>
-    <md-card-actions></md-card-actions>
+    <md-card-header>
+      <md-avatar>
+        <img :src="mediaservice.url(beer.idmedia)"/>
+      </md-avatar>
+    </md-card-header>
   </md-card>
 </template>
 
 <script>
+const { mediaservice } = require("../restapi")
 module.exports = {
-  name:"BeerResume"
+  name: "BeerResume",
+  props: ["beer"],
+  data: _ => ({ mediaservice })
 }
 </script>
 

@@ -1,7 +1,7 @@
 // system users and roles
 const router = require("express").Router()
-const Bookshelf = require("../components/config").Bookshelf
-const knex = require("../components/config").knex
+const { Bookshelf, knex } = require("../components/config")
+
 const commonRoutes = require("../components/common-routes")
 const errfn = require("../components/config").errfn
 
@@ -27,7 +27,7 @@ router.post("/addrole", (req, res) =>
 router.post("/removerole", (req, res) =>
   knex("user_role").del().where(req.body).then(ret => res.send("OK")).catch(errfn(res)))
 
-commonRoutes.apply(router, User, "iduser", ["roles"])
+commonRoutes.apply(router, User, ["roles"])
 
 module.exports = {
   router,

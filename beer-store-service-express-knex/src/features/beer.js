@@ -1,7 +1,7 @@
 // beers 
 const router = require("express").Router()
-const Bookshelf = require("../components/config").Bookshelf
-const knex = require("../components/config").knex
+const { Bookshelf, knex } = require("../components/config")
+
 const commonRoutes = require("../components/common-routes")
 
 const Beer = Bookshelf.Model.extend({
@@ -9,7 +9,13 @@ const Beer = Bookshelf.Model.extend({
   tableName: "beer",
 })
 
-commonRoutes.apply(router, Beer, "idbeer")
+commonRoutes.apply(router, Beer, [], (qb, q) => {
+  if (q.search) {
+    let s = q.search
+    qb.where("titlebeer", "like", `%${s}%`)
+  }
+  delete q.search
+})
 
 module.exports = {
   router,

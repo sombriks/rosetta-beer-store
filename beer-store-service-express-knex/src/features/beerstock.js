@@ -1,7 +1,7 @@
 // beer stock
 const router = require("express").Router()
-const Bookshelf = require("../components/config").Bookshelf
-const knex = require("../components/config").knex
+const { Bookshelf, knex } = require("../components/config")
+
 const commonRoutes = require("../components/common-routes")
 
 const BeerStock = Bookshelf.Model.extend({

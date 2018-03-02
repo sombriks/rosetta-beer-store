@@ -2,18 +2,26 @@
 // that CRUD pattern that always repeat itself.
 //
 // const router = require("express").Router()
-// const Bookshelf = require("../components/config").Bookshelf
+// const { Bookshelf, knex } = require("../components/config")
 const errfn = require("./config").errfn
 
-exports.apply = (router, BsModel, idAttribute, withRelated, searchClause) => {
+exports.apply = (router, BsModel, withRelated, searchClause) => {
 
-  const listPage = (query, page = 1, pageSize = 10) =>
-    BsModel.where(qb => {
-      let search = query.search
-      delete query.search
+  const idAttribute = BsModel.prototype.idAttribute;
+
+  const listPage = query => {
+
+    let page = query.page || 1
+    delete query.page
+    let pageSize = query.pageSize || 10
+    delete pageSize
+
+    return BsModel.where(qb => {
       if (searchClause)
-        searchClause(qb, search)
+        searchClause(qb, query)
+      qb.where(query)
     }).fetchPage({ page, pageSize, withRelated })
+  }
 
   const find = id => BsModel.query("where", idAttribute, id).fetch({ withRelated })
 
@@ -27,8 +35,8 @@ exports.apply = (router, BsModel, idAttribute, withRelated, searchClause) => {
 
   const del = id => BsModel.query("where", idAttribute, id).destroy()
 
-  router.get("/list(/:page)?(/:pageSize)?", (req, res) =>
-    listPage(req.query, req.params.page, req.params.pageSize).then(ret => res.send(ret)).catch(errfn(res)))
+  router.get("/list", (req, res) =>
+    listPage(req.query).then(ret => res.send(ret)).catch(errfn(res)))
 
   router.get("/:id", (req, res) =>
     find(req.params.id).then(ret => res.send(ret)).catch(errfn(res)))
@@ -39,6 +47,7 @@ exports.apply = (router, BsModel, idAttribute, withRelated, searchClause) => {
   router.put("/save", (req, res) =>
     update(req.body).then(ret => res.send(ret)).catch(errfn(res)))
 
-  router["delete"]("/:id", (req, res) => del(req.params.id).then(ret => res.send(ret)).catch(errfn(res)))
+  router["delete"]("/:id", (req, res) => 
+    del(req.params.id).then(ret => res.send(ret)).catch(errfn(res)))
 
 }

@@ -3,15 +3,15 @@
     <topbar>
       <h1 slot="left">Beer Listing</h1>
     </topbar>
-    <md-layout md-gutter>
+    <md-layout md-gutter md-column>
       <searchbar @onsearch="dosearch" :resultlist="beerlist"></searchbar>
-      <beer-resume v-for="beer in beerlist" :key="beer.idbeer"></beer-resume>
+      <beer-resume v-for="beer in beerlist" :key="beer.idbeer" :beer="beer"></beer-resume>
     </md-layout>
   </md-layout>
 </template>
 
 <script>
-const beerservice = require("../components/restapi").beerservice;
+const { beerservice } = require("../components/restapi")
 module.exports = {
   name: "BeerListing",
   data: _ => ({
@@ -19,15 +19,13 @@ module.exports = {
     beerlist: []
   }),
   created() {
-    this.dosearch({ search: "" });
+    this.dosearch()
   },
   methods: {
-    dosearch({ search, page, pageSize }) {
-      beerservice
-        .list({ search }, page, pageSize)
-        .then(ret => (this.beerlist = ret.data));
+    dosearch(s) {
+      beerservice.list(s).then(ret => this.beerlist = ret.data)
     }
   }
-};
+}
 </script>
 

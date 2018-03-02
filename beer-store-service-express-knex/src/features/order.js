@@ -1,8 +1,17 @@
 // beer orders, item orders
 const router = require("express").Router()
-const Bookshelf = require("../components/config").Bookshelf
-const knex = require("../components/config").knex
+const { Bookshelf, knex } = require("../components/config")
 
-module.exports ={
+const commonRoutes = require("../components/common-routes")
+
+const Order = Bookshelf.Model.extend({
+  tableName: "order",
+  idAttribute: "idorder"
+})
+
+commonRoutes.apply(router, Order)
+
+module.exports = {
   router,
+  Order,
 }
