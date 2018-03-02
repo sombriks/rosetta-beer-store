@@ -16,7 +16,8 @@ const api = axios.create({
 })
 
 const beerservice = {
-  list: params => api.get(`/beer/list`, { params })
+  list: params => api.get("/beer/list", { params }),
+  find: id => api.get(`/beer/${id}`)
 }
 
 const mediaservice = {

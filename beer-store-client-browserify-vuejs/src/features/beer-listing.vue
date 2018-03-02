@@ -1,13 +1,18 @@
 <template>
-  <md-layout md-gutter md-column>
+  <div>
     <topbar>
       <h1 slot="left">Beer Listing</h1>
     </topbar>
     <md-layout md-gutter md-column>
       <searchbar @onsearch="dosearch" :resultlist="beerlist"></searchbar>
-      <beer-resume v-for="beer in beerlist" :key="beer.idbeer" :beer="beer"></beer-resume>
+      <beer-item v-for="beer in beerlist" :key="beer.idbeer" :beer="beer">
+        <md-button slot="heading-options" class="md-icon-button" 
+          @click="$router.push(`/beer-details/${beer.idbeer}`)">
+          <md-icon>visibility</md-icon>
+        </md-button>
+      </beer-item>
     </md-layout>
-  </md-layout>
+  </div>
 </template>
 
 <script>

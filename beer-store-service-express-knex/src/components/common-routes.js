@@ -3,6 +3,10 @@
 //
 // const router = require("express").Router()
 // const { Bookshelf, knex } = require("../components/config")
+// const commonRoutes = require("../components/common-routes")
+// ...
+// commonRoutes.apply(routes, NewModel)
+// 
 const errfn = require("./config").errfn
 
 exports.apply = (router, BsModel, withRelated, searchClause) => {
@@ -14,7 +18,7 @@ exports.apply = (router, BsModel, withRelated, searchClause) => {
     let page = query.page || 1
     delete query.page
     let pageSize = query.pageSize || 10
-    delete pageSize
+    delete query.pageSize
 
     return BsModel.where(qb => {
       if (searchClause)

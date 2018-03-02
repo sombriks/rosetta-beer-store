@@ -1,12 +1,12 @@
 <template>
-  <md-layout md-gutter>
-   <md-layout md-align="start" md-gutter md-flex="70">
-     <md-input-container>
+  <md-layout md-gutter="8">
+   <md-layout md-align="start" md-gutter md-flex-xsmall="100" md-flex-small="70">
+     <md-input-container class="ml">
        <label>Search</label>
        <md-input v-model="s" @input="onsearch"></md-input>
      </md-input-container>
    </md-layout>
-   <md-layout md-align="end" md-gutter md-flex="25">
+   <md-layout md-align="end" md-gutter md-flex-xsmall="100" md-flex-small="30">
      <md-button class="md-raised md-primary" @click="onsearch(s,-1)" :disabled="p == 1">
        <md-icon>chevron_left</md-icon>
      </md-button>
@@ -54,9 +54,6 @@ module.exports = {
 </script>
 
 <style scoped>
-.mh {
-  max-height: 4em;
-}
 .ml {
   margin-left: 1em;
 }

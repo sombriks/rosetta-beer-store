@@ -1,3 +1,8 @@
 /* css frameworks */
 @import "../node_modules/vue-material/dist/vue-material.css";
 @import "../node_modules/material-design-icons-iconfont/dist/material-design-icons.css";
+
+body {
+  margin: 0px 0px 0px 0px;
+  overflow-x: hidden;
+}

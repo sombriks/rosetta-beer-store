@@ -17,6 +17,9 @@ app.use(bodyParser.raw({ type, limit }))
 
 app.use(cors())
 
+// relative to the project root
+app.use(express.static("static"))
+
 app.use("/beer", require("./features/beer").router)
 app.use("/beerstock", require("./features/beerstock").router)
 app.use("/media", require("./features/media").router)

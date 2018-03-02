@@ -1,5 +1,7 @@
 //
-let environment = process.env.NODE_ENV || "development"
+const environment = process.env.NODE_ENV || "development"
+
+console.log(`we are on [${environment}] mode!`)
 
 const knex = require("knex")(require("../../knexfile")[environment])
 
