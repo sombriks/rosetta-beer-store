@@ -1,6 +1,8 @@
 package features
 
 import (
+	"net/http"
+
 	"github.com/go-martini/martini"
 	"github.com/martini-contrib/render"
 )
@@ -14,10 +16,10 @@ type Beer struct {
 // HandleBeers installs http handlers on "/beer"
 func HandleBeers(r martini.Router) {
 
-	r.Get("/list", func(ren render.Render) {
+	r.Get("/list", func(req *http.Request, res render.Render) {
 		var ret [2]Beer
 		ret[0] = Beer{Idbeer: 9, Titlebeer: "skol"}
 		ret[1] = Beer{Idbeer: 1, Titlebeer: "Brahma"}
-		ren.JSON(200, ret)
+		res.JSON(200, ret)
 	})
 }
