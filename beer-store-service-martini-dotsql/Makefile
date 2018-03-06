@@ -7,6 +7,8 @@ all:
 
 clean: 
 	rm -rf beerservice
+	rm -rf gin-bin
+
 dev: all 
 	go get -v github.com/codegangsta/gin
 	go install github.com/codegangsta/gin
