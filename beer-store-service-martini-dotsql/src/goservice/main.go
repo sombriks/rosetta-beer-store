@@ -1,10 +1,12 @@
 package goservice
 
-import "github.com/go-martini/martini"
-import "github.com/martini-contrib/render"
-import "github.com/martini-contrib/cors"
+import (
+	"github.com/go-martini/martini"
+	"github.com/martini-contrib/cors"
+	"github.com/martini-contrib/render"
 
-import "./features"
+	"./features"
+)
 
 // Startup opens a server into the given port
 func Startup() {

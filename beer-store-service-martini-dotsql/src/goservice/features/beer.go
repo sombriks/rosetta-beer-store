@@ -1,7 +1,10 @@
 package features
 
 import (
+	"fmt"
 	"net/http"
+
+	"../components"
 
 	"github.com/go-martini/martini"
 	"github.com/martini-contrib/render"
@@ -20,6 +23,11 @@ func HandleBeers(r martini.Router) {
 		var ret [2]Beer
 		ret[0] = Beer{Idbeer: 9, Titlebeer: "skol"}
 		ret[1] = Beer{Idbeer: 1, Titlebeer: "Brahma"}
+		rows, err := components.Dot.Query(components.Db, "find-users-by-email", "main@example.com")
+		if err != nil {
+			panic(err)
+		}
+		fmt.Println(rows)
 		res.JSON(200, ret)
 	})
 }
