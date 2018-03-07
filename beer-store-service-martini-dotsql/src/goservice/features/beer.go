@@ -1,10 +1,13 @@
 package features
 
 import (
-	"fmt"
+	"log"
 	"net/http"
+	"strconv"
+	"time"
 
-	"../components"
+	// needed to bootstrap the connection
+	components "../components"
 
 	"github.com/go-martini/martini"
 	"github.com/martini-contrib/render"
@@ -12,9 +15,11 @@ import (
 
 // Beer is our struct to represent database content
 type Beer struct {
-	Idbeer          int    `json:"idbeer,omitempty"`
-	Titlebeer       string `json:"titlebeer,omitempty"`
-	Descriptionbeer string `json:"descriptionbeer,omitempty"`
+	Idbeer           int        `json:"idbeer,omitempty" db:"idbeer"`
+	Titlebeer        string     `json:"titlebeer,omitempty" db:"titlebeer"`
+	Descriptionbeer  string     `json:"descriptionbeer,omitempty" db:"descriptionbeer"`
+	Creationdatebeer *time.Time `db:"creationdatebeer" json:"creationdatebeer,omitempty"`
+	Idmedia          *int       `json:"idmedia,omitempty" db:"idmedia"`
 }
 
 // HandleBeers installs http handlers on "/beer"
@@ -22,19 +27,17 @@ func HandleBeers(r martini.Router) {
 
 	r.Get("/list", func(req *http.Request, res render.Render) {
 
-		fmt.Println("GET params were:", req.URL.Query()["a"])
-
 		q := req.URL.Query()
 
 		p := q["page"]
 		s := q["pageSize"]
-		param := q["textobusca"]
+		param := q["search"]
 
-		textobusca := ""
+		search := ""
 		if len(param) != 0 {
-			textobusca = param[0]
+			search = param[0]
 		}
-		textobusca = "%" + textobusca + "%"
+		search = "%" + search + "%"
 
 		page := "1"
 		if len(p) != 0 {
@@ -46,21 +49,17 @@ func HandleBeers(r martini.Router) {
 			pageSize = s[0]
 		}
 
-		// var ret [2]Beer
-		// ret[0] = Beer{Idbeer: 9, Titlebeer: "skol"}
-		// ret[1] = Beer{Idbeer: 1, Titlebeer: "Brahma"}
-		rows, err := components.Dot.Query(components.Db, "find-beers", textobusca, textobusca, page, pageSize)
+		n1, err := strconv.Atoi(pageSize)
+		n2, err := strconv.Atoi(page)
+
+		skip := n1 * (n2 - 1)
+
+		ret := []Beer{}
+		sql := "select * from beer where titlebeer like ? or descriptionbeer like ? limit ? offset ? "
+		err = components.Db.Select(&ret, sql, search, search, pageSize, skip)
 		if err != nil {
-			panic(err)
+			log.Fatalln(err)
 		}
-
-		ret := make([]Beer, 0)
-		for rows.Next() {
-			b := Beer{}
-			rows.Scan(&b)
-			ret = append(ret, b)
-		}
-
 		res.JSON(200, ret)
 	})
 }
