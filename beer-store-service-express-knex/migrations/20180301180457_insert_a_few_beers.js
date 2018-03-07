@@ -12,6 +12,7 @@ const beers = [
   { idbeer: 10, titlebeer: "Kaiser", descriptionbeer: "Cerveja bem cervejada" },
   { idbeer: 11, titlebeer: "Eisenbahn", descriptionbeer: "Cerveja puro malte" },
   { idbeer: 12, titlebeer: "Liefmans", descriptionbeer: "Fruitesse" },
+  { idbeer: 13, titlebeer: "Bohemia", descriptionbeer: "Cerveja pilsen" },
 ]
 
 exports.up = knex =>
