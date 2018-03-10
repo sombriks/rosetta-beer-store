@@ -62,4 +62,15 @@ func HandleBeers(r martini.Router) {
 		}
 		res.JSON(200, ret)
 	})
+
+	r.Get("/:idbeer", func(params martini.Params, res render.Render) {
+		sql := "select * from beer where idbeer = ?"
+		ret := Beer{}
+		log.Println(params["idbeer"])
+		err := components.Db.Get(&ret, sql, params["idbeer"])
+		if err != nil {
+			log.Fatalln(err)
+		}
+		res.JSON(200, ret)
+	})
 }

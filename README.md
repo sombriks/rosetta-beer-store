@@ -8,6 +8,17 @@ To compare stacks, analyze solutions, maybe give you a glimpse on what each appr
 
 Also because it's fun.
 
+## What do we have so far?
+
+- API
+  - beers listing
+  - beer detail
+- Client
+  - vue.js + browserify 
+- Service
+  - expressjs + knex
+  - martini + sqlx
+
 ## How does it work?
 
 Each project will have one README.md explaining how to fire the engines.
