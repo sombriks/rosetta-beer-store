@@ -3,9 +3,14 @@
 This sample repo shows how to build the beer store client using 
 [the old angular](https://angularjs.org/) and cdn's instead of a bundler.
 
-There is no reloader, updater, nothing. We're far from that nowadays, yet it's
-still a valid sample.
+We're using budo there, but there is no bundle step. We just use it to serve 
+the content in a faster and simpler way.
 
-Just open the index.html with your browser and see the beer store.
+## How do i run this?
 
+Open a terminal in this folder and:
 
+```bash
+npm install
+npm run dev
+```

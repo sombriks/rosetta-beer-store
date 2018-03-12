@@ -18,9 +18,13 @@
 </head>
 <body>
   <div id="app" ng-view></div>
+  <!-- we need an entry point -->
   <script src="app.js"></script>
+  <!-- the define all features -->
   <script src="beer/beer-service.js"></script>
   <script src="beer/beer-listing.js"></script>
   <script src="beer/beer-details.js"></script>
+  <!-- the script sequence was important back in time -->
+  <script src="routing.js"></script>
 </body>
 </html>

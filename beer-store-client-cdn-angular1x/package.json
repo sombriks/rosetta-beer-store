@@ -1,0 +1,15 @@
+{
+  "name": "beer-store-client-cdn-angular1x",
+  "version": "1.0.0",
+  "description": "This sample repo shows how to build the beer store client using  [the old angular](https://angularjs.org/) and cdn's instead of a bundler.",
+  "main": "app.js",
+  "scripts": {
+    "dev": "budo -o -l"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "budo": "^11.2.0"
+  }
+}
