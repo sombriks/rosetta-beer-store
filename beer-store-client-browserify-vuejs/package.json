@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "budo src/main.js:build.js -o -l"
+    "dev": "budo src/main.js:build.js -o -l -H 127.0.0.1"
   },
   "keywords": [],
   "author": "",
@@ -23,9 +23,6 @@
     "vueify": "^9.4.1"
   },
   "browserify": {
-    "transform": [
-      "browserify-css",
-      "vueify"
-    ]
+    "transform": ["browserify-css", "vueify"]
   }
 }
