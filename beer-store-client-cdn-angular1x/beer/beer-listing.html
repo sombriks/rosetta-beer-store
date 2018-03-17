@@ -21,5 +21,11 @@
       <h3>{{ beer.titlebeer }}</h3>
       <h4>{{ beer.descriptionbeer }}</h4>
       </div>
-      </md-list-item>
+      <md-button
+        class="md-secondary md-icon-button"
+        ng-href="#!/beer-details/{{beer.idbeer}}"
+      >
+        <md-icon class="material-icons">visibility</md-icon>
+        </md-button>
+        </md-list-item>
 </md-list>
