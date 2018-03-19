@@ -15,6 +15,7 @@ Also because it's fun.
   - beer detail
 - Client
   - vue.js + browserify 
+  - angular 1.x + CDN 
 - Service
   - expressjs + knex
   - martini + sqlx
