@@ -4,6 +4,29 @@
     md-truncate
   >&nbsp;Beer Listing</h3>
 </md-toolbar>
+<div layout="row">
+  <md-input-container flex>
+    <input
+      ng-model="ctl.query.search"
+      placeholder="Search"
+      ng-change="ctl.list()"
+    />
+  </md-input-container>
+  <md-button
+    ng-disabled="ctl.query.page==1"
+    class="md-raised md-primary"
+    ng-click="ctl.list(-1)"
+  >
+    <md-icon>chevron_left</md-icon>
+    </md-button>
+    <md-button
+      ng-disabled="ctl.beers.length<10"
+      class="md-raised md-primary"
+      ng-click="ctl.list(1)"
+    >
+      <md-icon>chevron_right</md-icon>
+      </md-button>
+</div>
 <md-list flex>
   <md-list-item
     class="md-2-line"
