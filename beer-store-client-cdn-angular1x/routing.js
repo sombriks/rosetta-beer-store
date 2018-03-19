@@ -9,7 +9,8 @@ angular.module("beer-store").config($routeProvider => {
 
   $routeProvider.when("/beer-details/:idbeer", {
     templateUrl: "beer/beer-details.html",
-    controller: "BeerDetails"
+    controller: "BeerDetails",
+    controllerAs: "ctl"
   });
 
   $routeProvider.otherwise({
