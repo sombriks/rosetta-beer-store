@@ -1,28 +1,15 @@
 <md-toolbar>
-  <h3
-    flex
-    md-truncate
-  >&nbsp;Beer Details</h3>
+  <h3 flex md-truncate>&nbsp;Beer Details</h3>
 </md-toolbar>
-<md-button
-  class="md-primary md-raised"
-  ng-href="#!/beer-listing"
->
+<md-button class="md-primary md-raised" ng-href="#!/beer-listing">
   <md-icon class="material-icons">arrow_back</md-icon>
-  </md-button>
-  <md-list flex>
-    <md-list-item class="md-2-line">
-      <img
-        ng-src="{{ctl.BeerService.url(ctl.beer.idmedia)}}"
-        class="md-avatar"
-        alt="{{ctl.beer.titlebeer}}"
-      />
-      <div
-        class="md-list-item-text"
-        layout="column"
-      >
-        <h3>{{ ctl.beer.titlebeer }}</h3>
-        <h4>{{ ctl.beer.descriptionbeer }}</h4>
-        </div>
-    </md-list-item>
-  </md-list>
+</md-button>
+<md-list flex>
+  <md-list-item class="md-2-line">
+    <img ng-src="{{ctl.BeerService.url(ctl.beer.idmedia)}}" class="md-avatar" alt="{{ctl.beer.titlebeer}}" />
+    <div class="md-list-item-text" layout="column">
+      <h3>{{ ctl.beer.titlebeer }}</h3>
+      <h4>{{ ctl.beer.descriptionbeer }}</h4>
+    </div>
+  </md-list-item>
+</md-list>

@@ -16,6 +16,6 @@ Vue.component("cart-resume", require("./components/shell/cart-resume.vue"))
 Vue.component("user-resume", require("./components/shell/user-resume.vue"))
 
 window.rootvm = new Vue({
-  render: r => r(require("./components/mountpoint.vue")),
+  render: r => r(require("./components/App.vue")),
   el: document.getElementById("app"),
 })

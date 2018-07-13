@@ -4,10 +4,9 @@
 
 <script>
 module.exports = {
- name:"UserResume"
+  name: "UserResume"
 }
 </script>
 
 <style>
-
 </style>
