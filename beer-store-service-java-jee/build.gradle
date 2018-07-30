@@ -18,8 +18,8 @@ repositories {
 }
 
 dependencies {
-  // https://mvnrepository.com/artifact/fish.payara.extras/payara-embedded-all
-	providedCompile group: 'fish.payara.extras', name: 'payara-embedded-all', version: '5.182'
-  // Use JUnit test framework
+	// https://mvnrepository.com/artifact/javax/javaee-api
+	providedCompile group: 'javax', name: 'javaee-api', version: '8.0'
+	// Use JUnit test framework
   testCompile 'junit:junit:4.12'
 }

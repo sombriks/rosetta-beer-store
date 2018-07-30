@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<faceted-project>
+  <runtime name="Payara Server 5 (5.182)"/>
+  <installed facet="java" version="1.8"/>
+  <installed facet="jst.web" version="4.0"/>
+  <installed facet="wst.jsdt.web" version="1.0"/>
+  <installed facet="jpt.jaxb" version="2.2"/>
+  <installed facet="jpt.jpa" version="2.1"/>
+</faceted-project>
