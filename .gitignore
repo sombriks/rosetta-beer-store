@@ -4,3 +4,9 @@ package-lock.json
 .nyc_output
 beerservice
 gin-bin
+.gradle
+gradle
+gradlew
+gradlew.bat
+build
+bin
