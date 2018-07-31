@@ -19,6 +19,7 @@ Also because it's fun.
 - Service
   - expressjs + knex
   - martini + sqlx
+  - Java EE (Payara) + JPA/flywayDB/H2
 
 ## How does it work?
 

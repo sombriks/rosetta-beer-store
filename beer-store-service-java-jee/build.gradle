@@ -18,6 +18,8 @@ repositories {
 }
 
 dependencies {
+	// https://mvnrepository.com/artifact/com.h2database/h2
+	providedCompile group: 'com.h2database', name: 'h2', version: '1.4.197'
 	// https://mvnrepository.com/artifact/javax/javaee-api
 	providedCompile group: 'javax', name: 'javaee-api', version: '8.0'
 	// Use JUnit test framework
