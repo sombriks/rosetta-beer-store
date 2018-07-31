@@ -10,6 +10,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @Entity
@@ -19,6 +20,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class Beer {
 
 	@Id
+	@XmlElement(name = "idbeer")
 	@Column(name = "idbeer")
 	private long idBeer;
 
@@ -32,7 +34,7 @@ public class Beer {
 	@Column(name = "descriptionbeer")
 	private String descriptionBeer;
 
-	@Column(name="idmedia")
+	@Column(name = "idmedia")
 	private Long idMedia;
 
 	public long getIdBeer() {
@@ -74,5 +76,5 @@ public class Beer {
 	public void setIdMedia(Long idMedia) {
 		this.idMedia = idMedia;
 	}
-	
+
 }

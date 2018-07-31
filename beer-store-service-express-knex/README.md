@@ -9,7 +9,7 @@ knex with bookshelf in a relational way.
 
 We also use [nodemon](https://nodemon.io/) for automated process reload.
 
-Although we use sqlite as database 'server', knex provides integration with 
+Although we use *sqlite* as database 'server', knex provides integration with 
 mysql, postgresql, mssql and oracle.
 
 ## How do i run this?

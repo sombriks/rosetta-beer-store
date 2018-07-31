@@ -1,6 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
-	<persistence-unit name="jdbc/beer-pu" transaction-type="JTA">
+<persistence version="2.1"
+	xmlns="http://xmlns.jcp.org/xml/ns/persistence"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+	<persistence-unit name="jdbc/beer-pu"
+		transaction-type="JTA">
 		<jta-data-source>jdbc/beer-ds</jta-data-source>
+		<properties>
+			<!-- create is the non-destructive option there, let him trows how many exceptions it wants -->
+			<property
+				name="javax.persistence.schema-generation.database.action"
+				value="create" />
+			<property
+				name="javax.persistence.schema-generation.create-source"
+				value="script" />
+			<property
+				name="javax.persistence.schema-generation.create-script-source"
+				value="META-INF/sql/2018-07-31/01-esquema-inicial.sql" />
+			<property name="javax.persistence.sql-load-script-source"
+				value="META-INF/sql/2018-07-31/02-carga-inicial.sql" />
+		</properties>
 	</persistence-unit>
 </persistence>
