@@ -1,9 +1,13 @@
 #
 # build, dev and clean steps
-# also, be sure that your $GOROOT is set
 #
+# when using sistem-wide go, all you need is to append $HOME/go/bin on path
+#
+export PATH := $(HOME)/go/bin:$(PATH)
+
 all: 
-	go build beerservice.go
+	go get -v
+	go build beerservice.go -o beerservice
 
 clean: 
 	rm -rf beerservice
@@ -12,4 +16,5 @@ clean:
 dev:  
 	go get -v github.com/codegangsta/gin
 	go install github.com/codegangsta/gin
+	go get -v
 	gin beerservice.go
