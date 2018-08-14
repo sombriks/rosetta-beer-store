@@ -1,13 +1,15 @@
 #
-# build, dev and clean steps
+# https://www.youtube.com/watch?v=IrYaW3zc9ds
 #
-# when using sistem-wide go, all you need is to append $HOME/go/bin on path
-#
-export PATH := $(HOME)/go/bin:$(PATH)
+export GOPATH := $(PWD)
+export GO := $(shell which go)
+export GOINSTALL := $(GO) install
+export GOCLEAN := $(GO) clean 
 
-all: 
-	go get -v
-	go build beerservice.go -o beerservice
+bin/beerservice: src/beerservice.go
+	go build src/beerservice.go -o bin/beerservice
+
+all: bin/beerservice
 
 clean: 
 	rm -rf beerservice
@@ -18,3 +20,4 @@ dev:
 	go install github.com/codegangsta/gin
 	go get -v
 	gin beerservice.go
+
