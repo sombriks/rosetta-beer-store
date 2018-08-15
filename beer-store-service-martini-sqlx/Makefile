@@ -2,22 +2,35 @@
 # https://www.youtube.com/watch?v=IrYaW3zc9ds
 #
 export GOPATH := $(PWD)
-export GO := $(shell which go)
-export GOINSTALL := $(GO) install
-export GOCLEAN := $(GO) clean 
+export GOBIN := $(GOPATH)/bin
+export PATH := $(PATH):$(GOBIN)
+export PRG := beerservice
 
-bin/beerservice: src/beerservice.go
-	go build src/beerservice.go -o bin/beerservice
+.PHONY: all
 
-all: bin/beerservice
+all: build
+
+dev: build
+	./bin/beerservice
+
+build: deps
+	go install src/main/$(PRG).go
+
+deps: bin pkg src
+	go get -v github.com/go-martini/martini
+	go get -v github.com/martini-contrib/cors
+	go get -v github.com/martini-contrib/render
+	go get -v github.com/jmoiron/sqlx
+	go get -v github.com/mattn/go-sqlite3
+
+bin:
+	mkdir bin
+
+pkg:
+	mkdir pkg
+
+src:
+	mkdir src
 
 clean: 
-	rm -rf beerservice
-	rm -rf gin-bin
-
-dev:  
-	go get -v github.com/codegangsta/gin
-	go install github.com/codegangsta/gin
-	go get -v
-	gin beerservice.go
-
+	rm -rf bin pkg src/github.com src/gopkg.in beerstore.sqlite3 

@@ -1,6 +1,6 @@
 package main
 
-import "../goservice"
+import "storeservice"
 
 func main() {
 	goservice.Startup()

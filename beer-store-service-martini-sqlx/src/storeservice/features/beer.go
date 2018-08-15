@@ -6,11 +6,10 @@ import (
 	"strconv"
 	"time"
 
-	// needed to bootstrap the connection
-	components "../components"
-
 	"github.com/go-martini/martini"
 	"github.com/martini-contrib/render"
+
+	"storeservice/components"
 )
 
 // Beer is our struct to represent database content

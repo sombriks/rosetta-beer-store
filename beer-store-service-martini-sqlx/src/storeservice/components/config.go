@@ -10,6 +10,7 @@ import (
 	_ "github.com/mattn/go-sqlite3"
 )
 
+// Db visible db connection
 var Db *sqlx.DB
 
 // init initializes the module

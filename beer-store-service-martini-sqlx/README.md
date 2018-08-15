@@ -9,8 +9,9 @@ the REST API.
 The [sqlx](github.com/jmoiron/sqlx) library extends the go's core sql support.
 It has a nice guide [here](http://jmoiron.github.io/sqlx/). 
 
-We also use the [gin](github.com/codegangsta/gin) watcher to save time while 
-developing this service
+So far, there is no decent tool to act as a development watcher. We tried 
+gin (from codegangsta) and go-watcher (from canthefason) but they lack respect
+for $(GOPATH) and execution points.
 
 ## How do i run this?
 
@@ -20,8 +21,11 @@ Open a terminal on the folder coltaining this readme and
 make dev
 ```
 
-After a few errors pop out, use the *go get -v * thing to install every 
-missing dependency
+The [go workspace](https://golang.org/doc/code.html) once set will manage well 
+how libraries, source code and binaries will stay and the project folder will
+also be the execution point.
 
-Make sure you have the go installed correctly on your system and provide 
-reasonable values for **GOROOT** and **GOPATH** variables.
+Static and queries folder are there because of execution point.
+
+bin, pkg and src are there because this is also our $GOPATH, as seen in the 
+Makefile.

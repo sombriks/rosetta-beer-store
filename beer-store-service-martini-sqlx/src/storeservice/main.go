@@ -5,11 +5,12 @@ import (
 	"github.com/martini-contrib/cors"
 	"github.com/martini-contrib/render"
 
-	"./features"
+	"storeservice/features"
 )
 
 // Startup opens a server into the given port
 func Startup() {
+	// a
 	m := martini.Classic()
 
 	m.Use(render.Renderer())
