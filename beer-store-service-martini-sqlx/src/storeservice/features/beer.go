@@ -1,6 +1,7 @@
 package features
 
 import (
+	"fmt"
 	"log"
 	"net/http"
 	"strconv"
@@ -28,28 +29,31 @@ func HandleBeers(r martini.Router) {
 
 		q := req.URL.Query()
 
-		p := q["page"]
-		s := q["pageSize"]
-		param := q["search"]
-
-		search := ""
-		if len(param) != 0 {
-			search = param[0]
-		}
-		search = "%" + search + "%"
-
-		page := "1"
-		if len(p) != 0 {
-			page = p[0]
+		search := q.Get("search")
+		if len(search) != 0 {
+			search = "%" + search + "%"
 		}
 
-		pageSize := "10"
-		if len(s) != 0 {
-			pageSize = s[0]
+		page := q.Get("page")
+		if len(page) == 0 {
+			page = "1"
+		}
+
+		pageSize := q.Get("pageSize")
+		if len(pageSize) == 0 {
+			pageSize = "10"
 		}
 
 		n1, err := strconv.Atoi(pageSize)
+		if err != nil {
+			res.Text(500, pageSize+" is not a number")
+			return
+		}
 		n2, err := strconv.Atoi(page)
+		if err != nil {
+			res.Text(500, page+" is not a number")
+			return
+		}
 
 		skip := n1 * (n2 - 1)
 
@@ -57,7 +61,8 @@ func HandleBeers(r martini.Router) {
 		sql := "select * from beer where titlebeer like ? or descriptionbeer like ? limit ? offset ? "
 		err = components.Db.Select(&ret, sql, search, search, pageSize, skip)
 		if err != nil {
-			log.Fatalln(err)
+			res.Text(500, "unable to select: "+err.Error())
+			return
 		}
 		res.JSON(200, ret)
 		// foi
@@ -69,7 +74,9 @@ func HandleBeers(r martini.Router) {
 		log.Println(params["idbeer"])
 		err := components.Db.Get(&ret, sql, params["idbeer"])
 		if err != nil {
-			log.Fatalln(err)
+			res.Error(404)
+			fmt.Println("Beer not found")
+			return
 		}
 		res.JSON(200, ret)
 	})

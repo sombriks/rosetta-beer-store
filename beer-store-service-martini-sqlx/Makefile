@@ -10,10 +10,10 @@ export PRG := beerservice
 
 all: build
 
-dev: build
+dev: 
 	bra run
 
-build: deps
+build: bin/$(PRG)
 	go install src/main/$(PRG).go
 
 deps: bin pkg src
