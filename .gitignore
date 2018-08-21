@@ -2,7 +2,6 @@ node_modules
 package-lock.json
 *.sqlite3
 .nyc_output
-beerservice
 gin-bin
 .gradle
 gradle
@@ -12,3 +11,6 @@ build
 bin
 *.db
 pkg 
+github.com
+golang.org
+gopkg.in
