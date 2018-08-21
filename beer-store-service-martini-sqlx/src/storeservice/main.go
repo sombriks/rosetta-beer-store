@@ -1,6 +1,8 @@
-package goservice
+package storeservice
 
 import (
+	"fmt"
+
 	"github.com/go-martini/martini"
 	"github.com/martini-contrib/cors"
 	"github.com/martini-contrib/render"
@@ -14,6 +16,9 @@ func Startup() {
 	m := martini.Classic()
 
 	m.Use(render.Renderer())
+
+	var x int = 2
+	fmt.Println(x)
 
 	m.Use(cors.Allow(&cors.Options{
 		AllowOrigins:     []string{"*"},

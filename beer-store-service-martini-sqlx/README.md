@@ -9,9 +9,9 @@ the REST API.
 The [sqlx](github.com/jmoiron/sqlx) library extends the go's core sql support.
 It has a nice guide [here](http://jmoiron.github.io/sqlx/). 
 
-So far, there is no decent tool to act as a development watcher. We tried 
-gin (from codegangsta) and go-watcher (from canthefason) but they lack respect
-for $(GOPATH) and execution points.
+Also, we use [bra](https://github.com/Unknwon/bra) to watch file changes. 
+It needs a config file called **.bra.toml** and once correctly placed works 
+like a charm.
 
 ## How do i run this?
 

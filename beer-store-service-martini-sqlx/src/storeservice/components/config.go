@@ -24,11 +24,13 @@ func init() {
 	q, err := ioutil.ReadFile("./queries/create-table-media.sql")
 	if err != nil {
 		panic(err)
+
 	}
 	db.MustExec(string(q))
 	q, err = ioutil.ReadFile("./queries/create-table-beer.sql")
 	db.MustExec(string(q))
 	q, err = ioutil.ReadFile("./queries/count-beers.sql")
+
 	r, err := db.Queryx(string(q))
 	count := 0
 	if r.Next() {

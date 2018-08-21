@@ -1,7 +1,11 @@
 package main
 
-import "storeservice"
+import (
+	"fmt"
+	"storeservice"
+)
 
 func main() {
-	goservice.Startup()
+	fmt.Println("Serviço online!!")
+	storeservice.Startup()
 }

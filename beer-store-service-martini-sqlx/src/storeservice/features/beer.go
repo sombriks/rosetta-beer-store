@@ -17,7 +17,7 @@ type Beer struct {
 	Idbeer           int        `json:"idbeer,omitempty" db:"idbeer"`
 	Titlebeer        string     `json:"titlebeer,omitempty" db:"titlebeer"`
 	Descriptionbeer  string     `json:"descriptionbeer,omitempty" db:"descriptionbeer"`
-	Creationdatebeer *time.Time `db:"creationdatebeer" json:"creationdatebeer,omitempty"`
+	Creationdatebeer *time.Time `json:"creationdatebeer,omitempty" db:"creationdatebeer"`
 	Idmedia          *int       `json:"idmedia,omitempty" db:"idmedia"`
 }
 
@@ -60,6 +60,7 @@ func HandleBeers(r martini.Router) {
 			log.Fatalln(err)
 		}
 		res.JSON(200, ret)
+		// foi
 	})
 
 	r.Get("/:idbeer", func(params martini.Params, res render.Render) {
