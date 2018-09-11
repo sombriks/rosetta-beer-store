@@ -1,6 +1,6 @@
 [run]
 init_cmds = [
-	["make", "build"],
+	["make", "all"],
 	["beerservice"]
 ]
 watch_all = true

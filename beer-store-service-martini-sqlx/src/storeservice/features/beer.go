@@ -1,6 +1,7 @@
 package features
 
 import (
+	"fmt"
 	"net/http"
 	"strconv"
 	"time"
@@ -11,12 +12,14 @@ import (
 
 	// registrando o driver sql
 	_ "github.com/mattn/go-sqlite3"
+
+	components "storeservice/components"
 )
 
 // Beer is our struct to represent database content
 type Beer struct {
 	gorm.Model
-	Idbeer           int        `json:"idbeer,omitempty" gorm:"column:idbeer"`
+	Idbeer           int64      `json:"idbeer,omitempty" gorm:"column:idbeer"`
 	Titlebeer        string     `json:"titlebeer,omitempty" gorm:"column:titlebeer"`
 	Descriptionbeer  string     `json:"descriptionbeer,omitempty" gorm:"column:descriptionbeer"`
 	Creationdatebeer *time.Time `json:"creationdatebeer,omitempty" gorm:"column:creationdatebeer"`
@@ -28,10 +31,7 @@ func HandleBeers(r martini.Router) {
 
 	r.Get("/list", func(req *http.Request, res render.Render) {
 
-		db, err := gorm.Open("sqlite3", "beerstore.sqlite3")
-		if err != nil {
-			panic("failed to connect database")
-		}
+		db := components.GetDb()
 		defer db.Close()
 
 		// Migrate the schema
@@ -68,15 +68,21 @@ func HandleBeers(r martini.Router) {
 	})
 
 	r.Get("/:idbeer", func(params martini.Params, res render.Render) {
-		// sql := "select * from beer where idbeer = ?"
-		ret := Beer{}
 
-		// err := components.Db.Get(&ret, sql, params["idbeer"])
-		// if err != nil {
-		// 	res.Error(404)
-		// 	fmt.Println("Beer not found")
-		// 	return
-		// }
-		res.JSON(200, ret)
+		idbeer, _ := strconv.Atoi(params["idbeer"])
+
+		fmt.Println(idbeer)
+
+		db := components.GetDb()
+		defer db.Close()
+
+		// Migrate the schema
+		db.AutoMigrate(&Beer{})
+
+		beer := Beer{}
+
+		db.First(&beer, idbeer)
+
+		res.JSON(200, beer)
 	})
 }

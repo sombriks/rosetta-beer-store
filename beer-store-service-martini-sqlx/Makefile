@@ -8,12 +8,14 @@ export PRG := beerservice
 
 .PHONY: all
 
-all: build
+all: build deps
 
-dev: deps
+dev: 
+	echo "you should 'make deps' at least once"
 	bra run
 
-build: deps
+build:
+	echo "you should 'make deps' at least once"
 	go install src/main/$(PRG).go
 
 deps: bin pkg src
