@@ -10,10 +10,10 @@ export PRG := beerservice
 
 all: build
 
-dev: 
+dev: deps
 	bra run
 
-build: bin/$(PRG)
+build: deps
 	go install src/main/$(PRG).go
 
 deps: bin pkg src
@@ -21,7 +21,8 @@ deps: bin pkg src
 	go get -v github.com/go-martini/martini
 	go get -v github.com/martini-contrib/cors
 	go get -v github.com/martini-contrib/render
-	go get -v github.com/jmoiron/sqlx
+	# go get -v github.com/jmoiron/sqlx
+	go get -v github.com/jinzhu/gorm
 	go get -v github.com/mattn/go-sqlite3
 	# dev dependencies
 	go get -v github.com/mdempsky/gocode

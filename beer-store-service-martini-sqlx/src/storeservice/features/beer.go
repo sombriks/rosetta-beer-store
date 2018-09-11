@@ -1,25 +1,26 @@
 package features
 
 import (
-	"fmt"
-	"log"
 	"net/http"
 	"strconv"
 	"time"
 
 	"github.com/go-martini/martini"
+	"github.com/jinzhu/gorm"
 	"github.com/martini-contrib/render"
 
-	"storeservice/components"
+	// registrando o driver sql
+	_ "github.com/mattn/go-sqlite3"
 )
 
 // Beer is our struct to represent database content
 type Beer struct {
-	Idbeer           int        `json:"idbeer,omitempty" db:"idbeer"`
-	Titlebeer        string     `json:"titlebeer,omitempty" db:"titlebeer"`
-	Descriptionbeer  string     `json:"descriptionbeer,omitempty" db:"descriptionbeer"`
-	Creationdatebeer *time.Time `json:"creationdatebeer,omitempty" db:"creationdatebeer"`
-	Idmedia          *int       `json:"idmedia,omitempty" db:"idmedia"`
+	gorm.Model
+	Idbeer           int        `json:"idbeer,omitempty" gorm:"column:idbeer"`
+	Titlebeer        string     `json:"titlebeer,omitempty" gorm:"column:titlebeer"`
+	Descriptionbeer  string     `json:"descriptionbeer,omitempty" gorm:"column:descriptionbeer"`
+	Creationdatebeer *time.Time `json:"creationdatebeer,omitempty" gorm:"column:creationdatebeer"`
+	Idmedia          *int       `json:"idmedia,omitempty" gorm:"column:idmedia"`
 }
 
 // HandleBeers installs http handlers on "/beer"
@@ -27,6 +28,16 @@ func HandleBeers(r martini.Router) {
 
 	r.Get("/list", func(req *http.Request, res render.Render) {
 
+		db, err := gorm.Open("sqlite3", "beerstore.sqlite3")
+		if err != nil {
+			panic("failed to connect database")
+		}
+		defer db.Close()
+
+		// Migrate the schema
+		db.AutoMigrate(&Beer{})
+
+		defer db.Close()
 		q := req.URL.Query()
 
 		search := q.Get("search")
@@ -44,40 +55,28 @@ func HandleBeers(r martini.Router) {
 			pageSize = "10"
 		}
 
-		n1, err := strconv.Atoi(pageSize)
-		if err != nil {
-			res.Text(500, pageSize+" is not a number")
-			return
-		}
-		n2, err := strconv.Atoi(page)
-		if err != nil {
-			res.Text(500, page+" is not a number")
-			return
-		}
+		p, _ := strconv.Atoi(page)
+		s, _ := strconv.Atoi(pageSize)
 
-		skip := n1 * (n2 - 1)
+		beers := []Beer{}
 
-		ret := []Beer{}
-		sql := "select * from beer where titlebeer like ? or descriptionbeer like ? limit ? offset ? "
-		err = components.Db.Select(&ret, sql, search, search, pageSize, skip)
-		if err != nil {
-			res.Text(500, "unable to select: "+err.Error())
-			return
-		}
-		res.JSON(200, ret)
+		db.Where("titlebeer like ?", search).Offset((p - 1) * s).Limit(s).Find(&beers)
+
+		res.JSON(200, beers)
+
 		// foi
 	})
 
 	r.Get("/:idbeer", func(params martini.Params, res render.Render) {
-		sql := "select * from beer where idbeer = ?"
+		// sql := "select * from beer where idbeer = ?"
 		ret := Beer{}
-		log.Println(params["idbeer"])
-		err := components.Db.Get(&ret, sql, params["idbeer"])
-		if err != nil {
-			res.Error(404)
-			fmt.Println("Beer not found")
-			return
-		}
+
+		// err := components.Db.Get(&ret, sql, params["idbeer"])
+		// if err != nil {
+		// 	res.Error(404)
+		// 	fmt.Println("Beer not found")
+		// 	return
+		// }
 		res.JSON(200, ret)
 	})
 }
