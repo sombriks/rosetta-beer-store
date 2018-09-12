@@ -1,6 +1,6 @@
 # rosetta-beer-store
 
-The very same beer store implemented in various stacks. Also, fontends and backends are interchangeable
+The very same beer store implemented in various stacks. Also, frontends and backends are interchangeable
 
 ## Why?
 
@@ -18,7 +18,7 @@ Also because it's fun.
   - angular 1.x + CDN 
 - Service
   - expressjs + knex
-  - martini + sqlx
+  - martini + gorm
   - Java EE (Payara)
 
 ## How does it work?

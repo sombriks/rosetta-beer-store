@@ -2,4 +2,5 @@
   "go.inferGopath": true,
   "editor.tabSize": 2,
   "eslint.enable": false,
+  "files.autoSave": "onFocusChange",
 }
