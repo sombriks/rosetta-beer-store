@@ -28,6 +28,7 @@ app.use("/user", require("./features/user").router)
 
 exports.app = app
 
+/* istanbul ignore next */
 exports.init = _ => {
   knex.migrate.latest().then(_ => {
     app.listen(3000)
