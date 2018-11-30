@@ -5,8 +5,13 @@ import store from "./store";
 
 Vue.config.productionTip = false;
 
-new Vue({
-  router,
-  store,
-  render: h => h(App)
-}).$mount("#app");
+const init = _ => {
+  new Vue({
+    router,
+    store,
+    render: h => h(App)
+  }).$mount("#app");
+}
+
+if (window.cordova) document.addEventListener("deviceready", init)
+else init()
