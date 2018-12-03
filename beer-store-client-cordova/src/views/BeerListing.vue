@@ -1,16 +1,10 @@
 <template>
   <div class="beer-listing">
-    <topbar>
-      <h1 slot="left">Beer Listing</h1>
-    </topbar>
-    <md-layout md-gutter md-column>
-      <md-card v-for="beer in beers" :key="beer.idbeer">
-        <md-card-header-text>
-          <div class="md-title">{{beer.titlebeer}}</div>
-          <div class="md-caption">{{beer.descriptionbeer}}</div>
-        </md-card-header-text>
-      </md-card>        
-    </md-layout>
+    <h1 slot="left">Beer Listing</h1>
+    <ul v-for="beer in beers" :key="beer.idbeer">
+      <li class="md-title">{{beer.titlebeer}}</li>
+      <li class="md-caption">{{beer.descriptionbeer}}</li>
+    </ul>
   </div>
 </template>
 

@@ -6,7 +6,7 @@ const env = process.env.NODE_ENV || "development"
 console.log("we are on [%s] environment")
 
 const addr = {
-  production: "https://rosetta-beer-store.io",
+  production: "http://192.168.0.4:3000",
   development: "http://127.0.0.1:3000"
 }
 
