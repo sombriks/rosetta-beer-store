@@ -1,10 +1,29 @@
 <template>
   <div class="beer-listing">
-    <h1 slot="left">Beer Listing</h1>
-    <ul v-for="beer in beers" :key="beer.idbeer">
-      <li class="md-title">{{beer.titlebeer}}</li>
-      <li class="md-caption">{{beer.descriptionbeer}}</li>
-    </ul>
+    <mu-appbar class="appbar" title="Beer Listing" color="indigo500" z-depth="0"></mu-appbar>
+    <mu-container>
+      <mu-form :model="form">
+          <mu-flex justify-content="start">
+            <mu-form-item class="search-bar" prop="input" label="Search">
+              <mu-text-field v-model="form.input"></mu-text-field>
+            </mu-form-item>
+          </mu-flex>
+          <mu-flex justify-content="end">
+            <div class="left-button">
+              <mu-button disabled>&#60;</mu-button>
+            </div>
+            <mu-button color="indigo500">&#62;</mu-button>
+          </mu-flex>
+      </mu-form>
+    </mu-container>
+    <mu-list v-for="beer in beers" :key="beer.idbeer" textline="two-line">
+      <mu-list-item button :ripple="false">
+        <mu-list-item-content>
+          <mu-list-item-title>{{beer.titlebeer}}</mu-list-item-title>
+          <mu-list-item-sub-title>{{beer.descriptionbeer}}</mu-list-item-sub-title>
+        </mu-list-item-content>
+      </mu-list-item>
+    </mu-list>
   </div>
 </template>
 
@@ -17,8 +36,11 @@ export default {
   created() {
     this.listAllBeers();
   },
-  data: _ => ({
-    beers: []
+  data: () => ({
+    beers: [],
+    form: {
+      input: ""
+    }
   }),
   methods: {
     listAllBeers() {
@@ -27,3 +49,16 @@ export default {
   }
 };
 </script>
+
+<style>
+.appbar {
+  width: 100%;
+  text-align: left;
+}
+.search-bar {
+  width: 100%;
+}
+.left-button {
+  margin-right: 10px;
+}
+</style>
