@@ -5,14 +5,14 @@
       <mu-form :model="form">
         <mu-flex justify-content="start">
           <mu-form-item class="search-bar" prop="input" label="Search">
-            <mu-text-field v-model="form.input"></mu-text-field>
+            <mu-text-field v-model="form.input" @input="onSearch(form.input, undefined)"></mu-text-field>
           </mu-form-item>
         </mu-flex>
         <mu-flex justify-content="end">
           <div class="left-button">
-            <mu-button disabled>&#60;</mu-button>
+            <mu-button @click="onSearch(form.input, -1)" :disabled="page === 1" color="indigo500">&#60;</mu-button>
           </div>
-          <mu-button color="indigo500">&#62;</mu-button>
+          <mu-button @click="onSearch(form.input, 1)" color="indigo500" :disabled="!beers || beers.length < pageSize">&#62;</mu-button>
         </mu-flex>
       </mu-form>
     </mu-container>
@@ -45,11 +45,27 @@ export default {
       input: ""
     },
     mediaservice,
-    page: 1
+    page: 1,
+    pageSize: 10
   }),
   methods: {
     listAllBeers() {
       beerservice.list().then(ret => (this.beers = ret.data));
+    },
+    onSearch(s, p) {
+      this.form.input = s;
+      if (!p) this.page = 1;
+      else {
+        this.page += p;
+        if (this.beers && this.beers.length < this.ps) this.page -= p;
+        if (this.page < 1) this.page = 1;
+      }
+      const params = {
+        pageSize: this.pageSize,
+        page: this.page,
+        search: s
+      };
+      beerservice.list(params).then(ret => (this.beers = ret.data));
     }
   }
 };
