@@ -1,0 +1,12 @@
+{
+  "name": "beer-store-client-webpack-reactjs",
+  "version": "1.0.0",
+  "description": "sample client to showcase what react can do",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
