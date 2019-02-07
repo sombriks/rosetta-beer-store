@@ -6,7 +6,7 @@ This sample repo shows how to build the beer store client using
 We're using budo there, but there is no bundle step. We just use it to serve 
 the content in a faster and simpler way.
 
-## How do i run this?
+## How to run this
 
 Open a terminal in this folder and:
 

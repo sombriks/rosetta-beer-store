@@ -6,8 +6,11 @@
     <md-layout md-gutter md-column>
       <searchbar @onsearch="dosearch" :resultlist="beerlist"></searchbar>
       <beer-item v-for="beer in beerlist" :key="beer.idbeer" :beer="beer">
-        <md-button slot="heading-options" class="md-icon-button" 
-          @click="$router.push(`/beer-details/${beer.idbeer}`)">
+        <md-button
+          slot="heading-options"
+          class="md-icon-button"
+          @click="$router.push(`/beer-details/${beer.idbeer}`)"
+        >
           <md-icon>visibility</md-icon>
         </md-button>
       </beer-item>
@@ -16,7 +19,7 @@
 </template>
 
 <script>
-const { beerservice } = require("../components/restapi")
+const { beerservice } = require("../components/restapi");
 module.exports = {
   name: "BeerListing",
   data: _ => ({
@@ -24,13 +27,14 @@ module.exports = {
     beerlist: []
   }),
   created() {
-    this.dosearch()
+    this.dosearch();
   },
   methods: {
-    dosearch(s) {
-      beerservice.list(s).then(ret => this.beerlist = ret.data)
+    async dosearch(s) {
+      const ret = await beerservice.list(s);
+      this.beerlist = ret.data;
     }
   }
-}
+};
 </script>
 

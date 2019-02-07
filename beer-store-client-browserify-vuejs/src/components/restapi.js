@@ -3,7 +3,7 @@ const axios = require("axios")
 
 const env = process.env.NODE_ENV || "development"
 
-console.log("we are on [%s] environment")
+console.log(`we are on [${env}] environment`)
 
 const addr = {
   production: "https://rosetta-beer-store.io",

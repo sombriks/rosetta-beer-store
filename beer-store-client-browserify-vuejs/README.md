@@ -11,7 +11,7 @@ We also use [budo](https://github.com/mattdesl/budo) as our dev server so we
 can code and test faster. Budo uses [browserify](https://github.com/browserify/browserify) 
 to bundle sources into a final js archive.
 
-## How do i run this?
+## How to run this
 
 Open a terminal in this folder and:
 

@@ -6,7 +6,7 @@ devel mode and a few tricks to properly pacakge the cordova mobile app.
 
 We're using vanilla cordova and vu cli 3 was used to the bundle step.
 
-## How do i run this?
+## How to run this
 
 Open a terminal in this folder and:
 

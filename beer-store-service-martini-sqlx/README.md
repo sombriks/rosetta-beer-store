@@ -15,7 +15,7 @@ Also, we use [bra](https://github.com/Unknwon/bra) to watch file changes.
 It needs a config file called **.bra.toml** and once correctly placed works 
 like a charm.
 
-## How do i run this?
+## How to run this
 
 Open a terminal on the folder coltaining this readme and 
 

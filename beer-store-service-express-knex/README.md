@@ -1,18 +1,18 @@
 # beer-store-service-express-knex
 
-This sample repo shows how to build the beer store service using express and 
+This sample repo shows how to build the beer store service using express and
 knex with bookshelf in a relational way.
 
-[Express](https://expressjs.com/) does all the routing while 
-[knex](http://knexjs.org/) manages databases migrations and 
+[Express](https://expressjs.com/) does all the routing while
+[knex](http://knexjs.org/) manages databases migrations and
 [bookshelf](http://bookshelfjs.org/) maps tables.
 
 We also use [nodemon](https://nodemon.io/) for automated process reload.
 
-Although we use *sqlite* as database 'server', knex provides integration with 
+Although we use _sqlite_ as database 'server', knex provides integration with
 mysql, postgresql, mssql and oracle.
 
-## How do i run this?
+## How to run this
 
 Open a terminal in this folder and:
 

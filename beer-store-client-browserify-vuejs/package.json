@@ -23,6 +23,9 @@
     "vueify": "^9.4.1"
   },
   "browserify": {
-    "transform": ["browserify-css", "vueify"]
+    "transform": [
+      "browserify-css",
+      "vueify"
+    ]
   }
 }

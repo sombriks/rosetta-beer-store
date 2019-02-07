@@ -1,45 +1,49 @@
 # rosetta-beer-store
 
-The very same beer store implemented in various stacks. Also, frontends and backends are interchangeable
+The very same beer store implemented in various stacks. Also, front ends and
+back ends are interchangeable
 
-## Why?
+## Why
 
-To compare stacks, analyze solutions, maybe give you a glimpse on what each approach can do.
+To compare stacks, analyze solutions, maybe give you a glimpse on what each
+approach can do.
 
 Also because it's fun.
 
-## What do we have so far?
+## What do we have so far
 
 - API
   - beers listing
   - beer detail
 - Client
-  - vue.js + browserify 
-  - angular 1.x + CDN 
+  - vue.js + browserify
+  - angular 1.x + CDN
 - Service
   - expressjs + knex
-  - martini + gorm
+  - ~martini + gorm~
   - Java EE (Payara)
 
-## How does it work?
+## How does it work
 
 Each project will have one README.md explaining how to fire the engines.
 
-You will need at least one service and one client running in order to see a complete work.
+You will need at least one service and one client running in order to see a
+complete work.
 
-We'll have clients and services. 
+We'll have clients and services.
 
-Services must provide the very same REST API so their clients shall connect on it in a transparent way.
+Services must provide the very same REST API so their clients shall connect on
+it in a transparent way.
 
-Therefore all services must use port 3000. 
+Therefore all services must use port 3000.
 
 You shall run just one service at time.
 
-The clients have not such limitation. 
+The clients have not such limitation.
 
 However you must correctly point them to the service address.
 
-This is not a simple language comparison, but tooling as well. 
+This is not a simple language comparison, but tooling as well.
 
 Is there more than one way to set up a java service project? Let's have it!
 
@@ -48,7 +52,7 @@ More than one way to set up a javascript client project! Let's go!
 ## Tell me more about this Beer Store
 
 - The Beer Store is a modern web app
-  - It has a frontend and a backend
+  - It has a frontend and a back end
   - It has two roles: customer and manager
   - A default user called admin are available from the cold start
     - It has both customer and manager roles
@@ -63,7 +67,7 @@ More than one way to set up a javascript client project! Let's go!
     - See beer details
     - Add a beer to the **cart**
     - Remove a beer from the cart
-    - Change beer amount in the cart   
+    - Change beer amount in the cart
     - Checkout the cart (pay for the beers)
     - List past orders
   - **Managers** can:
