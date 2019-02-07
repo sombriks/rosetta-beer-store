@@ -8,7 +8,7 @@
     "dev": "budo -o -l -H 127.0.0.1"
   },
   "keywords": [],
-  "author": "",
+  "author": "sombriks@gmail.com",
   "license": "ISC",
   "devDependencies": {
     "budo": "^11.2.0"

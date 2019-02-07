@@ -14,7 +14,7 @@
 </template>
 
 <script>
-const { mediaservice } = require("../restapi")
+const { mediaservice } = require("../../restapi")
 module.exports = {
   name: "BeerItem",
   props: ["beer"],

@@ -8,7 +8,7 @@
     "test": "cross-env NODE_ENV=testing knex migrate:latest ; cross-env NODE_ENV=testing nyc mocha --timeout=30000 --exit ; cross-env NODE_ENV=testing knex migrate:rollback"
   },
   "keywords": [],
-  "author": "",
+  "author": "sombriks@gmail.com",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.18.2",

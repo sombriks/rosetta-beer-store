@@ -7,7 +7,7 @@
     "dev": "budo src/main.js:build.js -o -l -H 127.0.0.1"
   },
   "keywords": [],
-  "author": "",
+  "author": "sombriks@gmail.com",
   "license": "ISC",
   "dependencies": {
     "axios": "^0.17.1",

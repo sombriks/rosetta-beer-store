@@ -19,7 +19,7 @@
 </template>
 
 <script>
-const { beerservice } = require("../components/restapi");
+const { beerservice } = require("../restapi");
 module.exports = {
   name: "BeerListing",
   data: _ => ({

@@ -11,7 +11,7 @@
 </template>
 
 <script>
-const { beerservice } = require("../components/restapi")
+const { beerservice } = require("../restapi")
 module.exports = {
   name: "BeerDetails",
   data: _ => ({ beer: null }),
