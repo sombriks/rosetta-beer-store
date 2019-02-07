@@ -2,7 +2,7 @@
 
 This sample repo shows how to build the beer store cliente using
 [Apache Cordova](https://cordova.apache.org/). It also features a vue project
-devel mode and a few tricks to properly pacakge the cordova mobile app.
+devel mode and a few tricks to properly package the cordova mobile app.
 
 We're using vanilla cordova and vu cli 3 was used to the bundle step.
 
