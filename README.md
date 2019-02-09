@@ -12,16 +12,17 @@ Also because it's fun.
 
 ## What do we have so far
 
-- API
+- Working API
   - beers listing
   - beer detail
-- Client
-  - vue.js + browserify
-  - angular 1.x + CDN
-- Service
+- Service Implementation
   - expressjs + knex
   - ~martini + gorm~
   - Java EE (Payara)
+- Client Implementation
+  - vue + vue-material + browserify
+  - angularjs (1.x series) + angular-material + CDN
+  - react + material-ui + webpack
 
 ## How does it work
 
