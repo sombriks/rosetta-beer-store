@@ -21,6 +21,7 @@ Also because it's fun.
   - Java EE (Payara)
 - Client Implementation
   - vue + vue-material + browserify
+  - vue + muse-ui + cordova + vue-cli
   - angularjs (1.x series) + angular-material + CDN
   - react + material-ui + webpack
 
