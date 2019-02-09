@@ -1,6 +1,29 @@
 import React from "react";
 
-export class SearchBar extends React.Component {
+import FormControl from "@material-ui/core/FormControl";
+import InputLabel from "@material-ui/core/InputLabel";
+import Input from "@material-ui/core/Input";
+import Button from "@material-ui/core/Button";
+
+import Grid from "@material-ui/core/Grid";
+
+import {withStyles} from "@material-ui/core/styles";
+
+const styles = theme => ({
+  container: {
+    display: "flex",
+    flexWrap: "wrap",
+  },
+  formControl: {
+    margin: theme.spacing.unit,
+    width:"100%"
+  },
+  button: {
+    margin: theme.spacing.unit,
+  },
+});
+
+class SearchBar_ extends React.Component {
   state = {params: {search: "", page: 1, pageSize: 10}};
 
   handleChange = ev => {
@@ -24,17 +47,40 @@ export class SearchBar extends React.Component {
 
   render() {
     const {params} = this.state;
-    const {list} = this.props;
+    const {list, classes} = this.props;
     return (
-      <div>
-        <input value={params.search} onChange={this.handleChange} />
-        <button disabled={params.page == 1} onClick={this.handlePrev}>
-          Prev
-        </button>
-        <button disabled={list.length < params.pageSize} onClick={this.handleNext}>
-          Next
-        </button>
-      </div>
+      <Grid container spacing={24}>
+        <Grid item xs={8}>
+          <FormControl className={classes.formControl}>
+            <InputLabel htmlFor="component-simple">Search</InputLabel>
+            <Input id="component-simple" value={params.search} onChange={this.handleChange} />
+          </FormControl>
+        </Grid>
+        <Grid item xs={2}>
+          <Button
+            variant="contained"
+            color="primary"
+            className={classes.button}
+            disabled={params.page == 1}
+            onClick={this.handlePrev}
+          >
+            Prev
+          </Button>
+        </Grid>
+        <Grid item xs={2}>
+          <Button
+            variant="contained"
+            color="primary"
+            className={classes.button}
+            disabled={list.length < params.pageSize}
+            onClick={this.handleNext}
+          >
+            Next
+          </Button>
+        </Grid>
+      </Grid>
     );
   }
 }
+
+export const SearchBar = withStyles(styles)(SearchBar_);

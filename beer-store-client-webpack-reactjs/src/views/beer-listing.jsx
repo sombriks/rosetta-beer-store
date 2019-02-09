@@ -6,6 +6,10 @@ import {TopBar} from "../components/top-bar";
 import {SearchBar} from "../components/search-bar";
 import {BeerItem} from "../components/beer-item";
 
+import List from '@material-ui/core/List';
+import IconButton from "@material-ui/core/IconButton";
+import VisibilityIcon from "@material-ui/icons/Visibility";
+
 export class BeerListing extends React.Component {
   // @babel/plugin-proposal-class-properties
   state = {params: {search: "", page: 1, pageSize: 10}, list: []};
@@ -22,7 +26,6 @@ export class BeerListing extends React.Component {
     beerservice.list(this.state.params).then(ret => {
       this.state.list = ret.data;
       this.setState(this.state);
-      console.log("chegou service");
     });
   };
 
@@ -32,11 +35,15 @@ export class BeerListing extends React.Component {
       <div>
         <TopBar left={"Beer Listing"} />
         <SearchBar params={params} list={list} busca={this.busca} />
-        <ul>
+        <List>
           {list.map(beer => (
-            <BeerItem beer={beer} />
+            <BeerItem beer={beer} key={beer.idbeer}>
+              <IconButton href={`#/beer-details/${beer.idbeer}`}>
+                <VisibilityIcon/>
+              </IconButton>
+            </BeerItem>
           ))}
-        </ul>
+        </List>
       </div>
     );
   }

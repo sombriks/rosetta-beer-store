@@ -10,7 +10,11 @@
       <md-button class="md-raised md-primary" @click="onsearch(s,-1)" :disabled="p == 1">
         <md-icon>chevron_left</md-icon>
       </md-button>
-      <md-button class="md-raised md-primary" @click="onsearch(s,1)" :disabled="!resultlist || resultlist.length < pageSize">
+      <md-button
+        class="md-raised md-primary"
+        @click="onsearch(s,1)"
+        :disabled="!resultlist || resultlist.length < pageSize"
+      >
         <md-icon>chevron_right</md-icon>
       </md-button>
     </md-layout>
@@ -46,7 +50,7 @@ module.exports = {
       this.$emit("onsearch", {
         pageSize: this.pageSize,
         page: this.p,
-        search: s,
+        search: s
       });
     }
   }
