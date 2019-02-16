@@ -14,6 +14,8 @@ If you wish to develop using visual studio code, don't forget to run gradle
 tasks to generate `.classpath` eclipse files, since it uses it to proper
 configure a java project.
 
+See `gradle tasks` output to see complete list of available tasks.
+
 ## How to run this
 
 Simply open a terminal on this folder and type:
@@ -23,3 +25,7 @@ gradle build
 gradle bootRun
 ```
 
+Unlike JEE version, the output jar is a ready-to-deploy solution more aligned
+with modern web development. It can be executed as a simple jar file, converted
+into a systemd service quite easily without previously environment configuration
+rather than database or similar things. 

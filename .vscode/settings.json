@@ -3,4 +3,5 @@
   "editor.tabSize": 2,
   "eslint.enable": false,
   "files.autoSave": "onFocusChange",
+  "java.configuration.updateBuildConfiguration": "automatic",
 }
