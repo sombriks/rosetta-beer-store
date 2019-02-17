@@ -12,18 +12,28 @@ Also because it's fun.
 
 ## What do we have so far
 
-- Working API
-  - beers listing
-  - beer detail
-- Service Implementation
-  - expressjs + knex
-  - ~martini + gorm~
-  - Java EE (Payara)
-- Client Implementation
-  - vue + vue-material + browserify
-  - vue + muse-ui + cordova + vue-cli
-  - angularjs (1.x series) + angular-material + CDN
-  - react + material-ui + webpack
+### Working API
+
+- beers listing
+- beer detail
+
+### Service Implementation
+
+| **technology / feature** | REST API | CORS | Transparent JSON serialization | Database schema migration | Pooled database connection |
+| ------------------------ | -------- | ---- | ------------------------------ | ------------------------- | -------------------------- |
+| javascript, express      | YES      | YES  | YES                            | YES                       | YES                        |
+| java, JEE                | YES      | NO   | NO                             | YES                       | YES                        |
+| java, spring boot        | YES      | YES  | YES                            | YES                       | YES                        |
+| go, martini              | YES      | YES  | NO                             | YES                       | NO                         |
+
+### Client Implementation
+
+| **technology/feature**            | Transparent JSON serialization | Material Design implementation | SPA |
+| --------------------------------- | ------------------------------ | ------------------------------ | --- |
+| javascript,vue,browserify         | YES                            | YES                            | YES |
+| cordova, javascript, vue, vue-cli | YES                            | YES                            | YES |
+| javascript, angularjs, CDN        | YES                            | YES                            | YES |
+| javascript, react, webpack        | YES                            | YES                            | YES |
 
 ## How does it work
 
