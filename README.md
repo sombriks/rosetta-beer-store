@@ -24,7 +24,7 @@ Also because it's fun.
 | javascript, express      | YES      | YES  | YES                            | YES                       | YES                        | YES                         |
 | java, JEE                | YES      | NO   | NO                             | YES                       | YES                        | YES                         |
 | java, spring boot        | YES      | YES  | YES                            | YES                       | YES                        | NO                          |
-| go, martini              | YES      | YES  | NO                             | YES                       | NO                         | NO                          |
+| go, martini              | YES      | YES  | NO                             | NO                        | NO                         | NO                          |
 
 ### Client Implementation
 
