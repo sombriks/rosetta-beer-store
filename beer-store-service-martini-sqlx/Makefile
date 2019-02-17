@@ -10,9 +10,9 @@ export PRG := beerservice
 
 all: build deps
 
-dev: 
+dev:
 	echo "you should 'make deps' at least once"
-	bra run
+	$(GOBIN)/bra run
 
 build:
 	echo "you should 'make deps' at least once"
