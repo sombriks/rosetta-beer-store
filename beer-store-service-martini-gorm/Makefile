@@ -12,7 +12,7 @@ all: build deps
 
 dev:
 	echo "you should 'make deps' at least once"
-	$(GOBIN)/bra run
+	go run src/main/beerservice.go
 
 build:
 	echo "you should 'make deps' at least once"
@@ -23,7 +23,6 @@ deps: bin pkg src
 	go get -v github.com/go-martini/martini
 	go get -v github.com/martini-contrib/cors
 	go get -v github.com/martini-contrib/render
-	# go get -v github.com/jmoiron/sqlx
 	go get -v github.com/jinzhu/gorm
 	go get -v github.com/mattn/go-sqlite3
 	# dev dependencies
@@ -33,12 +32,11 @@ deps: bin pkg src
 	go get -v github.com/acroca/go-symbols
 	go get -v golang.org/x/tools/cmd/guru
 	go get -v golang.org/x/tools/cmd/gorename
+	go get -v golang.org/x/tools/cmd/godoc
 	go get -v github.com/derekparker/delve/cmd/dlv
 	go get -v github.com/rogpeppe/godef
-	go get -v golang.org/x/tools/cmd/godoc
 	go get -v github.com/golang/lint/golint
 	go get -v github.com/sqs/goreturns
-	go get -v github.com/Unknwon/bra
 
 bin:
 	mkdir bin

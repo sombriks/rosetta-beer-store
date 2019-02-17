@@ -5,7 +5,7 @@ import (
 	"github.com/martini-contrib/cors"
 	"github.com/martini-contrib/render"
 
-	"storeservice/features"
+	"storeservice/routes"
 )
 
 // Startup opens a server into the given port
@@ -26,7 +26,7 @@ func Startup() {
 
 	m.Get("/status", func() (int, string) { return 200, "ONLINE" })
 
-	m.Group("/beer", (features.HandleBeers))
+	m.Group("/beer", (routes.HandleBeers))
 
 	m.Run()
 }

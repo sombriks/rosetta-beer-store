@@ -1,30 +1,20 @@
-package features
+package routes
 
 import (
 	"fmt"
 	"net/http"
 	"strconv"
-	"time"
 
 	"github.com/go-martini/martini"
-	"github.com/jinzhu/gorm"
 	"github.com/martini-contrib/render"
 
 	// registrando o driver sql
 	_ "github.com/mattn/go-sqlite3"
 
 	components "storeservice/components"
-)
 
-// Beer is our struct to represent database content
-type Beer struct {
-	gorm.Model
-	Idbeer           int64      `json:"idbeer,omitempty" gorm:"column:idbeer"`
-	Titlebeer        string     `json:"titlebeer,omitempty" gorm:"column:titlebeer"`
-	Descriptionbeer  string     `json:"descriptionbeer,omitempty" gorm:"column:descriptionbeer"`
-	Creationdatebeer *time.Time `json:"creationdatebeer,omitempty" gorm:"column:creationdatebeer"`
-	Idmedia          *int       `json:"idmedia,omitempty" gorm:"column:idmedia"`
-}
+	"storeservice/model"
+)
 
 // HandleBeers installs http handlers on "/beer"
 func HandleBeers(r martini.Router) {
@@ -34,10 +24,6 @@ func HandleBeers(r martini.Router) {
 		db := components.GetDb()
 		defer db.Close()
 
-		// Migrate the schema
-		db.AutoMigrate(&Beer{})
-
-		defer db.Close()
 		q := req.URL.Query()
 
 		search := q.Get("search")
@@ -58,7 +44,7 @@ func HandleBeers(r martini.Router) {
 		p, _ := strconv.Atoi(page)
 		s, _ := strconv.Atoi(pageSize)
 
-		beers := []Beer{}
+		beers := []model.Beer{}
 
 		db.Where("titlebeer like ?", search).Offset((p - 1) * s).Limit(s).Find(&beers)
 
@@ -76,10 +62,7 @@ func HandleBeers(r martini.Router) {
 		db := components.GetDb()
 		defer db.Close()
 
-		// Migrate the schema
-		db.AutoMigrate(&Beer{})
-
-		beer := Beer{}
+		beer := model.Beer{}
 
 		db.First(&beer, idbeer)
 

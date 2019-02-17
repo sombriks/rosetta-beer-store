@@ -19,21 +19,21 @@ Also because it's fun.
 
 ### Service Implementation
 
-| **technology / feature** | REST API | CORS | Transparent JSON serialization | Database schema migration | Pooled database connection |
-| ------------------------ | -------- | ---- | ------------------------------ | ------------------------- | -------------------------- |
-| javascript, express      | YES      | YES  | YES                            | YES                       | YES                        |
-| java, JEE                | YES      | NO   | NO                             | YES                       | YES                        |
-| java, spring boot        | YES      | YES  | YES                            | YES                       | YES                        |
-| go, martini              | YES      | YES  | NO                             | YES                       | NO                         |
+| **technology / feature** | REST API | CORS | Transparent JSON serialization | Database schema migration | Pooled database connection | Hot-reload development mode |
+| ------------------------ | -------- | ---- | ------------------------------ | ------------------------- | -------------------------- | --------------------------- |
+| javascript, express      | YES      | YES  | YES                            | YES                       | YES                        | YES                         |
+| java, JEE                | YES      | NO   | NO                             | YES                       | YES                        | YES                         |
+| java, spring boot        | YES      | YES  | YES                            | YES                       | YES                        | NO                          |
+| go, martini              | YES      | YES  | NO                             | YES                       | NO                         | NO                          |
 
 ### Client Implementation
 
-| **technology/feature**            | Transparent JSON serialization | Material Design implementation | SPA |
-| --------------------------------- | ------------------------------ | ------------------------------ | --- |
-| javascript,vue,browserify         | YES                            | YES                            | YES |
-| cordova, javascript, vue, vue-cli | YES                            | YES                            | YES |
-| javascript, angularjs, CDN        | YES                            | YES                            | YES |
-| javascript, react, webpack        | YES                            | YES                            | YES |
+| **technology/feature**            | Transparent JSON serialization | Material Design implementation | SPA | Hot-reload development mode |
+| --------------------------------- | ------------------------------ | ------------------------------ | --- | --------------------------- |
+| javascript,vue,browserify         | YES                            | YES                            | YES | YES                         |
+| cordova, javascript, vue, vue-cli | YES                            | YES                            | YES | NO                          |
+| javascript, angularjs, CDN        | YES                            | YES                            | YES | NO                          |
+| javascript, react, webpack        | YES                            | YES                            | YES | YES                         |
 
 ## How does it work
 
