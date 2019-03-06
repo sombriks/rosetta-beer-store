@@ -11,7 +11,7 @@ create table if not exists media (
 create table if not exists beer (
   idbeer int primary key auto_increment,
   creationdatebeer timestamp not null default CURRENT_TIMESTAMP(),
-  titlebeer varchar(255),
+  titlebeer varchar(255) not null,
   descriptionbeer text,
   idmedia int,
 
