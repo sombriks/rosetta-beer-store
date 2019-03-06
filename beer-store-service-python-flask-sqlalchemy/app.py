@@ -1,10 +1,12 @@
 # app.py
+from flask_cors import CORS
 from datetime import datetime
-from flask import Flask, request
+from flask import Flask, request, jsonify
 from flask_sqlalchemy import SQLAlchemy
 from migrate.versioning.api import upgrade, version_control
 
 app = Flask(__name__)
+CORS(app)
 
 url = 'sqlite:///beerstore.db'
 # if app.config['FLASK_ENV'] == 'development':
@@ -42,6 +44,15 @@ class Beer(db.Model):
     descriptionbeer = db.Column(db.Text)
     idmedia = db.Column(db.Integer, db.ForeignKey('media.idmedia'))
 
+    def to_dict(self):
+        return {
+            "idbeer": self.idbeer,
+            "creationdatebeer": self.creationdatebeer,
+            "titlebeer": self.titlebeer,
+            "descriptionbeer": self.descriptionbeer,
+            "idmedia": self.idmedia,
+        }
+
 
 @app.route("/status")
 def hello():
@@ -50,6 +61,9 @@ def hello():
 
 @app.route("/beer/list", methods=["GET"])
 def beerlist():
-    page = request.args.get("page")
-    pageSize = request.args.get("pageSize")
-    return Beer.query.paginate(page, pageSize).items
+    page = request.args.get("page", default=1, type=int)
+    pageSize = request.args.get("pageSize", default=10, type=int)
+    search = request.args.get("search", default="")
+    items = Beer.query.filter(Beer.titlebeer.contains(
+        search)).paginate(page, pageSize).items
+    return jsonify([item.to_dict() for item in items])

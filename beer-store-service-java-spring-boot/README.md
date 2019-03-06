@@ -28,4 +28,4 @@ gradle bootRun
 Unlike JEE version, the output jar is a ready-to-deploy solution more aligned
 with modern web development. It can be executed as a simple jar file, converted
 into a systemd service quite easily without previously environment configuration
-rather than database or similar things. 
+rather than database or similar things.
