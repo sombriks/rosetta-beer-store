@@ -15,7 +15,7 @@ Then open a terminal on the folder containing this readme and
 
 ```bash
 pipenv install
-FLASK_ENV=development FLASK_APP=app.py pipenv run flask run
+pipenv run dev
 ```
 
 Pretty much like the node/knex version, this one has a full featured migration
