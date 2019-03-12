@@ -9,7 +9,7 @@ The sqlalchemy handles the database access and schema migrations
 
 ## How do i run this
 
-You **must have** to install pipenv.
+You **must have** to install [pipenv](https://github.com/pypa/pipenv).
 
 Then open a terminal on the folder containing this readme and
 
