@@ -18,6 +18,13 @@ pipenv install
 pipenv run dev
 ```
 
+To manage database migrations you can use this convenience shortcut (see the 
+Pipfile):
+
+```bash
+pipenv run db
+```
+
 Pretty much like the node/knex version, this one has a full featured migration
 system able to upgrade, downgrade and also can either do sql or python migration
 unit scripts.
