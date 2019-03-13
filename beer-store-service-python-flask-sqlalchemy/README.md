@@ -18,7 +18,7 @@ pipenv install
 pipenv run dev
 ```
 
-To manage database migrations you can use this convenience shortcut (see the 
+To manage database migrations you can use this convenience shortcut (see the
 Pipfile):
 
 ```bash
