@@ -4,4 +4,5 @@
   "eslint.enable": false,
   "files.autoSave": "onFocusChange",
   "java.configuration.updateBuildConfiguration": "automatic",
+  "editor.rulers": [80,120]
 }
