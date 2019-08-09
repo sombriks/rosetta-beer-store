@@ -4,7 +4,7 @@ import QtQuick.Controls 2.12
 
 import "webclient.js" as Client
 
-Window {
+ApplicationWindow {
     id: w1
     visible: true
     width: 640
@@ -116,8 +116,4 @@ Window {
 
 
 
-/*##^## Designer {
-    D{i:1;anchors_height:400;anchors_width:615;anchors_x:13;anchors_y:61}D{i:2;anchors_width:297;anchors_x:13}
-D{i:5;anchors_height:399;anchors_width:615;anchors_x:13;anchors_y:66}
-}
- ##^##*/
+

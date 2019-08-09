@@ -1,0 +1,23 @@
+{
+    "configurations": [
+        {
+            "name": "Linux",
+            "includePath": [
+                "${workspaceFolder}/**",
+                "${env:HOME}/Qt/5.12.4/gcc_64/include/**",
+                "${env:HOME}/Qt/5.12.4/gcc_64/include/QtCore/**",
+                "${env:HOME}/Qt/5.12.4/gcc_64/include/QtGui/**",
+                "${env:HOME}/Qt/5.12.4/gcc_64/include/QtQml/**",
+                "${env:HOME}/Qt/5.12.4/gcc_64/include/QtWidgets/**",
+                "${env:HOME}/Qt/5.12.4/gcc_64/include/QtQuick/**",
+                "${env:HOME}/Qt/5.12.4/gcc_64/include/QtNetwork/**"
+            ],
+            "defines": [],
+            "compilerPath": "/usr/bin/gcc",
+            "cStandard": "c11",
+            "cppStandard": "c++17",
+            "intelliSenseMode": "clang-x64"
+        }
+    ],
+    "version": 4
+}
