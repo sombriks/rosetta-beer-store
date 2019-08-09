@@ -2,107 +2,32 @@ import QtQuick 2.12
 import QtQuick.Window 2.12
 import QtQuick.Controls 2.12
 
-import "webclient.js" as Client
+import "views"
+import "components"
 
 ApplicationWindow {
-    id: w1
+    id: rootWindow
     visible: true
     width: 640
     height: 480
     title: qsTr("Beer Store - Listing")
 
+    property string currentView: "beerList"
 
-    TextField {
-        id: textField
-        y: 15
-        height: 40
-        text: qsTr("")
-        focus: true
-        anchors.right: parent.right
-        anchors.rightMargin: 330
-        anchors.left: parent.left
-        anchors.leftMargin: 13
+    function navTo(view) {
+        rootWindow.currentView=view
     }
 
-
-    Button {
-        id: bPrev
-        x: 316
-        y: 15
-        text: qsTr("Anterior")
-        anchors.right: parent.right
-        anchors.rightMargin: 224
-    }
-
-
-    Button {
-        id: bNext
-        x: 422
-        y: 15
-        text: qsTr("Próximo")
-        anchors.right: parent.right
-        anchors.rightMargin: 118
-    }
-
-
-    Button {
-        id: bSearch
-        x: 528
-        y: 15
-        text: qsTr("Buscar")
-        anchors.right: parent.right
-        anchors.rightMargin: 12
-        onClicked: Client.func()
-    }
-
-    ListView {
-        id: listView
-        anchors.bottomMargin: 16
-        anchors.rightMargin: 12
-        anchors.leftMargin: 13
-        anchors.topMargin: 68
+    BeerList {
+        id: beerList
         anchors.fill: parent
-        delegate: Item {
-            x: 5
-            width: 80
-            height: 40
-            Row {
-                id: row1
-                Rectangle {
-                    width: 40
-                    height: 40
-                    color: colorCode
-                }
+        visible: rootWindow.currentView === "beerList"
+    }
 
-                Text {
-                    text: name
-                    anchors.verticalCenter: parent.verticalCenter
-                    font.bold: true
-                }
-                spacing: 10
-            }
-        }
-        model: ListModel {
-            ListElement {
-                name: "Grey"
-                colorCode: "grey"
-            }
-
-            ListElement {
-                name: "Red"
-                colorCode: "red"
-            }
-
-            ListElement {
-                name: "Blue"
-                colorCode: "blue"
-            }
-
-            ListElement {
-                name: "Green"
-                colorCode: "green"
-            }
-        }
+    BeerDetail {
+        id: beerDetail
+        anchors.fill: parent
+        visible: rootWindow.currentView === "beerDetail"
     }
 }
 
@@ -117,3 +42,18 @@ ApplicationWindow {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+/*##^## Designer {
+    D{i:1;anchors_x:627;anchors_y:11}
+}
+ ##^##*/
