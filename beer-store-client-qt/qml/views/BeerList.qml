@@ -1,7 +1,14 @@
 import QtQuick 2.12
 import QtQuick.Controls 2.12
 
+import "../components"
+
 Item {
+
+    onVisibleChanged: function(e){
+        console.log("aaa"+e)
+    }
+
     TextField {
         id: textField
         y: 15
@@ -51,25 +58,10 @@ Item {
         anchors.leftMargin: 13
         anchors.topMargin: 68
         anchors.fill: parent
-        delegate: Item {
+        delegate: BeerItem {
             x: 5
-            width: 80
+            width: parent.width
             height: 40
-            Row {
-                id: row1
-                Rectangle {
-                    width: 40
-                    height: 40
-                    color: colorCode
-                }
-
-                Text {
-                    text: name
-                    anchors.verticalCenter: parent.verticalCenter
-                    font.bold: true
-                }
-                spacing: 10
-            }
         }
         model: ListModel {
             ListElement {
