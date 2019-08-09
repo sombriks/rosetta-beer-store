@@ -6,7 +6,7 @@ This client uses the Qt platform to consume the beer service.
 
 In order to make this project work, you need to install
 [The Qt framework and Qt Creator](https://www.qt.io/download). The open source
-edition will be enough
+edition is good enough
 
 Make sure that you have a few native tools properly installed.
 
@@ -14,8 +14,8 @@ For fedora do:
 
 ```bash
 # if unsure about the package name use sudo dnf grouplist
-sudo dnf groupinstall "C Development Tools and Libraries" 
-sudo dnf install mesa-libGL-devel 
+sudo dnf groupinstall "C Development Tools and Libraries"
+sudo dnf install mesa-libGL-devel
 sudo dnf install clang
 ```
 
