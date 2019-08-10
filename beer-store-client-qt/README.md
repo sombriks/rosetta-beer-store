@@ -8,7 +8,8 @@ In order to make this project work, you need to install
 [The Qt framework and Qt Creator](https://www.qt.io/download). The open source
 edition is good enough
 
-Make sure that you have a few native tools properly installed.
+Make sure that you have a few native tools (make,g++,clang and so on) properly
+installed.
 
 For fedora do:
 
