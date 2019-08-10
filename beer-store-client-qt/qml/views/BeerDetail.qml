@@ -3,7 +3,7 @@ import QtQuick.Controls 2.12
 
 Item {
     Text {
-        id: bNext
+        id: xpto
         x: 263
         y: 169
         text: qsTr("Detalhe")

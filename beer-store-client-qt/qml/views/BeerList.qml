@@ -6,7 +6,7 @@ import "../components"
 Item {
 
     onVisibleChanged: function(e){
-        console.log("aaa"+e)
+        console.log("aaa "+this.visible)
     }
 
     TextField {
