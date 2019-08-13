@@ -11,3 +11,8 @@ void BeerService::teste(QString x)
     qDebug() << x;
 }
 
+QString BeerService::teste2()
+{
+    return "hello";
+}
+

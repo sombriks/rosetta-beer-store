@@ -6,7 +6,7 @@ import beer.store 1.0
 
 Item {
 
-    property BeerService beerService: BeerService {
+    BeerService {
         id:service
     }
 
@@ -24,6 +24,7 @@ Item {
         anchors.rightMargin: 330
         anchors.left: parent.left
         anchors.leftMargin: 13
+
     }
 
     Button {
@@ -33,6 +34,7 @@ Item {
         text: qsTr("Anterior")
         anchors.right: parent.right
         anchors.rightMargin: 224
+        onClicked: bNext.text = service.teste2()
     }
 
 

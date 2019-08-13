@@ -16,6 +16,7 @@ signals:
 
 public slots:
     void teste(QString x);
+    QString teste2();
 };
 
 #endif // BEERSERVICE_H
