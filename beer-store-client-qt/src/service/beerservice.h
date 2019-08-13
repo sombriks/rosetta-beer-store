@@ -11,12 +11,11 @@ class BeerService : public QObject
     Q_OBJECT
 public:
     explicit BeerService(QObject *parent = nullptr);
-    QList<Beer>list(QString search,int page,int size);
-    Beer find(int idbeer);
 
 signals:
 
 public slots:
+    void teste(QString x);
 };
 
 #endif // BEERSERVICE_H

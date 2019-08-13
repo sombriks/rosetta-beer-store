@@ -13,7 +13,6 @@ Item {
     TapHandler {
        onTapped: function (e) {
            rootWindow.navTo("beerList")
-           console.log(bNext)
         }
     }
 }

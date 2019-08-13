@@ -2,11 +2,16 @@ import QtQuick 2.12
 import QtQuick.Controls 2.12
 
 import "../components"
+import beer.store 1.0
 
 Item {
 
-    onVisibleChanged: function(e){
-        console.log("aaa "+this.visible)
+    property BeerService beerService: BeerService {
+        id:service
+    }
+
+    onVisibleChanged:function(){
+        if(visible) service.teste("olá")
     }
 
     TextField {

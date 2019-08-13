@@ -6,9 +6,8 @@
 class Beer : public QObject
 {
     Q_OBJECT
-public:
+public: 
     explicit Beer(QObject *parent = nullptr);
-
 signals:
 
 public slots:

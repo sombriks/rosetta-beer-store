@@ -1,3 +1,4 @@
+#include <QDebug>
 #include "beerservice.h"
 
 BeerService::BeerService(QObject *parent) : QObject(parent)
@@ -5,12 +6,8 @@ BeerService::BeerService(QObject *parent) : QObject(parent)
 
 }
 
-QList<Beer> BeerService::list(QString search, int page, int size)
+void BeerService::teste(QString x)
 {
-
+    qDebug() << x;
 }
 
-Beer BeerService::find(int idbeer)
-{
-
-}

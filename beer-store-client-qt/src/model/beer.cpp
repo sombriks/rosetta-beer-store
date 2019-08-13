@@ -4,3 +4,4 @@ Beer::Beer(QObject *parent) : QObject(parent)
 {
 
 }
+
