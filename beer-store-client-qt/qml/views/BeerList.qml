@@ -2,29 +2,23 @@ import QtQuick 2.12
 import QtQuick.Controls 2.12
 
 import "../components"
-import beer.store 1.0
-
 Item {
 
-    BeerService {
-        id:service
-    }
-
     onVisibleChanged:function(){
-        if(visible) service.teste("olá")
+        if(visible) service.list()
     }
 
     TextField {
         id: textField
         y: 15
         height: 40
-        text: qsTr("")
+        text: service.search
         focus: true
         anchors.right: parent.right
         anchors.rightMargin: 330
         anchors.left: parent.left
         anchors.leftMargin: 13
-
+        onAccepted: doBusca()
     }
 
     Button {
@@ -34,9 +28,8 @@ Item {
         text: qsTr("Anterior")
         anchors.right: parent.right
         anchors.rightMargin: 224
-        onClicked: bNext.text = service.teste2()
+        onClicked: doPrev()
     }
-
 
     Button {
         id: bNext
@@ -45,8 +38,8 @@ Item {
         text: qsTr("Próximo")
         anchors.right: parent.right
         anchors.rightMargin: 118
+        onClicked: doNext()
     }
-
 
     Button {
         id: bSearch
@@ -55,7 +48,22 @@ Item {
         text: qsTr("Buscar")
         anchors.right: parent.right
         anchors.rightMargin: 12
-        onClicked: rootWindow.navTo("beerDetail")
+        onClicked: doBusca()
+    }
+
+    function doBusca(){
+        service.setSearch(textField.text)
+        service.list()
+    }
+
+    function doPrev(){
+        service.prev()
+        doBusca()
+    }
+
+    function doNext(){
+        service.next()
+        doBusca()
     }
 
     ListView {

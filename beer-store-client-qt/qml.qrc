@@ -1,7 +1,6 @@
 <RCC>
     <qresource prefix="/">
         <file>qml/main.qml</file>
-        <file>qml/webclient.js</file>
         <file>qml/views/BeerList.qml</file>
         <file>qml/views/BeerDetail.qml</file>
         <file>qml/components/BeerItem.qml</file>

@@ -4,6 +4,8 @@ import QtQuick.Controls 2.12
 
 import "views"
 import "components"
+import beer.store 1.0
+
 
 ApplicationWindow {
     id: rootWindow
@@ -13,6 +15,10 @@ ApplicationWindow {
     title: qsTr("Beer Store - Listing")
 
     property string currentView: "beerList"
+
+    BeerService {
+        id:service
+    }
 
     function navTo(view) {
         rootWindow.currentView=view
