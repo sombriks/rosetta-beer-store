@@ -8,6 +8,7 @@ class Beer : public QObject
     Q_OBJECT
 public: 
     explicit Beer(QObject *parent = nullptr);
+    explicit Beer(const Beer &beer);
 signals:
 
 public slots:

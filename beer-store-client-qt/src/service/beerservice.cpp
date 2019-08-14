@@ -1,4 +1,5 @@
 #include <QDebug>
+
 #include "beerservice.h"
 
 BeerService::BeerService(QObject *parent) : QObject(parent)
@@ -8,14 +9,21 @@ BeerService::BeerService(QObject *parent) : QObject(parent)
 
 void BeerService::list()
 {
-    qDebug() << "listing from service ";
-    qDebug() << "search: " << search << " page: " << page << " pageSize: " << pageSize << endl;
-    // TODO fazer a busca no serviço
+    QString req = "http://localhost:3000/beer/list?page=%1&pageSize=%2&search=%3";
+    QUrl url(QString(req.arg(page).arg(pageSize).arg(search)));
+    QNetworkReply *reply = qnam.get(QNetworkRequest(url));
+    qDebug() << "url: " << url << " reply: " << reply;
+    reply->readAll(); // @see  https://doc.qt.io/qt-5/qnetworkreply.html#finished
+
 }
 
 void BeerService::next()
 {
     // XXX só tem next se a lista for não-vazia
+    if(beers.size()==pageSize) {
+        page+=1;
+        emit pageChanged();
+    }
 }
 
 void BeerService::prev()
@@ -57,6 +65,17 @@ void BeerService::setPageSize(int pageSize)
 {
     this->pageSize=pageSize;
     emit pageSizeChanged();
+}
+
+QList<Beer> BeerService::getBeers()
+{
+    return beers;
+}
+
+void BeerService::setBeers(QList<Beer> beers)
+{
+    this->beers = beers;
+    emit beersChanged();
 }
 
 
