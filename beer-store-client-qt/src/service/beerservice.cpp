@@ -9,11 +9,18 @@ BeerService::BeerService(QObject *parent) : QObject(parent)
 
 void BeerService::list()
 {
+//    qDebug() << "call list()";
     QString req = "http://localhost:3000/beer/list?page=%1&pageSize=%2&search=%3";
     QUrl url(QString(req.arg(page).arg(pageSize).arg(search)));
     QNetworkReply *reply = qnam.get(QNetworkRequest(url));
-    qDebug() << "url: " << url << " reply: " << reply;
-    reply->readAll(); // @see  https://doc.qt.io/qt-5/qnetworkreply.html#finished
+    connect(reply, &QNetworkReply::finished, this, [reply,url]
+    {
+        QByteArray bytes = reply->readAll(); // @see  https://doc.qt.io/qt-5/qnetworkreply.html#finished
+        QJsonDocument doc = QJsonDocument::fromBinaryData(bytes);
+        QJsonArray arr = doc.array();
+
+        qDebug() << "url: " << url << " reply: " << arr.size();
+    });
 
 }
 

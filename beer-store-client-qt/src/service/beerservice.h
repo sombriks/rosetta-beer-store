@@ -7,6 +7,8 @@
 #include <QNetworkAccessManager>
 #include <QNetworkReply>
 #include <QNetworkRequest>
+#include <QJsonDocument>
+#include <QJsonArray>
 
 #include "../model/beer.h"
 
@@ -44,8 +46,8 @@ private:
     QString search = "a";
     int page=1,pageSize=10;
     QList<Beer>beers;
-
     QNetworkAccessManager qnam;
+
 };
 
 #endif // BEERSERVICE_H
