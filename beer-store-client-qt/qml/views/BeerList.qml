@@ -4,10 +4,6 @@ import QtQuick.Controls 2.12
 import "../components"
 Item {
 
-    onVisibleChanged:function(){
-        if(visible) service.list()
-    }
-
     TextField {
         id: textField
         y: 15
@@ -54,6 +50,8 @@ Item {
     function doBusca(){
         service.setSearch(textField.text)
         service.list()
+
+        console.log(service.beers)
     }
 
     function doPrev(){
@@ -77,27 +75,8 @@ Item {
             x: 5
             width: parent.width
             height: 40
+            beer: model.modelData
         }
-        model: ListModel {
-            ListElement {
-                name: "Grey"
-                colorCode: "grey"
-            }
-
-            ListElement {
-                name: "Red"
-                colorCode: "red"
-            }
-
-            ListElement {
-                name: "Blue"
-                colorCode: "blue"
-            }
-
-            ListElement {
-                name: "Green"
-                colorCode: "green"
-            }
-        }
+        model: service.beers // TODO QList não serve aqui
     }
 }

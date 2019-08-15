@@ -24,6 +24,8 @@ ApplicationWindow {
         rootWindow.currentView=view
     }
 
+    Component.onCompleted: service.list()
+
     BeerList {
         id: beerList
         anchors.fill: parent

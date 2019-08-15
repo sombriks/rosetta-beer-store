@@ -1,13 +1,15 @@
 import QtQuick 2.0
+import beer.store 1.0
 
 Item {
-    property var beer
     id: element3
     height: 60
+    property Beer beer
+
     Text {
         id: element
         y: 23
-        text: beer.name
+        text: beer.beername
         anchors.left: parent.left
         anchors.leftMargin: 86
         font.pixelSize: 12
@@ -16,7 +18,7 @@ Item {
     Text {
         id: element1
         y: 28
-        text: beer.detail
+        text: beer.beerdescription
         anchors.left: parent.left
         anchors.leftMargin: 185
         font.pixelSize: 12
