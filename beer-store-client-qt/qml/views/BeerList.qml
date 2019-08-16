@@ -50,8 +50,6 @@ Item {
     function doBusca(){
         service.setSearch(textField.text)
         service.list()
-
-        console.log(service.beers)
     }
 
     function doPrev(){
@@ -71,12 +69,11 @@ Item {
         anchors.leftMargin: 13
         anchors.topMargin: 68
         anchors.fill: parent
+        model: service.beers // TODO QList não serve aqui
         delegate: BeerItem {
             x: 5
             width: parent.width
             height: 40
-            beer: model.modelData
         }
-        model: service.beers // TODO QList não serve aqui
     }
 }

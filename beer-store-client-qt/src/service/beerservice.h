@@ -3,10 +3,11 @@
 
 #include <QJsonArray>
 #include <QJsonDocument>
-#include <QList>
 #include <QNetworkAccessManager>
-#include <QNetworkReply>
 #include <QNetworkRequest>
+#include <QNetworkReply>
+#include <QVariantList>
+#include <QVariant>
 #include <QObject>
 #include <QUrl>
 
@@ -18,7 +19,8 @@ class BeerService : public QObject {
   Q_PROPERTY(int page READ getPage WRITE setPage NOTIFY pageChanged)
   Q_PROPERTY(
       int pageSize READ getPageSize WRITE setPageSize NOTIFY pageSizeChanged)
-//  Q_PROPERTY(QList<Beer*> beers READ getBeers WRITE setBeers NOTIFY beersChanged)
+  Q_PROPERTY(
+      QVariantList beers READ getBeers WRITE setBeers NOTIFY beersChanged)
 
 public:
   explicit BeerService(QObject *parent = nullptr);
@@ -28,6 +30,7 @@ signals:
   void pageChanged();
   void pageSizeChanged();
   void beersChanged();
+  void teste1Changed();
 
 public slots:
   void list();
@@ -39,13 +42,13 @@ public slots:
   void setPage(int page);
   int getPageSize();
   void setPageSize(int pageSize);
-  QList<Beer*> getBeers();
-  void setBeers(QList<Beer*> beers);
+  QVariantList getBeers();
+  void setBeers(QVariantList beers);
 
 private:
   QString search = "";
   int page = 1, pageSize = 10;
-  QList<Beer*> beers;
+  QVariantList beers;
   // XXX figure out why does it needs to be class member instead local variable
   // inside function
   QNetworkAccessManager qnam;

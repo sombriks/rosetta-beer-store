@@ -4,12 +4,11 @@ import beer.store 1.0
 Item {
     id: element3
     height: 60
-    property Beer beer
 
     Text {
         id: element
         y: 23
-        text: beer.beername
+        text: model.modelData
         anchors.left: parent.left
         anchors.leftMargin: 86
         font.pixelSize: 12
@@ -18,11 +17,19 @@ Item {
     Text {
         id: element1
         y: 28
-        text: beer.beerdescription
+        text: model.modelData.descriptionbeer
         anchors.left: parent.left
         anchors.leftMargin: 185
         font.pixelSize: 12
     }
+
+    MouseArea {
+        id: mouseArea
+        anchors.fill: parent
+        onClicked: console.log(model.modelData)
+    }
+
+    Component.onCompleted: console.log(model.modelData)
 }
 
 /*##^## Designer {

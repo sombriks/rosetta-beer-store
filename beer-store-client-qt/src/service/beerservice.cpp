@@ -1,9 +1,10 @@
 #include <QDebug>
 
-
 #include "beerservice.h"
 
-BeerService::BeerService(QObject *parent) : QObject(parent) {}
+BeerService::BeerService(QObject *parent) : QObject(parent) {
+
+}
 
 void BeerService::list() {
   QString req = "http://localhost:3000/beer/list?page=%1&pageSize=%2&search=%3";
@@ -17,18 +18,17 @@ void BeerService::list() {
     QByteArray bytes = reply->readAll();
     QJsonDocument doc = QJsonDocument::fromJson(bytes);
     QJsonArray arr = doc.array();
-    for(int i=0; i < self->beers.size();i++){
-        Beer *b = self->beers.at(i);
-        delete b;
+    for (int i = 0; i < self->beers.size(); i++) {
+      QVariant b = self->beers.at(i);
+      b.clear();
     }
     self->beers.clear();
-    for(int i=0; i< arr.size(); i++){
-        Beer *b = Beer::fromJson(arr.at(i));
-        self->beers.push_back(b);
+    for (int i = 0; i < arr.size(); i++) {
+      Beer *b = Beer::fromJson(arr.at(i));
+      QVariant v = QVariant::fromValue<Beer*>(b);
+      self->beers.push_back(v);
     }
     emit self->beersChanged();
-
-    qDebug() << "url: " << url << " reply: " << arr.size();
   });
 }
 
@@ -49,28 +49,29 @@ void BeerService::prev() {
 
 QString BeerService::getSearch() { return search; }
 
-int BeerService::getPage() { return page; }
-
-int BeerService::getPageSize() { return pageSize; }
-
 void BeerService::setSearch(QString search) {
   this->search = search;
   emit searchChanged();
 }
+
+int BeerService::getPage() { return page; }
 
 void BeerService::setPage(int page) {
   this->page = page;
   emit pageChanged();
 }
 
+int BeerService::getPageSize() { return pageSize; }
+
 void BeerService::setPageSize(int pageSize) {
   this->pageSize = pageSize;
   emit pageSizeChanged();
 }
 
-QList<Beer*> BeerService::getBeers() { return beers; }
+QVariantList BeerService::getBeers() { return beers; }
 
-void BeerService::setBeers(QList<Beer*> beers) {
+void BeerService::setBeers(QVariantList beers) {
   this->beers = beers;
   emit beersChanged();
 }
+

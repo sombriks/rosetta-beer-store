@@ -14,7 +14,10 @@ Beer *Beer::fromJson(QJsonValue val) {
   Beer *b = new Beer();
   QJsonObject o = val.toObject();
   b->idbeer = o.value("idbeer").toInt();
-  qDebug() << o;
+  b->creationdatebeer = QDateTime::fromString(o.value("creationdatebeer").toString());
+  b->titlebeer = o.value("titlebeer").toString();
+  b->descriptionbeer = o.value("descriptionbeer").toString();
+  b->idmedia = o.value("idmedia").toInt();
   return b;
 }
 
