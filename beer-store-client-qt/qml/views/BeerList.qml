@@ -17,6 +17,11 @@ Item {
             x: 5
             width: parent.width
             height: 80
+            beer: model.modelData
+            doTap: function (e) {
+                service.selected = model.modelData;
+                rootWindow.navTo("beerDetail")
+            }
         }
     }
 

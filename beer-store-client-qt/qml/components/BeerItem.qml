@@ -1,10 +1,12 @@
-import QtQuick 2.0
+import QtQuick 2.12
+import QtQuick.Controls 2.12
 import beer.store 1.0
 
 Item {
     id: beerItem
     height: 80
-    property Beer beer: model.modelData
+    property Beer beer
+    property var doTap
 
     Rectangle {
         id: rectangle
@@ -21,6 +23,10 @@ Item {
         anchors.top: parent.top
         anchors.topMargin: 10
         border.width: 2
+
+        TapHandler {
+           onTapped: doTap()
+        }
 
         Text {
             id: element
@@ -48,16 +54,6 @@ Item {
             anchors.left: parent.left
             anchors.leftMargin: 128
             font.pixelSize: 12
-        }
-
-        MouseArea {
-            id: mouseArea
-            anchors.fill: parent
-            onClicked: function(){
-                service.selected = beer;
-                rootWindow.navTo("beerDetail")
-            }
-
         }
     }
 }
