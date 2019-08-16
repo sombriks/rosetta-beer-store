@@ -21,6 +21,7 @@ class BeerService : public QObject {
       int pageSize READ getPageSize WRITE setPageSize NOTIFY pageSizeChanged)
   Q_PROPERTY(
       QVariantList beers READ getBeers WRITE setBeers NOTIFY beersChanged)
+  Q_PROPERTY(Beer* selected READ getSelected WRITE setSelected NOTIFY selectedChanged)
 
 public:
   explicit BeerService(QObject *parent = nullptr);
@@ -31,6 +32,7 @@ signals:
   void pageSizeChanged();
   void beersChanged();
   void teste1Changed();
+  void selectedChanged();
 
 public slots:
   void list();
@@ -44,6 +46,8 @@ public slots:
   void setPageSize(int pageSize);
   QVariantList getBeers();
   void setBeers(QVariantList beers);
+  Beer *getSelected();
+  void setSelected(Beer *selected);
 
 private:
   QString search = "";
@@ -52,6 +56,7 @@ private:
   // XXX figure out why does it needs to be class member instead local variable
   // inside function
   QNetworkAccessManager qnam;
+  Beer *selected;
 };
 
 #endif // BEERSERVICE_H

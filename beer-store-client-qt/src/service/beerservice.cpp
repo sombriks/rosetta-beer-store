@@ -75,3 +75,12 @@ void BeerService::setBeers(QVariantList beers) {
   emit beersChanged();
 }
 
+Beer *BeerService::getSelected() {
+    return selected;
+}
+
+void BeerService::setSelected(Beer *selected){
+    this->selected = selected;
+    emit selectedChanged();
+}
+

@@ -3,6 +3,22 @@ import QtQuick.Controls 2.12
 
 import "../components"
 Item {
+    id: element
+
+    ListView {
+        id: listView
+        anchors.bottomMargin: 50
+        anchors.rightMargin: 12
+        anchors.leftMargin: 13
+        anchors.topMargin: 68
+        anchors.fill: parent
+        model: service.beers // QVariantList
+        delegate: BeerItem {
+            x: 5
+            width: parent.width
+            height: 80
+        }
+    }
 
     TextField {
         id: textField
@@ -17,6 +33,7 @@ Item {
         onAccepted: doBusca()
     }
 
+
     Button {
         id: bPrev
         x: 316
@@ -27,6 +44,7 @@ Item {
         onClicked: doPrev()
     }
 
+
     Button {
         id: bNext
         x: 422
@@ -36,6 +54,7 @@ Item {
         anchors.rightMargin: 118
         onClicked: doNext()
     }
+
 
     Button {
         id: bSearch
@@ -62,18 +81,27 @@ Item {
         doBusca()
     }
 
-    ListView {
-        id: listView
-        anchors.bottomMargin: 16
+
+    Text {
+        id: pagina
+        x: 488
+        y: 457
+        text: "Página "+service.page
+        styleColor: "#ffffff"
+        verticalAlignment: Text.AlignVCenter
+        anchors.right: parent.right
         anchors.rightMargin: 12
-        anchors.leftMargin: 13
-        anchors.topMargin: 68
-        anchors.fill: parent
-        model: service.beers // TODO QList não serve aqui
-        delegate: BeerItem {
-            x: 5
-            width: parent.width
-            height: 40
-        }
+        anchors.bottom: parent.bottom
+        anchors.bottomMargin: 8
+        font.pixelSize: 12
     }
 }
+
+
+
+
+
+/*##^## Designer {
+    D{i:0;autoSize:true;height:480;width:640}
+}
+ ##^##*/

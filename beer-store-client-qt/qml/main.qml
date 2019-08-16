@@ -3,7 +3,6 @@ import QtQuick.Window 2.12
 import QtQuick.Controls 2.12
 
 import "views"
-import "components"
 import beer.store 1.0
 
 
