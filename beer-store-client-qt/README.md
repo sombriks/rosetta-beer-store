@@ -22,3 +22,5 @@ sudo dnf install clang
 
 Once you got everything ok, run qtcreator (it will appear on your menu, but
 it's inside the Qt installation) and open the beer-store-client-qt.pro file.
+
+This project was tested against the QT LTS 5.12.4 version.
