@@ -19,12 +19,12 @@ Also because it's fun.
 
 ### Service Implementation
 
-| **technology / feature**  | REST API | CORS | Transparent JSON serialization | DB schema migration | Pooled db connection | Hot-reload development mode |
-| ------------------------  | -------- | ---- | ------------------------------ | ------------------- | -------------------- | --------------------------- |
-| javascript, express, knex | YES      | YES  | YES                            | YES                 | YES                  | YES                         |
-| java, JEE                 | YES      | NO   | NO                             | YES                 | YES                  | YES                         |
-| java, spring boot         | YES      | YES  | YES                            | YES                 | YES                  | NO                          |
-| go, martini               | YES      | YES  | NO                             | NO                  | NO                   | NO                          |
+| **technology / feature**     | REST API | CORS | Transparent JSON serialization | DB schema migration | Pooled db connection | Hot-reload development mode |
+| ---------------------------  | -------- | ---- | ------------------------------ | ------------------- | -------------------- | --------------------------- |
+| javascript, express, knex    | YES      | YES  | YES                            | YES                 | YES                  | YES                         |
+| java, JEE                    | YES      | NO   | NO                             | YES                 | YES                  | YES                         |
+| java, spring boot            | YES      | YES  | YES                            | YES                 | YES                  | NO                          |
+| go, gorm, gomigrate, martini | YES      | YES  | NO                             | YES                 | NO                   | NO                          |
 
 ### Client Implementation
 
