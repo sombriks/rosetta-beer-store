@@ -25,6 +25,7 @@ deps: bin pkg src
 	go get -v github.com/martini-contrib/render
 	go get -v github.com/jinzhu/gorm
 	go get -v github.com/mattn/go-sqlite3
+	go get -v github.com/DavidHuie/gomigrate
 	# dev dependencies
 	go get -v github.com/mdempsky/gocode
 	go get -v github.com/uudashr/gopkgs/cmd/gopkgs
@@ -35,7 +36,7 @@ deps: bin pkg src
 	go get -v golang.org/x/tools/cmd/godoc
 	go get -v github.com/derekparker/delve/cmd/dlv
 	go get -v github.com/rogpeppe/godef
-	go get -v github.com/golang/lint/golint
+	go get -v golang.org/x/lint/golint
 	go get -v github.com/sqs/goreturns
 
 bin:

@@ -6,10 +6,14 @@ import (
 	"github.com/martini-contrib/render"
 
 	"storeservice/routes"
+	"storeservice/components"
 )
 
 // Startup opens a server into the given port
 func Startup() {
+
+	components.Setup()
+
 	m := martini.Classic()
 
 	m.Use(render.Renderer())

@@ -1,4 +1,3 @@
--- name: insert-a-few-beers
 insert into 
   beer (idbeer,titlebeer,descriptionbeer)
 values

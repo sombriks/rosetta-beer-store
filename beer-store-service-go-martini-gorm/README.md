@@ -8,6 +8,9 @@ the REST API.
 
 The [Gorm](http://gorm.io/) library does the database thing for us.
 
+The [gomigrate](https://github.com/DavidHuie/gomigrate) handles database
+migrations.
+
 ## How to run this
 
 Open a terminal on the folder containing this readme and
