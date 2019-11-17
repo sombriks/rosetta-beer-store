@@ -5,7 +5,8 @@ beer services.
 
 # how do i run this
 
-You need [Android Studio](https://developer.android.com/studio), but Intellij Ultimate might works too.
+You need [Android Studio](https://developer.android.com/studio), ~~but Intellij Ultimate might works too~~ 
+the 3.5 version or superior.
 
 Open the project, set up your emulator or device and rock the boat.
 
