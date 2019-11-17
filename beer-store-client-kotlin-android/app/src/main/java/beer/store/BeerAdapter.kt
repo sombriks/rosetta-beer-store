@@ -7,18 +7,23 @@ import androidx.recyclerview.widget.RecyclerView.Adapter
 
 class BeerAdapter : Adapter<BeerViewHolder>() {
 
+    val beers = mutableListOf<Beer>()
+
+    init {
+        for (i in 1..10) beers.add(Beer(i))
+    }
+
     override fun getItemCount(): Int {
-        Log.i("beer.store","getItemCount")
-        return 10
+        return beers.size
     }
 
     override fun onBindViewHolder(holder: BeerViewHolder, position: Int) {
-        Log.i("beer.store","onBindViewHolder")
+        val b = beers[position]
+        holder.beerLabel.text = b.titleBeer + " " + b.idBeer
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BeerViewHolder {
-        Log.i("beer.store","onCreateViewHolder")
-        var view = LayoutInflater.from(parent.context).inflate(R.layout.beer_item,parent,false)
+        var view = LayoutInflater.from(parent.context).inflate(R.layout.beer_item, parent, false)
         return BeerViewHolder(view)
     }
 }
