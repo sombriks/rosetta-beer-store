@@ -30,10 +30,12 @@ Also because it's fun.
 
 | **technology/feature**            | Transparent JSON serialization | Material Design implementation | SPA | Hot-reload development mode |
 | --------------------------------- | ------------------------------ | ------------------------------ | --- | --------------------------- |
-| javascript,vue,browserify         | YES                            | YES                            | YES | YES                         |
-| cordova, javascript, vue, vue-cli | YES                            | YES                            | YES | NO                          |
+| javascript, vue, browserify       | YES                            | YES                            | YES | YES                         |
 | javascript, angularjs, CDN        | YES                            | YES                            | YES | NO                          |
 | javascript, react, webpack        | YES                            | YES                            | YES | YES                         |
+| C++, Qt, qml, qt-creator          | NO                             | NO                             | N/A | NO                          |
+| javascript, cordova, vue, vue-cli | YES                            | YES                            | YES | NO                          |
+| kotlin, android, android-studio   | YES                            | YES                            | N/A | NO                          |
 
 ## How does it work
 
