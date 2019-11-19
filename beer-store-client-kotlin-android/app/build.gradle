@@ -37,5 +37,8 @@ dependencies {
     // https://mvnrepository.com/artifact/com.squareup.retrofit/retrofit
     implementation 'com.squareup.retrofit2:retrofit:2.6.2'
     implementation 'com.squareup.retrofit2:converter-gson:2.6.2'
+    // https://mvnrepository.com/artifact/androidx.lifecycle/lifecycle-viewmodel-ktx
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0-rc02'
+
 
 }

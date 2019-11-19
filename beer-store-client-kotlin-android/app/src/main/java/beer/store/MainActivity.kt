@@ -1,41 +1,52 @@
 package beer.store
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
+import android.widget.Button
+import android.widget.EditText
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 
 class MainActivity : AppCompatActivity() {
 
-    var beerAdapter :BeerAdapter = BeerAdapter()
+    var page = 1
+    var pageSize = 10
+
+    val beerAdapter: BeerAdapter = BeerAdapter()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         title = "Beer Store"
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        var rview = findViewById<RecyclerView>(R.id.recycler_view)
+        val rview = findViewById<RecyclerView>(R.id.beer_recycler_view)
         rview.layoutManager = LinearLayoutManager(rview.context)
         rview.adapter = beerAdapter
 
+        val campoBusca = findViewById<EditText>(R.id.campo_busca)
 
-        // TODO melhorar isso aqui e conter no service se possível
-        BeerService.instance().list().enqueue(object : Callback<List<Beer>> {
-            override fun onResponse(call: Call<List<Beer>>, response: Response<List<Beer>>) {
-                beerAdapter.beers.removeAll(beerAdapter.beers)
-                response.body()?.forEach {
-                    Log.i("beer.store",it.toString())
-                    beerAdapter.beers.add(it)
-                }
-            }
+        val doSearch = findViewById<Button>(R.id.do_search)
 
-            override fun onFailure(call: Call<List<Beer>>, t: Throwable) {
-                Log.wtf("beer.store",t.toString())
-            }
-        })
+        doSearch.setOnClickListener {
+            page = 1
+            beerAdapter.search(campoBusca.text.toString(), page, pageSize)
+        }
+
+        val prev = findViewById<Button>(R.id.prev)
+
+        prev.setOnClickListener {
+            if (page > 1) page--
+            beerAdapter.search(campoBusca.text.toString(), page, pageSize)
+        }
+
+        val next = findViewById<Button>(R.id.next)
+
+        next.setOnClickListener {
+            if (beerAdapter.beers.size == pageSize) page++
+            beerAdapter.search(campoBusca.text.toString(), page, pageSize)
+        }
+
+        beerAdapter.search()
     }
 }
+
