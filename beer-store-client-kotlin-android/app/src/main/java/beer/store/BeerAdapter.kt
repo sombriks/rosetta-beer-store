@@ -1,5 +1,6 @@
 package beer.store
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView.Adapter
@@ -25,10 +26,14 @@ class BeerAdapter : Adapter<BeerViewHolder>() {
     }
 
     fun search(search: String = "", page: Int = 1, pageSize: Int = 10) {
-        GlobalScope.launch(Dispatchers.Main) {
-            beers.removeAll(beers)
-            beers.addAll(BeerService.instance().list(search,page,pageSize))
-            notifyDataSetChanged()
+        try {
+            GlobalScope.launch(Dispatchers.Main) {
+                beers.removeAll(beers)
+                beers.addAll(BeerService.instance().list(search, page, pageSize))
+                notifyDataSetChanged()
+            }
+        } catch (e: Exception) {
+            Log.e("beer.store", e.stackTrace.toString())
         }
     }
 }

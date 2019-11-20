@@ -11,9 +11,11 @@ object BeerService {
 
     interface Service {
 
+        @Throws(Exception::class)
         @GET("/beer/list")
         suspend fun list(@Query("search") search: String = "", @Query("page") page: Int = 1, @Query("pageSize") pageSize: Int = 10): MutableList<Beer>
 
+        @Throws(Exception::class)
         @GET("/beer/{id}")
         suspend fun find(@Path("id") id: Int): Beer
     }
