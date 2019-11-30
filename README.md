@@ -36,6 +36,7 @@ Also because it's fun.
 | C++, Qt, qml, qt-creator          | NO                             | NO                             | N/A | NO                          |
 | javascript, cordova, vue, vue-cli | YES                            | YES                            | YES | NO                          |
 | kotlin, android, android-studio   | YES                            | YES                            | N/A | NO                          |
+| vue, nativescript   | YES                            | NO                             | N/A | YES                          |
 
 ## How does it work
 
