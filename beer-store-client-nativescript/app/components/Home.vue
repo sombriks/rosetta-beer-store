@@ -4,40 +4,37 @@
       <Label text="Beer Store"></Label>
     </ActionBar>
     <StackLayout>
-      <!-- https://nativescript-vue.org/en/docs/elements/layouts/stack-layout/ -->
-      <TextField hint="Search beer" v-model="textFieldValue" />
-      <Button text="Search" @tap="doSearch" />
+      <Search :filter="filter" :results="results" @onSearch="doSearch" />
     </StackLayout>
   </Page>
 </template>
 
 <script>
+import Search from "./Search";
+import { mapState, mapActions } from "vuex";
 export default {
   name: "home",
+  components: {
+    Search
+  },
   data() {
     return {
-      textFieldValue: ""
+      filter: {
+        q: "",
+        page: 1,
+        pageSize: 10
+      }
     };
   },
+  computed: {
+    ...mapState(["results"])
+  },
   methods: {
-    doSearch() {
-      console.log(this.textFieldValue);
-    }
+    ...mapActions(["doSearch"])
   }
 };
 </script>
 
 <style scoped lang="scss">
 @import "~@nativescript/theme/scss/variables/blue";
-
-// Custom styles
-.fas {
-  @include colorize($color: accent);
-}
-
-.info {
-  font-size: 20;
-  horizontal-align: center;
-  vertical-align: center;
-}
 </style>
