@@ -1,5 +1,5 @@
 import Vue from "nativescript-vue";
-import Home from "./components/Home";
+import BeerList from "./components/BeerList";
 import { store } from "./store";
 
 Vue.config.silent = false;
@@ -7,10 +7,10 @@ Vue.config.silent = false;
 new Vue({
     template: `
         <Frame>
-            <Home />
+            <BeerList/>
         </Frame>`,
     store,
     components: {
-        Home
+        BeerList
     }
 }).$start();

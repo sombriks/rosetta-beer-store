@@ -9,7 +9,6 @@ const state = {
 };
 const mutations = {
     setResults(state, results) {
-        console.log(results);
         state.results = results || [];
     }
 };

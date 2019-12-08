@@ -38,3 +38,15 @@ $ANDROID_HOME/emulator/emulator -avd pixel2
 ```
 
 Where pixel2 is a nice and short name i gave to my emulator.
+
+Once you're done coding you can generate an apk with this command:
+
+```bash
+tns build android
+```
+
+To be honest, the apk is a little fat, 30MB, however you had a easy time coding
+it.
+
+Nativescript does deliver productivity, bit always remember that there are some
+tradeoffs that might be important once defining your strategy.

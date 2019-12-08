@@ -5,17 +5,24 @@
     </ActionBar>
     <StackLayout>
       <Search :filter="filter" :results="results" @onSearch="doSearch" />
+      <ListView height="*" for="item in results" @itemTap="doDetail">
+        <v-template>
+          <BeerItem :beer="item" />
+        </v-template>
+      </ListView>
     </StackLayout>
   </Page>
 </template>
 
 <script>
-import Search from "./Search";
 import { mapState, mapActions } from "vuex";
+import Search from "./Search";
+import BeerItem from "./BeerItem";
 export default {
-  name: "home",
+  name: "beer-list",
   components: {
-    Search
+    Search,
+    BeerItem
   },
   data() {
     return {
@@ -30,7 +37,10 @@ export default {
     ...mapState(["results"])
   },
   methods: {
-    ...mapActions(["doSearch"])
+    ...mapActions(["doSearch"]),
+    doDetail(event) {
+      console.log(event.item);
+    }
   }
 };
 </script>
