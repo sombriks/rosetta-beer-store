@@ -34,7 +34,7 @@ deps: bin pkg src
 	go get -v golang.org/x/tools/cmd/guru
 	go get -v golang.org/x/tools/cmd/gorename
 	go get -v golang.org/x/tools/cmd/godoc
-	go get -v github.com/derekparker/delve/cmd/dlv
+	go get -v github.com/go-delve/delve/cmd/dlv
 	go get -v github.com/rogpeppe/godef
 	go get -v golang.org/x/lint/golint
 	go get -v github.com/sqs/goreturns
