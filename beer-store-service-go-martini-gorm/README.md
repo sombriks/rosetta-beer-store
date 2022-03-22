@@ -28,3 +28,6 @@ Static and queries folder are there because of execution point.
 
 bin, pkg and src are there because this is also our \$GOPATH, as seen in the
 Makefile.
+
+This project is incompatible with go modules so we have `export GO111MODULE=off`
+in the Makefile.

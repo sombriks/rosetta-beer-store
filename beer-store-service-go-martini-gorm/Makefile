@@ -5,6 +5,8 @@ export GOPATH := $(PWD)
 export GOBIN := $(GOPATH)/bin
 export PATH := $(PATH):$(GOBIN)
 export PRG := beerservice
+export GO111MODULE=off
+
 
 .PHONY: all
 
@@ -27,17 +29,17 @@ deps: bin pkg src
 	go get -v github.com/mattn/go-sqlite3
 	go get -v github.com/DavidHuie/gomigrate
 	# dev dependencies
-	go get -v github.com/mdempsky/gocode
-	go get -v github.com/uudashr/gopkgs/cmd/gopkgs
-	go get -v github.com/ramya-rao-a/go-outline
-	go get -v github.com/acroca/go-symbols
-	go get -v golang.org/x/tools/cmd/guru
-	go get -v golang.org/x/tools/cmd/gorename
-	go get -v golang.org/x/tools/cmd/godoc
-	go get -v github.com/go-delve/delve/cmd/dlv
-	go get -v github.com/rogpeppe/godef
-	go get -v golang.org/x/lint/golint
-	go get -v github.com/sqs/goreturns
+	# go get -v github.com/mdempsky/gocode
+	# go get -v github.com/uudashr/gopkgs/cmd/gopkgs
+	# go get -v github.com/ramya-rao-a/go-outline
+	# go get -v github.com/acroca/go-symbols
+	# go get -v golang.org/x/tools/cmd/guru
+	# go get -v golang.org/x/tools/cmd/gorename
+	# go get -v golang.org/x/tools/cmd/godoc
+	# go get -v github.com/go-delve/delve/cmd/dlv
+	# go get -v github.com/rogpeppe/godef
+	# go get -v golang.org/x/lint/golint
+	# go get -v github.com/sqs/goreturns
 
 bin:
 	mkdir bin
