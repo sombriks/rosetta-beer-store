@@ -5,8 +5,8 @@ import (
 	"github.com/martini-contrib/cors"
 	"github.com/martini-contrib/render"
 
-	"storeservice/routes"
 	"storeservice/components"
+	"storeservice/routes"
 )
 
 // Startup opens a server into the given port

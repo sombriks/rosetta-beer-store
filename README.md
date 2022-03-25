@@ -25,6 +25,7 @@ Also because it's fun.
 | java, JEE                    | YES      | NO   | NO                             | YES                 | YES                  | YES                         |
 | java, spring boot            | YES      | YES  | YES                            | YES                 | YES                  | NO                          |
 | go, gorm, gomigrate, martini | YES      | YES  | NO                             | YES                 | NO                   | NO                          |
+| go, gin, ent, martini        | YES      | YES  | NO                             | YES                 | NO                   | NO                          |
 
 ### Client Implementation
 
@@ -36,7 +37,7 @@ Also because it's fun.
 | C++, Qt, qml, qt-creator          | NO                             | NO                             | N/A | NO                          |
 | javascript, cordova, vue, vue-cli | YES                            | YES                            | YES | NO                          |
 | kotlin, android, android-studio   | YES                            | YES                            | N/A | NO                          |
-| vue, nativescript   | YES                            | NO                             | N/A | YES                          |
+| vue, nativescript                 | YES                            | NO                             | N/A | YES                         |
 
 ## How does it work
 

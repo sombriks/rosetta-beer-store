@@ -10,13 +10,13 @@ export GO111MODULE=off
 
 .PHONY: all
 
-all: build deps
+all: build
 
 dev:
 	echo "you should 'make deps' at least once"
 	go run src/main/beerservice.go
 
-build:
+build: deps
 	echo "you should 'make deps' at least once"
 	go install src/main/$(PRG).go
 

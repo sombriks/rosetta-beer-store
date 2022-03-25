@@ -20,6 +20,8 @@ make build
 make dev
 ```
 
+## Trivia
+
 The [go workspace](https://golang.org/doc/code.html) once set will manage well
 how libraries, source code and binaries will stay and the project folder will
 also be the execution point.
@@ -31,3 +33,7 @@ Makefile.
 
 This project is incompatible with go modules so we have `export GO111MODULE=off`
 in the Makefile.
+
+Since newer vscode go extension plugin prefers go modules instead of workspaces,
+some tweaks where made into `.vscode/settings.json` in order to solve lots of
+false positive error messages. A few remain

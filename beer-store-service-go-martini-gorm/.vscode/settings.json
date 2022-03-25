@@ -1,0 +1,6 @@
+{
+  "go.inferGopath": true,
+  "go.toolsEnvVars": {
+    "GO111MODULE": "off"
+  }
+}
