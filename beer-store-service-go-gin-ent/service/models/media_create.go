@@ -20,12 +20,6 @@ type MediaCreate struct {
 	hooks    []Hook
 }
 
-// SetIdmedia sets the "idmedia" field.
-func (mc *MediaCreate) SetIdmedia(i int) *MediaCreate {
-	mc.mutation.SetIdmedia(i)
-	return mc
-}
-
 // SetCreationdatemedia sets the "creationdatemedia" field.
 func (mc *MediaCreate) SetCreationdatemedia(t time.Time) *MediaCreate {
 	mc.mutation.SetCreationdatemedia(t)
@@ -47,6 +41,12 @@ func (mc *MediaCreate) SetNomemedia(s string) *MediaCreate {
 // SetMimemedia sets the "mimemedia" field.
 func (mc *MediaCreate) SetMimemedia(s string) *MediaCreate {
 	mc.mutation.SetMimemedia(s)
+	return mc
+}
+
+// SetID sets the "id" field.
+func (mc *MediaCreate) SetID(i int) *MediaCreate {
+	mc.mutation.SetID(i)
 	return mc
 }
 
@@ -120,9 +120,6 @@ func (mc *MediaCreate) ExecX(ctx context.Context) {
 
 // check runs all checks and user-defined validators on the builder.
 func (mc *MediaCreate) check() error {
-	if _, ok := mc.mutation.Idmedia(); !ok {
-		return &ValidationError{Name: "idmedia", err: errors.New(`models: missing required field "Media.idmedia"`)}
-	}
 	if _, ok := mc.mutation.Creationdatemedia(); !ok {
 		return &ValidationError{Name: "creationdatemedia", err: errors.New(`models: missing required field "Media.creationdatemedia"`)}
 	}
@@ -146,8 +143,10 @@ func (mc *MediaCreate) sqlSave(ctx context.Context) (*Media, error) {
 		}
 		return nil, err
 	}
-	id := _spec.ID.Value.(int64)
-	_node.ID = int(id)
+	if _spec.ID.Value != _node.ID {
+		id := _spec.ID.Value.(int64)
+		_node.ID = int(id)
+	}
 	return _node, nil
 }
 
@@ -162,13 +161,9 @@ func (mc *MediaCreate) createSpec() (*Media, *sqlgraph.CreateSpec) {
 			},
 		}
 	)
-	if value, ok := mc.mutation.Idmedia(); ok {
-		_spec.Fields = append(_spec.Fields, &sqlgraph.FieldSpec{
-			Type:   field.TypeInt,
-			Value:  value,
-			Column: media.FieldIdmedia,
-		})
-		_node.Idmedia = value
+	if id, ok := mc.mutation.ID(); ok {
+		_node.ID = id
+		_spec.ID.Value = id
 	}
 	if value, ok := mc.mutation.Creationdatemedia(); ok {
 		_spec.Fields = append(_spec.Fields, &sqlgraph.FieldSpec{
@@ -246,7 +241,7 @@ func (mcb *MediaCreateBulk) Save(ctx context.Context) ([]*Media, error) {
 				}
 				mutation.id = &nodes[i].ID
 				mutation.done = true
-				if specs[i].ID.Value != nil {
+				if specs[i].ID.Value != nil && nodes[i].ID == 0 {
 					id := specs[i].ID.Value.(int64)
 					nodes[i].ID = int(id)
 				}

@@ -92,13 +92,6 @@ func IDLTE(id int) predicate.Media {
 	})
 }
 
-// Idmedia applies equality check predicate on the "idmedia" field. It's identical to IdmediaEQ.
-func Idmedia(v int) predicate.Media {
-	return predicate.Media(func(s *sql.Selector) {
-		s.Where(sql.EQ(s.C(FieldIdmedia), v))
-	})
-}
-
 // Creationdatemedia applies equality check predicate on the "creationdatemedia" field. It's identical to CreationdatemediaEQ.
 func Creationdatemedia(v time.Time) predicate.Media {
 	return predicate.Media(func(s *sql.Selector) {
@@ -124,82 +117,6 @@ func Nomemedia(v string) predicate.Media {
 func Mimemedia(v string) predicate.Media {
 	return predicate.Media(func(s *sql.Selector) {
 		s.Where(sql.EQ(s.C(FieldMimemedia), v))
-	})
-}
-
-// IdmediaEQ applies the EQ predicate on the "idmedia" field.
-func IdmediaEQ(v int) predicate.Media {
-	return predicate.Media(func(s *sql.Selector) {
-		s.Where(sql.EQ(s.C(FieldIdmedia), v))
-	})
-}
-
-// IdmediaNEQ applies the NEQ predicate on the "idmedia" field.
-func IdmediaNEQ(v int) predicate.Media {
-	return predicate.Media(func(s *sql.Selector) {
-		s.Where(sql.NEQ(s.C(FieldIdmedia), v))
-	})
-}
-
-// IdmediaIn applies the In predicate on the "idmedia" field.
-func IdmediaIn(vs ...int) predicate.Media {
-	v := make([]interface{}, len(vs))
-	for i := range v {
-		v[i] = vs[i]
-	}
-	return predicate.Media(func(s *sql.Selector) {
-		// if not arguments were provided, append the FALSE constants,
-		// since we can't apply "IN ()". This will make this predicate falsy.
-		if len(v) == 0 {
-			s.Where(sql.False())
-			return
-		}
-		s.Where(sql.In(s.C(FieldIdmedia), v...))
-	})
-}
-
-// IdmediaNotIn applies the NotIn predicate on the "idmedia" field.
-func IdmediaNotIn(vs ...int) predicate.Media {
-	v := make([]interface{}, len(vs))
-	for i := range v {
-		v[i] = vs[i]
-	}
-	return predicate.Media(func(s *sql.Selector) {
-		// if not arguments were provided, append the FALSE constants,
-		// since we can't apply "IN ()". This will make this predicate falsy.
-		if len(v) == 0 {
-			s.Where(sql.False())
-			return
-		}
-		s.Where(sql.NotIn(s.C(FieldIdmedia), v...))
-	})
-}
-
-// IdmediaGT applies the GT predicate on the "idmedia" field.
-func IdmediaGT(v int) predicate.Media {
-	return predicate.Media(func(s *sql.Selector) {
-		s.Where(sql.GT(s.C(FieldIdmedia), v))
-	})
-}
-
-// IdmediaGTE applies the GTE predicate on the "idmedia" field.
-func IdmediaGTE(v int) predicate.Media {
-	return predicate.Media(func(s *sql.Selector) {
-		s.Where(sql.GTE(s.C(FieldIdmedia), v))
-	})
-}
-
-// IdmediaLT applies the LT predicate on the "idmedia" field.
-func IdmediaLT(v int) predicate.Media {
-	return predicate.Media(func(s *sql.Selector) {
-		s.Where(sql.LT(s.C(FieldIdmedia), v))
-	})
-}
-
-// IdmediaLTE applies the LTE predicate on the "idmedia" field.
-func IdmediaLTE(v int) predicate.Media {
-	return predicate.Media(func(s *sql.Selector) {
-		s.Where(sql.LTE(s.C(FieldIdmedia), v))
 	})
 }
 

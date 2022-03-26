@@ -254,12 +254,12 @@ func (bq *BeerQuery) Clone() *BeerQuery {
 // Example:
 //
 //	var v []struct {
-//		Idbeer int `json:"idbeer,omitempty"`
+//		Creationdatebeer time.Time `json:"creationdatebeer,omitempty"`
 //		Count int `json:"count,omitempty"`
 //	}
 //
 //	client.Beer.Query().
-//		GroupBy(beer.FieldIdbeer).
+//		GroupBy(beer.FieldCreationdatebeer).
 //		Aggregate(models.Count()).
 //		Scan(ctx, &v)
 //
@@ -281,11 +281,11 @@ func (bq *BeerQuery) GroupBy(field string, fields ...string) *BeerGroupBy {
 // Example:
 //
 //	var v []struct {
-//		Idbeer int `json:"idbeer,omitempty"`
+//		Creationdatebeer time.Time `json:"creationdatebeer,omitempty"`
 //	}
 //
 //	client.Beer.Query().
-//		Select(beer.FieldIdbeer).
+//		Select(beer.FieldCreationdatebeer).
 //		Scan(ctx, &v)
 //
 func (bq *BeerQuery) Select(fields ...string) *BeerSelect {

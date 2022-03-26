@@ -28,19 +28,6 @@ func (bu *BeerUpdate) Where(ps ...predicate.Beer) *BeerUpdate {
 	return bu
 }
 
-// SetIdbeer sets the "idbeer" field.
-func (bu *BeerUpdate) SetIdbeer(i int) *BeerUpdate {
-	bu.mutation.ResetIdbeer()
-	bu.mutation.SetIdbeer(i)
-	return bu
-}
-
-// AddIdbeer adds i to the "idbeer" field.
-func (bu *BeerUpdate) AddIdbeer(i int) *BeerUpdate {
-	bu.mutation.AddIdbeer(i)
-	return bu
-}
-
 // SetCreationdatebeer sets the "creationdatebeer" field.
 func (bu *BeerUpdate) SetCreationdatebeer(t time.Time) *BeerUpdate {
 	bu.mutation.SetCreationdatebeer(t)
@@ -149,20 +136,6 @@ func (bu *BeerUpdate) sqlSave(ctx context.Context) (n int, err error) {
 			}
 		}
 	}
-	if value, ok := bu.mutation.Idbeer(); ok {
-		_spec.Fields.Set = append(_spec.Fields.Set, &sqlgraph.FieldSpec{
-			Type:   field.TypeInt,
-			Value:  value,
-			Column: beer.FieldIdbeer,
-		})
-	}
-	if value, ok := bu.mutation.AddedIdbeer(); ok {
-		_spec.Fields.Add = append(_spec.Fields.Add, &sqlgraph.FieldSpec{
-			Type:   field.TypeInt,
-			Value:  value,
-			Column: beer.FieldIdbeer,
-		})
-	}
 	if value, ok := bu.mutation.Creationdatebeer(); ok {
 		_spec.Fields.Set = append(_spec.Fields.Set, &sqlgraph.FieldSpec{
 			Type:   field.TypeTime,
@@ -215,19 +188,6 @@ type BeerUpdateOne struct {
 	fields   []string
 	hooks    []Hook
 	mutation *BeerMutation
-}
-
-// SetIdbeer sets the "idbeer" field.
-func (buo *BeerUpdateOne) SetIdbeer(i int) *BeerUpdateOne {
-	buo.mutation.ResetIdbeer()
-	buo.mutation.SetIdbeer(i)
-	return buo
-}
-
-// AddIdbeer adds i to the "idbeer" field.
-func (buo *BeerUpdateOne) AddIdbeer(i int) *BeerUpdateOne {
-	buo.mutation.AddIdbeer(i)
-	return buo
 }
 
 // SetCreationdatebeer sets the "creationdatebeer" field.
@@ -361,20 +321,6 @@ func (buo *BeerUpdateOne) sqlSave(ctx context.Context) (_node *Beer, err error) 
 				ps[i](selector)
 			}
 		}
-	}
-	if value, ok := buo.mutation.Idbeer(); ok {
-		_spec.Fields.Set = append(_spec.Fields.Set, &sqlgraph.FieldSpec{
-			Type:   field.TypeInt,
-			Value:  value,
-			Column: beer.FieldIdbeer,
-		})
-	}
-	if value, ok := buo.mutation.AddedIdbeer(); ok {
-		_spec.Fields.Add = append(_spec.Fields.Add, &sqlgraph.FieldSpec{
-			Type:   field.TypeInt,
-			Value:  value,
-			Column: beer.FieldIdbeer,
-		})
 	}
 	if value, ok := buo.mutation.Creationdatebeer(); ok {
 		_spec.Fields.Set = append(_spec.Fields.Set, &sqlgraph.FieldSpec{

@@ -25,7 +25,7 @@ Also because it's fun.
 | java, JEE                    | YES      | NO   | NO                             | YES                 | YES                  | YES                         |
 | java, spring boot            | YES      | YES  | YES                            | YES                 | YES                  | NO                          |
 | go, gorm, gomigrate, martini | YES      | YES  | NO                             | YES                 | NO                   | NO                          |
-| go, gin, ent, martini        | YES      | YES  | NO                             | YES                 | NO                   | NO                          |
+| go, ent, sql-migrate, gin    | YES      | YES  | NO                             | YES                 | NO                   | NO                          |
 
 ### Client Implementation
 

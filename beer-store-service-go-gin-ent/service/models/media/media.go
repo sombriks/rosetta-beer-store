@@ -6,9 +6,7 @@ const (
 	// Label holds the string label denoting the media type in the database.
 	Label = "media"
 	// FieldID holds the string denoting the id field in the database.
-	FieldID = "id"
-	// FieldIdmedia holds the string denoting the idmedia field in the database.
-	FieldIdmedia = "idmedia"
+	FieldID = "idmedia"
 	// FieldCreationdatemedia holds the string denoting the creationdatemedia field in the database.
 	FieldCreationdatemedia = "creationdatemedia"
 	// FieldDatamedia holds the string denoting the datamedia field in the database.
@@ -24,7 +22,6 @@ const (
 // Columns holds all SQL columns for media fields.
 var Columns = []string{
 	FieldID,
-	FieldIdmedia,
 	FieldCreationdatemedia,
 	FieldDatamedia,
 	FieldNomemedia,

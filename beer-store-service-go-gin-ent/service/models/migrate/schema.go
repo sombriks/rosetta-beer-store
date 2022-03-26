@@ -3,30 +3,29 @@
 package migrate
 
 import (
+	"entgo.io/ent/dialect/entsql"
 	"entgo.io/ent/dialect/sql/schema"
 	"entgo.io/ent/schema/field"
 )
 
 var (
-	// BeersColumns holds the columns for the "beers" table.
-	BeersColumns = []*schema.Column{
-		{Name: "id", Type: field.TypeInt, Increment: true},
-		{Name: "idbeer", Type: field.TypeInt},
+	// BeerColumns holds the columns for the "beer" table.
+	BeerColumns = []*schema.Column{
+		{Name: "idbeer", Type: field.TypeInt, Increment: true},
 		{Name: "creationdatebeer", Type: field.TypeTime},
 		{Name: "titlebeer", Type: field.TypeString},
 		{Name: "descriptionbeer", Type: field.TypeString},
 		{Name: "idmedia", Type: field.TypeInt},
 	}
-	// BeersTable holds the schema information for the "beers" table.
-	BeersTable = &schema.Table{
-		Name:       "beers",
-		Columns:    BeersColumns,
-		PrimaryKey: []*schema.Column{BeersColumns[0]},
+	// BeerTable holds the schema information for the "beer" table.
+	BeerTable = &schema.Table{
+		Name:       "beer",
+		Columns:    BeerColumns,
+		PrimaryKey: []*schema.Column{BeerColumns[0]},
 	}
 	// MediaColumns holds the columns for the "media" table.
 	MediaColumns = []*schema.Column{
-		{Name: "id", Type: field.TypeInt, Increment: true},
-		{Name: "idmedia", Type: field.TypeInt},
+		{Name: "idmedia", Type: field.TypeInt, Increment: true},
 		{Name: "creationdatemedia", Type: field.TypeTime},
 		{Name: "datamedia", Type: field.TypeBytes},
 		{Name: "nomemedia", Type: field.TypeString},
@@ -40,10 +39,16 @@ var (
 	}
 	// Tables holds all the tables in the schema.
 	Tables = []*schema.Table{
-		BeersTable,
+		BeerTable,
 		MediaTable,
 	}
 )
 
 func init() {
+	BeerTable.Annotation = &entsql.Annotation{
+		Table: "beer",
+	}
+	MediaTable.Annotation = &entsql.Annotation{
+		Table: "media",
+	}
 }

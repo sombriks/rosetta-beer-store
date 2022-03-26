@@ -92,13 +92,6 @@ func IDLTE(id int) predicate.Beer {
 	})
 }
 
-// Idbeer applies equality check predicate on the "idbeer" field. It's identical to IdbeerEQ.
-func Idbeer(v int) predicate.Beer {
-	return predicate.Beer(func(s *sql.Selector) {
-		s.Where(sql.EQ(s.C(FieldIdbeer), v))
-	})
-}
-
 // Creationdatebeer applies equality check predicate on the "creationdatebeer" field. It's identical to CreationdatebeerEQ.
 func Creationdatebeer(v time.Time) predicate.Beer {
 	return predicate.Beer(func(s *sql.Selector) {
@@ -124,82 +117,6 @@ func Descriptionbeer(v string) predicate.Beer {
 func Idmedia(v int) predicate.Beer {
 	return predicate.Beer(func(s *sql.Selector) {
 		s.Where(sql.EQ(s.C(FieldIdmedia), v))
-	})
-}
-
-// IdbeerEQ applies the EQ predicate on the "idbeer" field.
-func IdbeerEQ(v int) predicate.Beer {
-	return predicate.Beer(func(s *sql.Selector) {
-		s.Where(sql.EQ(s.C(FieldIdbeer), v))
-	})
-}
-
-// IdbeerNEQ applies the NEQ predicate on the "idbeer" field.
-func IdbeerNEQ(v int) predicate.Beer {
-	return predicate.Beer(func(s *sql.Selector) {
-		s.Where(sql.NEQ(s.C(FieldIdbeer), v))
-	})
-}
-
-// IdbeerIn applies the In predicate on the "idbeer" field.
-func IdbeerIn(vs ...int) predicate.Beer {
-	v := make([]interface{}, len(vs))
-	for i := range v {
-		v[i] = vs[i]
-	}
-	return predicate.Beer(func(s *sql.Selector) {
-		// if not arguments were provided, append the FALSE constants,
-		// since we can't apply "IN ()". This will make this predicate falsy.
-		if len(v) == 0 {
-			s.Where(sql.False())
-			return
-		}
-		s.Where(sql.In(s.C(FieldIdbeer), v...))
-	})
-}
-
-// IdbeerNotIn applies the NotIn predicate on the "idbeer" field.
-func IdbeerNotIn(vs ...int) predicate.Beer {
-	v := make([]interface{}, len(vs))
-	for i := range v {
-		v[i] = vs[i]
-	}
-	return predicate.Beer(func(s *sql.Selector) {
-		// if not arguments were provided, append the FALSE constants,
-		// since we can't apply "IN ()". This will make this predicate falsy.
-		if len(v) == 0 {
-			s.Where(sql.False())
-			return
-		}
-		s.Where(sql.NotIn(s.C(FieldIdbeer), v...))
-	})
-}
-
-// IdbeerGT applies the GT predicate on the "idbeer" field.
-func IdbeerGT(v int) predicate.Beer {
-	return predicate.Beer(func(s *sql.Selector) {
-		s.Where(sql.GT(s.C(FieldIdbeer), v))
-	})
-}
-
-// IdbeerGTE applies the GTE predicate on the "idbeer" field.
-func IdbeerGTE(v int) predicate.Beer {
-	return predicate.Beer(func(s *sql.Selector) {
-		s.Where(sql.GTE(s.C(FieldIdbeer), v))
-	})
-}
-
-// IdbeerLT applies the LT predicate on the "idbeer" field.
-func IdbeerLT(v int) predicate.Beer {
-	return predicate.Beer(func(s *sql.Selector) {
-		s.Where(sql.LT(s.C(FieldIdbeer), v))
-	})
-}
-
-// IdbeerLTE applies the LTE predicate on the "idbeer" field.
-func IdbeerLTE(v int) predicate.Beer {
-	return predicate.Beer(func(s *sql.Selector) {
-		s.Where(sql.LTE(s.C(FieldIdbeer), v))
 	})
 }
 

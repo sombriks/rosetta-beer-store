@@ -35,8 +35,6 @@ type BeerMutation struct {
 	op               Op
 	typ              string
 	id               *int
-	idbeer           *int
-	addidbeer        *int
 	creationdatebeer *time.Time
 	titlebeer        *string
 	descriptionbeer  *string
@@ -118,6 +116,12 @@ func (m BeerMutation) Tx() (*Tx, error) {
 	return tx, nil
 }
 
+// SetID sets the value of the id field. Note that this
+// operation is only accepted on creation of Beer entities.
+func (m *BeerMutation) SetID(id int) {
+	m.id = &id
+}
+
 // ID returns the ID value in the mutation. Note that the ID is only available
 // if it was provided to the builder or after it was returned from the database.
 func (m *BeerMutation) ID() (id int, exists bool) {
@@ -144,62 +148,6 @@ func (m *BeerMutation) IDs(ctx context.Context) ([]int, error) {
 	default:
 		return nil, fmt.Errorf("IDs is not allowed on %s operations", m.op)
 	}
-}
-
-// SetIdbeer sets the "idbeer" field.
-func (m *BeerMutation) SetIdbeer(i int) {
-	m.idbeer = &i
-	m.addidbeer = nil
-}
-
-// Idbeer returns the value of the "idbeer" field in the mutation.
-func (m *BeerMutation) Idbeer() (r int, exists bool) {
-	v := m.idbeer
-	if v == nil {
-		return
-	}
-	return *v, true
-}
-
-// OldIdbeer returns the old "idbeer" field's value of the Beer entity.
-// If the Beer object wasn't provided to the builder, the object is fetched from the database.
-// An error is returned if the mutation operation is not UpdateOne, or the database query fails.
-func (m *BeerMutation) OldIdbeer(ctx context.Context) (v int, err error) {
-	if !m.op.Is(OpUpdateOne) {
-		return v, errors.New("OldIdbeer is only allowed on UpdateOne operations")
-	}
-	if m.id == nil || m.oldValue == nil {
-		return v, errors.New("OldIdbeer requires an ID field in the mutation")
-	}
-	oldValue, err := m.oldValue(ctx)
-	if err != nil {
-		return v, fmt.Errorf("querying old value for OldIdbeer: %w", err)
-	}
-	return oldValue.Idbeer, nil
-}
-
-// AddIdbeer adds i to the "idbeer" field.
-func (m *BeerMutation) AddIdbeer(i int) {
-	if m.addidbeer != nil {
-		*m.addidbeer += i
-	} else {
-		m.addidbeer = &i
-	}
-}
-
-// AddedIdbeer returns the value that was added to the "idbeer" field in this mutation.
-func (m *BeerMutation) AddedIdbeer() (r int, exists bool) {
-	v := m.addidbeer
-	if v == nil {
-		return
-	}
-	return *v, true
-}
-
-// ResetIdbeer resets all changes to the "idbeer" field.
-func (m *BeerMutation) ResetIdbeer() {
-	m.idbeer = nil
-	m.addidbeer = nil
 }
 
 // SetCreationdatebeer sets the "creationdatebeer" field.
@@ -385,10 +333,7 @@ func (m *BeerMutation) Type() string {
 // order to get all numeric fields that were incremented/decremented, call
 // AddedFields().
 func (m *BeerMutation) Fields() []string {
-	fields := make([]string, 0, 5)
-	if m.idbeer != nil {
-		fields = append(fields, beer.FieldIdbeer)
-	}
+	fields := make([]string, 0, 4)
 	if m.creationdatebeer != nil {
 		fields = append(fields, beer.FieldCreationdatebeer)
 	}
@@ -409,8 +354,6 @@ func (m *BeerMutation) Fields() []string {
 // schema.
 func (m *BeerMutation) Field(name string) (ent.Value, bool) {
 	switch name {
-	case beer.FieldIdbeer:
-		return m.Idbeer()
 	case beer.FieldCreationdatebeer:
 		return m.Creationdatebeer()
 	case beer.FieldTitlebeer:
@@ -428,8 +371,6 @@ func (m *BeerMutation) Field(name string) (ent.Value, bool) {
 // database failed.
 func (m *BeerMutation) OldField(ctx context.Context, name string) (ent.Value, error) {
 	switch name {
-	case beer.FieldIdbeer:
-		return m.OldIdbeer(ctx)
 	case beer.FieldCreationdatebeer:
 		return m.OldCreationdatebeer(ctx)
 	case beer.FieldTitlebeer:
@@ -447,13 +388,6 @@ func (m *BeerMutation) OldField(ctx context.Context, name string) (ent.Value, er
 // type.
 func (m *BeerMutation) SetField(name string, value ent.Value) error {
 	switch name {
-	case beer.FieldIdbeer:
-		v, ok := value.(int)
-		if !ok {
-			return fmt.Errorf("unexpected type %T for field %s", value, name)
-		}
-		m.SetIdbeer(v)
-		return nil
 	case beer.FieldCreationdatebeer:
 		v, ok := value.(time.Time)
 		if !ok {
@@ -490,9 +424,6 @@ func (m *BeerMutation) SetField(name string, value ent.Value) error {
 // this mutation.
 func (m *BeerMutation) AddedFields() []string {
 	var fields []string
-	if m.addidbeer != nil {
-		fields = append(fields, beer.FieldIdbeer)
-	}
 	if m.addidmedia != nil {
 		fields = append(fields, beer.FieldIdmedia)
 	}
@@ -504,8 +435,6 @@ func (m *BeerMutation) AddedFields() []string {
 // was not set, or was not defined in the schema.
 func (m *BeerMutation) AddedField(name string) (ent.Value, bool) {
 	switch name {
-	case beer.FieldIdbeer:
-		return m.AddedIdbeer()
 	case beer.FieldIdmedia:
 		return m.AddedIdmedia()
 	}
@@ -517,13 +446,6 @@ func (m *BeerMutation) AddedField(name string) (ent.Value, bool) {
 // type.
 func (m *BeerMutation) AddField(name string, value ent.Value) error {
 	switch name {
-	case beer.FieldIdbeer:
-		v, ok := value.(int)
-		if !ok {
-			return fmt.Errorf("unexpected type %T for field %s", value, name)
-		}
-		m.AddIdbeer(v)
-		return nil
 	case beer.FieldIdmedia:
 		v, ok := value.(int)
 		if !ok {
@@ -558,9 +480,6 @@ func (m *BeerMutation) ClearField(name string) error {
 // It returns an error if the field is not defined in the schema.
 func (m *BeerMutation) ResetField(name string) error {
 	switch name {
-	case beer.FieldIdbeer:
-		m.ResetIdbeer()
-		return nil
 	case beer.FieldCreationdatebeer:
 		m.ResetCreationdatebeer()
 		return nil
@@ -631,8 +550,6 @@ type MediaMutation struct {
 	op                Op
 	typ               string
 	id                *int
-	idmedia           *int
-	addidmedia        *int
 	creationdatemedia *time.Time
 	datamedia         *[]byte
 	nomemedia         *string
@@ -713,6 +630,12 @@ func (m MediaMutation) Tx() (*Tx, error) {
 	return tx, nil
 }
 
+// SetID sets the value of the id field. Note that this
+// operation is only accepted on creation of Media entities.
+func (m *MediaMutation) SetID(id int) {
+	m.id = &id
+}
+
 // ID returns the ID value in the mutation. Note that the ID is only available
 // if it was provided to the builder or after it was returned from the database.
 func (m *MediaMutation) ID() (id int, exists bool) {
@@ -739,62 +662,6 @@ func (m *MediaMutation) IDs(ctx context.Context) ([]int, error) {
 	default:
 		return nil, fmt.Errorf("IDs is not allowed on %s operations", m.op)
 	}
-}
-
-// SetIdmedia sets the "idmedia" field.
-func (m *MediaMutation) SetIdmedia(i int) {
-	m.idmedia = &i
-	m.addidmedia = nil
-}
-
-// Idmedia returns the value of the "idmedia" field in the mutation.
-func (m *MediaMutation) Idmedia() (r int, exists bool) {
-	v := m.idmedia
-	if v == nil {
-		return
-	}
-	return *v, true
-}
-
-// OldIdmedia returns the old "idmedia" field's value of the Media entity.
-// If the Media object wasn't provided to the builder, the object is fetched from the database.
-// An error is returned if the mutation operation is not UpdateOne, or the database query fails.
-func (m *MediaMutation) OldIdmedia(ctx context.Context) (v int, err error) {
-	if !m.op.Is(OpUpdateOne) {
-		return v, errors.New("OldIdmedia is only allowed on UpdateOne operations")
-	}
-	if m.id == nil || m.oldValue == nil {
-		return v, errors.New("OldIdmedia requires an ID field in the mutation")
-	}
-	oldValue, err := m.oldValue(ctx)
-	if err != nil {
-		return v, fmt.Errorf("querying old value for OldIdmedia: %w", err)
-	}
-	return oldValue.Idmedia, nil
-}
-
-// AddIdmedia adds i to the "idmedia" field.
-func (m *MediaMutation) AddIdmedia(i int) {
-	if m.addidmedia != nil {
-		*m.addidmedia += i
-	} else {
-		m.addidmedia = &i
-	}
-}
-
-// AddedIdmedia returns the value that was added to the "idmedia" field in this mutation.
-func (m *MediaMutation) AddedIdmedia() (r int, exists bool) {
-	v := m.addidmedia
-	if v == nil {
-		return
-	}
-	return *v, true
-}
-
-// ResetIdmedia resets all changes to the "idmedia" field.
-func (m *MediaMutation) ResetIdmedia() {
-	m.idmedia = nil
-	m.addidmedia = nil
 }
 
 // SetCreationdatemedia sets the "creationdatemedia" field.
@@ -960,10 +827,7 @@ func (m *MediaMutation) Type() string {
 // order to get all numeric fields that were incremented/decremented, call
 // AddedFields().
 func (m *MediaMutation) Fields() []string {
-	fields := make([]string, 0, 5)
-	if m.idmedia != nil {
-		fields = append(fields, media.FieldIdmedia)
-	}
+	fields := make([]string, 0, 4)
 	if m.creationdatemedia != nil {
 		fields = append(fields, media.FieldCreationdatemedia)
 	}
@@ -984,8 +848,6 @@ func (m *MediaMutation) Fields() []string {
 // schema.
 func (m *MediaMutation) Field(name string) (ent.Value, bool) {
 	switch name {
-	case media.FieldIdmedia:
-		return m.Idmedia()
 	case media.FieldCreationdatemedia:
 		return m.Creationdatemedia()
 	case media.FieldDatamedia:
@@ -1003,8 +865,6 @@ func (m *MediaMutation) Field(name string) (ent.Value, bool) {
 // database failed.
 func (m *MediaMutation) OldField(ctx context.Context, name string) (ent.Value, error) {
 	switch name {
-	case media.FieldIdmedia:
-		return m.OldIdmedia(ctx)
 	case media.FieldCreationdatemedia:
 		return m.OldCreationdatemedia(ctx)
 	case media.FieldDatamedia:
@@ -1022,13 +882,6 @@ func (m *MediaMutation) OldField(ctx context.Context, name string) (ent.Value, e
 // type.
 func (m *MediaMutation) SetField(name string, value ent.Value) error {
 	switch name {
-	case media.FieldIdmedia:
-		v, ok := value.(int)
-		if !ok {
-			return fmt.Errorf("unexpected type %T for field %s", value, name)
-		}
-		m.SetIdmedia(v)
-		return nil
 	case media.FieldCreationdatemedia:
 		v, ok := value.(time.Time)
 		if !ok {
@@ -1064,21 +917,13 @@ func (m *MediaMutation) SetField(name string, value ent.Value) error {
 // AddedFields returns all numeric fields that were incremented/decremented during
 // this mutation.
 func (m *MediaMutation) AddedFields() []string {
-	var fields []string
-	if m.addidmedia != nil {
-		fields = append(fields, media.FieldIdmedia)
-	}
-	return fields
+	return nil
 }
 
 // AddedField returns the numeric value that was incremented/decremented on a field
 // with the given name. The second boolean return value indicates that this field
 // was not set, or was not defined in the schema.
 func (m *MediaMutation) AddedField(name string) (ent.Value, bool) {
-	switch name {
-	case media.FieldIdmedia:
-		return m.AddedIdmedia()
-	}
 	return nil, false
 }
 
@@ -1087,13 +932,6 @@ func (m *MediaMutation) AddedField(name string) (ent.Value, bool) {
 // type.
 func (m *MediaMutation) AddField(name string, value ent.Value) error {
 	switch name {
-	case media.FieldIdmedia:
-		v, ok := value.(int)
-		if !ok {
-			return fmt.Errorf("unexpected type %T for field %s", value, name)
-		}
-		m.AddIdmedia(v)
-		return nil
 	}
 	return fmt.Errorf("unknown Media numeric field %s", name)
 }
@@ -1121,9 +959,6 @@ func (m *MediaMutation) ClearField(name string) error {
 // It returns an error if the field is not defined in the schema.
 func (m *MediaMutation) ResetField(name string) error {
 	switch name {
-	case media.FieldIdmedia:
-		m.ResetIdmedia()
-		return nil
 	case media.FieldCreationdatemedia:
 		m.ResetCreationdatemedia()
 		return nil

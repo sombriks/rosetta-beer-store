@@ -16,8 +16,6 @@ type Beer struct {
 	config `json:"-"`
 	// ID of the ent.
 	ID int `json:"id,omitempty"`
-	// Idbeer holds the value of the "idbeer" field.
-	Idbeer int `json:"idbeer,omitempty"`
 	// Creationdatebeer holds the value of the "creationdatebeer" field.
 	Creationdatebeer time.Time `json:"creationdatebeer,omitempty"`
 	// Titlebeer holds the value of the "titlebeer" field.
@@ -33,7 +31,7 @@ func (*Beer) scanValues(columns []string) ([]interface{}, error) {
 	values := make([]interface{}, len(columns))
 	for i := range columns {
 		switch columns[i] {
-		case beer.FieldID, beer.FieldIdbeer, beer.FieldIdmedia:
+		case beer.FieldID, beer.FieldIdmedia:
 			values[i] = new(sql.NullInt64)
 		case beer.FieldTitlebeer, beer.FieldDescriptionbeer:
 			values[i] = new(sql.NullString)
@@ -60,12 +58,6 @@ func (b *Beer) assignValues(columns []string, values []interface{}) error {
 				return fmt.Errorf("unexpected type %T for field id", value)
 			}
 			b.ID = int(value.Int64)
-		case beer.FieldIdbeer:
-			if value, ok := values[i].(*sql.NullInt64); !ok {
-				return fmt.Errorf("unexpected type %T for field idbeer", values[i])
-			} else if value.Valid {
-				b.Idbeer = int(value.Int64)
-			}
 		case beer.FieldCreationdatebeer:
 			if value, ok := values[i].(*sql.NullTime); !ok {
 				return fmt.Errorf("unexpected type %T for field creationdatebeer", values[i])
@@ -118,8 +110,6 @@ func (b *Beer) String() string {
 	var builder strings.Builder
 	builder.WriteString("Beer(")
 	builder.WriteString(fmt.Sprintf("id=%v", b.ID))
-	builder.WriteString(", idbeer=")
-	builder.WriteString(fmt.Sprintf("%v", b.Idbeer))
 	builder.WriteString(", creationdatebeer=")
 	builder.WriteString(b.Creationdatebeer.Format(time.ANSIC))
 	builder.WriteString(", titlebeer=")

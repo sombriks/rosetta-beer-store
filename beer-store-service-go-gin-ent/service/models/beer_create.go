@@ -20,12 +20,6 @@ type BeerCreate struct {
 	hooks    []Hook
 }
 
-// SetIdbeer sets the "idbeer" field.
-func (bc *BeerCreate) SetIdbeer(i int) *BeerCreate {
-	bc.mutation.SetIdbeer(i)
-	return bc
-}
-
 // SetCreationdatebeer sets the "creationdatebeer" field.
 func (bc *BeerCreate) SetCreationdatebeer(t time.Time) *BeerCreate {
 	bc.mutation.SetCreationdatebeer(t)
@@ -47,6 +41,12 @@ func (bc *BeerCreate) SetDescriptionbeer(s string) *BeerCreate {
 // SetIdmedia sets the "idmedia" field.
 func (bc *BeerCreate) SetIdmedia(i int) *BeerCreate {
 	bc.mutation.SetIdmedia(i)
+	return bc
+}
+
+// SetID sets the "id" field.
+func (bc *BeerCreate) SetID(i int) *BeerCreate {
+	bc.mutation.SetID(i)
 	return bc
 }
 
@@ -120,9 +120,6 @@ func (bc *BeerCreate) ExecX(ctx context.Context) {
 
 // check runs all checks and user-defined validators on the builder.
 func (bc *BeerCreate) check() error {
-	if _, ok := bc.mutation.Idbeer(); !ok {
-		return &ValidationError{Name: "idbeer", err: errors.New(`models: missing required field "Beer.idbeer"`)}
-	}
 	if _, ok := bc.mutation.Creationdatebeer(); !ok {
 		return &ValidationError{Name: "creationdatebeer", err: errors.New(`models: missing required field "Beer.creationdatebeer"`)}
 	}
@@ -146,8 +143,10 @@ func (bc *BeerCreate) sqlSave(ctx context.Context) (*Beer, error) {
 		}
 		return nil, err
 	}
-	id := _spec.ID.Value.(int64)
-	_node.ID = int(id)
+	if _spec.ID.Value != _node.ID {
+		id := _spec.ID.Value.(int64)
+		_node.ID = int(id)
+	}
 	return _node, nil
 }
 
@@ -162,13 +161,9 @@ func (bc *BeerCreate) createSpec() (*Beer, *sqlgraph.CreateSpec) {
 			},
 		}
 	)
-	if value, ok := bc.mutation.Idbeer(); ok {
-		_spec.Fields = append(_spec.Fields, &sqlgraph.FieldSpec{
-			Type:   field.TypeInt,
-			Value:  value,
-			Column: beer.FieldIdbeer,
-		})
-		_node.Idbeer = value
+	if id, ok := bc.mutation.ID(); ok {
+		_node.ID = id
+		_spec.ID.Value = id
 	}
 	if value, ok := bc.mutation.Creationdatebeer(); ok {
 		_spec.Fields = append(_spec.Fields, &sqlgraph.FieldSpec{
@@ -246,7 +241,7 @@ func (bcb *BeerCreateBulk) Save(ctx context.Context) ([]*Beer, error) {
 				}
 				mutation.id = &nodes[i].ID
 				mutation.done = true
-				if specs[i].ID.Value != nil {
+				if specs[i].ID.Value != nil && nodes[i].ID == 0 {
 					id := specs[i].ID.Value.(int64)
 					nodes[i].ID = int(id)
 				}

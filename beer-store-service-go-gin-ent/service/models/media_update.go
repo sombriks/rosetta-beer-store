@@ -28,19 +28,6 @@ func (mu *MediaUpdate) Where(ps ...predicate.Media) *MediaUpdate {
 	return mu
 }
 
-// SetIdmedia sets the "idmedia" field.
-func (mu *MediaUpdate) SetIdmedia(i int) *MediaUpdate {
-	mu.mutation.ResetIdmedia()
-	mu.mutation.SetIdmedia(i)
-	return mu
-}
-
-// AddIdmedia adds i to the "idmedia" field.
-func (mu *MediaUpdate) AddIdmedia(i int) *MediaUpdate {
-	mu.mutation.AddIdmedia(i)
-	return mu
-}
-
 // SetCreationdatemedia sets the "creationdatemedia" field.
 func (mu *MediaUpdate) SetCreationdatemedia(t time.Time) *MediaUpdate {
 	mu.mutation.SetCreationdatemedia(t)
@@ -142,20 +129,6 @@ func (mu *MediaUpdate) sqlSave(ctx context.Context) (n int, err error) {
 			}
 		}
 	}
-	if value, ok := mu.mutation.Idmedia(); ok {
-		_spec.Fields.Set = append(_spec.Fields.Set, &sqlgraph.FieldSpec{
-			Type:   field.TypeInt,
-			Value:  value,
-			Column: media.FieldIdmedia,
-		})
-	}
-	if value, ok := mu.mutation.AddedIdmedia(); ok {
-		_spec.Fields.Add = append(_spec.Fields.Add, &sqlgraph.FieldSpec{
-			Type:   field.TypeInt,
-			Value:  value,
-			Column: media.FieldIdmedia,
-		})
-	}
 	if value, ok := mu.mutation.Creationdatemedia(); ok {
 		_spec.Fields.Set = append(_spec.Fields.Set, &sqlgraph.FieldSpec{
 			Type:   field.TypeTime,
@@ -201,19 +174,6 @@ type MediaUpdateOne struct {
 	fields   []string
 	hooks    []Hook
 	mutation *MediaMutation
-}
-
-// SetIdmedia sets the "idmedia" field.
-func (muo *MediaUpdateOne) SetIdmedia(i int) *MediaUpdateOne {
-	muo.mutation.ResetIdmedia()
-	muo.mutation.SetIdmedia(i)
-	return muo
-}
-
-// AddIdmedia adds i to the "idmedia" field.
-func (muo *MediaUpdateOne) AddIdmedia(i int) *MediaUpdateOne {
-	muo.mutation.AddIdmedia(i)
-	return muo
 }
 
 // SetCreationdatemedia sets the "creationdatemedia" field.
@@ -340,20 +300,6 @@ func (muo *MediaUpdateOne) sqlSave(ctx context.Context) (_node *Media, err error
 				ps[i](selector)
 			}
 		}
-	}
-	if value, ok := muo.mutation.Idmedia(); ok {
-		_spec.Fields.Set = append(_spec.Fields.Set, &sqlgraph.FieldSpec{
-			Type:   field.TypeInt,
-			Value:  value,
-			Column: media.FieldIdmedia,
-		})
-	}
-	if value, ok := muo.mutation.AddedIdmedia(); ok {
-		_spec.Fields.Add = append(_spec.Fields.Add, &sqlgraph.FieldSpec{
-			Type:   field.TypeInt,
-			Value:  value,
-			Column: media.FieldIdmedia,
-		})
 	}
 	if value, ok := muo.mutation.Creationdatemedia(); ok {
 		_spec.Fields.Set = append(_spec.Fields.Set, &sqlgraph.FieldSpec{

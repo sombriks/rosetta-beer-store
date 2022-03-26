@@ -16,8 +16,6 @@ type Media struct {
 	config `json:"-"`
 	// ID of the ent.
 	ID int `json:"id,omitempty"`
-	// Idmedia holds the value of the "idmedia" field.
-	Idmedia int `json:"idmedia,omitempty"`
 	// Creationdatemedia holds the value of the "creationdatemedia" field.
 	Creationdatemedia time.Time `json:"creationdatemedia,omitempty"`
 	// Datamedia holds the value of the "datamedia" field.
@@ -35,7 +33,7 @@ func (*Media) scanValues(columns []string) ([]interface{}, error) {
 		switch columns[i] {
 		case media.FieldDatamedia:
 			values[i] = new([]byte)
-		case media.FieldID, media.FieldIdmedia:
+		case media.FieldID:
 			values[i] = new(sql.NullInt64)
 		case media.FieldNomemedia, media.FieldMimemedia:
 			values[i] = new(sql.NullString)
@@ -62,12 +60,6 @@ func (m *Media) assignValues(columns []string, values []interface{}) error {
 				return fmt.Errorf("unexpected type %T for field id", value)
 			}
 			m.ID = int(value.Int64)
-		case media.FieldIdmedia:
-			if value, ok := values[i].(*sql.NullInt64); !ok {
-				return fmt.Errorf("unexpected type %T for field idmedia", values[i])
-			} else if value.Valid {
-				m.Idmedia = int(value.Int64)
-			}
 		case media.FieldCreationdatemedia:
 			if value, ok := values[i].(*sql.NullTime); !ok {
 				return fmt.Errorf("unexpected type %T for field creationdatemedia", values[i])
@@ -120,8 +112,6 @@ func (m *Media) String() string {
 	var builder strings.Builder
 	builder.WriteString("Media(")
 	builder.WriteString(fmt.Sprintf("id=%v", m.ID))
-	builder.WriteString(", idmedia=")
-	builder.WriteString(fmt.Sprintf("%v", m.Idmedia))
 	builder.WriteString(", creationdatemedia=")
 	builder.WriteString(m.Creationdatemedia.Format(time.ANSIC))
 	builder.WriteString(", datamedia=")

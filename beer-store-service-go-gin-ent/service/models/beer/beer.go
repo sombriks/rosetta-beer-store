@@ -6,9 +6,7 @@ const (
 	// Label holds the string label denoting the beer type in the database.
 	Label = "beer"
 	// FieldID holds the string denoting the id field in the database.
-	FieldID = "id"
-	// FieldIdbeer holds the string denoting the idbeer field in the database.
-	FieldIdbeer = "idbeer"
+	FieldID = "idbeer"
 	// FieldCreationdatebeer holds the string denoting the creationdatebeer field in the database.
 	FieldCreationdatebeer = "creationdatebeer"
 	// FieldTitlebeer holds the string denoting the titlebeer field in the database.
@@ -18,13 +16,12 @@ const (
 	// FieldIdmedia holds the string denoting the idmedia field in the database.
 	FieldIdmedia = "idmedia"
 	// Table holds the table name of the beer in the database.
-	Table = "beers"
+	Table = "beer"
 )
 
 // Columns holds all SQL columns for beer fields.
 var Columns = []string{
 	FieldID,
-	FieldIdbeer,
 	FieldCreationdatebeer,
 	FieldTitlebeer,
 	FieldDescriptionbeer,

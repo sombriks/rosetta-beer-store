@@ -254,12 +254,12 @@ func (mq *MediaQuery) Clone() *MediaQuery {
 // Example:
 //
 //	var v []struct {
-//		Idmedia int `json:"idmedia,omitempty"`
+//		Creationdatemedia time.Time `json:"creationdatemedia,omitempty"`
 //		Count int `json:"count,omitempty"`
 //	}
 //
 //	client.Media.Query().
-//		GroupBy(media.FieldIdmedia).
+//		GroupBy(media.FieldCreationdatemedia).
 //		Aggregate(models.Count()).
 //		Scan(ctx, &v)
 //
@@ -281,11 +281,11 @@ func (mq *MediaQuery) GroupBy(field string, fields ...string) *MediaGroupBy {
 // Example:
 //
 //	var v []struct {
-//		Idmedia int `json:"idmedia,omitempty"`
+//		Creationdatemedia time.Time `json:"creationdatemedia,omitempty"`
 //	}
 //
 //	client.Media.Query().
-//		Select(media.FieldIdmedia).
+//		Select(media.FieldCreationdatemedia).
 //		Scan(ctx, &v)
 //
 func (mq *MediaQuery) Select(fields ...string) *MediaSelect {
