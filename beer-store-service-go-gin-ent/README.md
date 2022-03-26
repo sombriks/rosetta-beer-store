@@ -15,10 +15,10 @@ recommendation for project setup is [go modules](https://go.dev/doc/tutorial/cre
 
 ### note about ent
 
-This is not only an ORM library, it is also a gode generation tool. A very
+This is not only an ORM library, it is also a code generation tool. A very
 [opinionated](https://entgo.io/docs/code-gen#code-generation-options) one.
 
-The generated code allow us to build query using go types, so the change of
+The generated code allow us to build query using go types, so the chance of
 mistype something is near zero. A must have if you like such things.
 
 Because of this we had to comply with the two level folder structure it demands
