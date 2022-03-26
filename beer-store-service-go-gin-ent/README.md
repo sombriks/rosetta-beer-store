@@ -13,6 +13,20 @@ recommendation for project setup is [go modules](https://go.dev/doc/tutorial/cre
 - [ent](https://github.com/ent/ent) as our ORM
 - [sql-migrate](https://github.com/rubenv/sql-migrate) as our migration library
 
+### note about ent
+
+This is not only an ORM library, it is also a gode generation tool. A very
+[opinionated](https://entgo.io/docs/code-gen#code-generation-options) one.
+
+Because of this we had to comply with the two level folder structure it demands
+and used `models/schema` instead of just `models`.
+
+To generate the ORM code use this command:
+
+```bash
+go run -mod=mod entgo.io/ent/cmd/ent generate ./service/models/schema
+```
+
 ## how to run this project
 
 Since it's a modern go project organized with go modules, just do:
@@ -84,3 +98,4 @@ go: found entgo.io/ent in entgo.io/ent v0.10.1
 It may take a while but it works.
 
 It will download and pin the dependency version for you in `go.mod`.
+

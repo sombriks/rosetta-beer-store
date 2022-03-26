@@ -11,12 +11,6 @@ import (
 	"database/sql"
 )
 
-func panicMaybe(err error) {
-	if err != nil {
-		panic(err)
-	}
-}
-
 func MigrateUp() {
 
 	migrations := &migrate.FileMigrationSource{
@@ -24,10 +18,10 @@ func MigrateUp() {
 	}
 
 	db, err := sql.Open("sqlite3", "./beerstore.sqlite3")
-	panicMaybe(err)
+	PanicMaybe(err)
 
 	n, err := migrate.Exec(db, "sqlite3", migrations, migrate.Up)
-	panicMaybe(err)
+	PanicMaybe(err)
 
 	fmt.Printf("Applied %d migrations!\n", n)
 
