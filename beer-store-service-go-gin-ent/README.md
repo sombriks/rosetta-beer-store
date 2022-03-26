@@ -101,4 +101,3 @@ go: found entgo.io/ent in entgo.io/ent v0.10.1
 It may take a while but it works.
 
 It will download and pin the dependency version for you in `go.mod`.
-
