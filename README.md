@@ -21,11 +21,14 @@ Also because it's fun.
 
 | **technology / feature**     | REST API | CORS | Transparent JSON serialization | DB schema migration | Pooled db connection | Hot-reload development mode |
 | ---------------------------  | -------- | ---- | ------------------------------ | ------------------- | -------------------- | --------------------------- |
-| javascript, express, knex    | YES      | YES  | YES                            | YES                 | YES                  | YES                         |
-| java, JEE                    | YES      | NO   | NO                             | YES                 | YES                  | YES                         |
-| java, spring boot            | YES      | YES  | YES                            | YES                 | YES                  | NO                          |
-| go, gorm, gomigrate, martini | YES      | YES  | NO                             | YES                 | NO                   | NO                          |
-| go, ent, sql-migrate, gin    | YES      | YES  | NO                             | YES                 | NO                   | NO                          |
+| javascript, knex, express    | YES      | YES  | YES                            | YES                 | YES                  | YES                         |
+| java, JEE                    | YES      | NO*  | YES                            | YES                 | YES                  | YES                         |
+| java, flywaydb, spring boot  | YES      | YES  | YES                            | YES                 | YES                  | NO                          |
+| python, sqlalchemy, flask    | YES      | YES  | YES                            | YES                 | YES                  | NO                          |
+| go, gorm, gomigrate, martini | YES      | YES  | YES                            | YES                 | NO                   | NO                          |
+| go, ent, sql-migrate, gin    | YES      | YES  | YES                            | YES                 | NO                   | NO                          |
+
+*for java project a simple filter can be set to adjust CORS
 
 ### Client Implementation
 
