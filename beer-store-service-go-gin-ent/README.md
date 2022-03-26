@@ -18,6 +18,9 @@ recommendation for project setup is [go modules](https://go.dev/doc/tutorial/cre
 This is not only an ORM library, it is also a gode generation tool. A very
 [opinionated](https://entgo.io/docs/code-gen#code-generation-options) one.
 
+The generated code allow us to build query using go types, so the change of
+mistype something is near zero. A must have if you like such things.
+
 Because of this we had to comply with the two level folder structure it demands
 and used `models/schema` instead of just `models`.
 
