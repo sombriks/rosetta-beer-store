@@ -7,11 +7,12 @@ This service implementation uses _ruby on rails_ to deliver the rest service.
 Simply type:
 
 ```bash
+bundle install
 rails db:setup # runs both migrates and seeds
 rails s
 ```
 
-Project generated with rails 7.0.2.3
+Project generated with ruby 3.1.1 and rails 7.0.2.3
 
 ## How easy is to develop with rails
 
