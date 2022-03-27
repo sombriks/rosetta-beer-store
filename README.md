@@ -27,6 +27,7 @@ Also because it's fun.
 | python, sqlalchemy, flask    | YES      | YES  | YES                            | YES                 | YES                  | NO                          |
 | go, gorm, gomigrate, martini | YES      | YES  | YES                            | YES                 | NO                   | NO                          |
 | go, ent, sql-migrate, gin    | YES      | YES  | YES                            | YES                 | NO                   | NO                          |
+| ruby, rails                  | YES      | YES  | YES                            | YES                 | NO                   | YES                         |
 
 *for java project a simple filter can be set to adjust CORS
 
