@@ -1,0 +1,11 @@
+{
+  "type": "sqlite",
+  "database": "beerstore.sqlite3",
+  "autoLoadEntities": "true",
+  "synchronize": "false",
+  "migrations": ["dist/migrations/*.js"],
+  "migrationsRun":"true",
+  "cli": {
+    "migrationsDir": "src/migrations"
+  }
+}
