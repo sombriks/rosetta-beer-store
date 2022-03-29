@@ -22,6 +22,7 @@ Also because it's fun.
 | **technology / feature**     | REST API | CORS | Transparent JSON serialization | DB schema migration | Pooled db connection | Hot-reload development mode |
 | ---------------------------  | -------- | ---- | ------------------------------ | ------------------- | -------------------- | --------------------------- |
 | javascript, knex, express    | YES      | YES  | YES                            | YES                 | YES                  | YES                         |
+| typescript, typeorm, nestjs  | YES      | YES  | YES                            | YES                 | YES                  | YES                         |
 | java, JEE                    | YES      | NO*  | YES                            | YES                 | YES                  | YES                         |
 | java, flywaydb, spring boot  | YES      | YES  | YES                            | YES                 | YES                  | NO                          |
 | python, sqlalchemy, flask    | YES      | YES  | YES                            | YES                 | YES                  | NO                          |
