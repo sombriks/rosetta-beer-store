@@ -10,11 +10,19 @@ export class BeerService {
     private beerRepository: Repository<Beer>,
   ) {}
 
-  findAll(): Promise<Beer[]> {
-    return this.beerRepository.find();
+  findAll(search = '', page = 1, pageSize = 10): Promise<Beer[]> {
+    return this.beerRepository.query(
+      `
+      select * from beer 
+      where lower(titlebeer) like lower(?) 
+      or lower(descriptionbeer) like lower(?)
+      limit ? offset ?
+    `,
+      [`%${search}%`, `%${search}%`, pageSize, (page - 1) * pageSize],
+    );
   }
 
-  findOne(id: string): Promise<Beer> {
+  findOne(id: number): Promise<Beer> {
     return this.beerRepository.findOne(id);
   }
 }

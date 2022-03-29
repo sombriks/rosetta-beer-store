@@ -1,14 +1,22 @@
-import { Controller, Get, Req } from '@nestjs/common';
+import { Controller, Get, Param, Query, Req } from '@nestjs/common';
 import { Beer } from './beer.entity';
 import { BeerService } from './beer.service';
-import { Request } from 'express';
 
 @Controller('beer')
 export class BeerController {
   constructor(private readonly beerService: BeerService) {}
 
   @Get('list')
-  async list(@Req() request: Request): Promise<Beer[]> {
-    return this.beerService.findAll();
+  async list(
+    @Query('search') search: string,
+    @Query('page') page: number,
+    @Query('pageSize') pageSize: number,
+  ): Promise<Beer[]> {
+    return this.beerService.findAll(search,page,pageSize);
+  }
+
+  @Get(':idbeer')
+  async find(@Param('idbeer') idbeer: number): Promise<Beer> {
+    return this.beerService.findOne(idbeer);
   }
 }

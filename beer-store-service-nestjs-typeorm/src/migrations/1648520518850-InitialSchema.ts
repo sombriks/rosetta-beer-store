@@ -65,6 +65,7 @@ export class InitialSchema1648520518850 implements MigrationInterface {
           {
             name: 'idmedia',
             type: 'integer',
+            isNullable: true,
           },
         ],
         foreignKeys: [

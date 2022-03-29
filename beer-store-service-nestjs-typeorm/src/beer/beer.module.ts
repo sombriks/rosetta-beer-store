@@ -6,7 +6,6 @@ import { BeerService } from './beer.service';
 
 @Module({
   imports: [TypeOrmModule.forFeature([Beer])],
-  exports: [TypeOrmModule],
   providers: [BeerService],
   controllers: [BeerController],
 })
