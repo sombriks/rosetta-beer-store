@@ -17,6 +17,7 @@ dependencies {
     implementation "io.javalin:javalin:4.4.0"
     implementation 'org.ktorm:ktorm-core:3.4.1'
     implementation 'org.liquibase:liquibase-core:4.9.0'
+    implementation 'org.slf4j:slf4j-simple:1.7.36'
 
     liquibaseRuntime 'org.xerial:sqlite-jdbc:3.36.0.3'
     liquibaseRuntime 'org.liquibase:liquibase-core:4.9.0'

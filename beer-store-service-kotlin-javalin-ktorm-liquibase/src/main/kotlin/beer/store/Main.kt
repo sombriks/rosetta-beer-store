@@ -1,8 +1,10 @@
 package beer.store
 
+import io.javalin.Javalin
 import liquibase.Liquibase
 
 fun main() {
-//    Liquibase liquibase
+    val liquibase = Liquibase()
     println("aaaa")
+    val app = Javalin.create().start(3000)
 }
