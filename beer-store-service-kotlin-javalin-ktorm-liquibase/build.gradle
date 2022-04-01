@@ -1,0 +1,33 @@
+
+plugins {
+    id 'org.jetbrains.kotlin.jvm' version '1.6.10'
+    id "org.liquibase.gradle" version "2.1.1"
+}
+
+
+group 'beer.store'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation "org.jetbrains.kotlin:kotlin-stdlib"
+    implementation "io.javalin:javalin:4.4.0"
+    implementation 'org.ktorm:ktorm-core:3.4.1'
+    implementation 'org.liquibase:liquibase-core:4.9.0'
+
+    liquibaseRuntime 'org.xerial:sqlite-jdbc:3.36.0.3'
+    liquibaseRuntime 'org.liquibase:liquibase-core:4.9.0'
+    liquibaseRuntime 'info.picocli:picocli:4.6.3'
+}
+
+liquibase {
+    activities {
+        main {
+            changeLogFile "src/main/resources/db.xml"
+            url "jdbc:sqlite:./beerstore.sqlite3"
+        }
+    }
+}
