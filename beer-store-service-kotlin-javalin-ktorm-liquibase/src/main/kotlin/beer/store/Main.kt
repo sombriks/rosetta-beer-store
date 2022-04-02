@@ -1,12 +1,12 @@
 package beer.store
 
-import beer.store.controllers.Beers
+import beer.store.config.Db
+import beer.store.controllers.BeerController
 import io.javalin.Javalin
-import liquibase.Liquibase
-import liquibase.database.DatabaseConnection
 
 fun main() {
+    Db.migrate()
     val app = Javalin.create().start(3000)
-    app.get("/beer/list") { Beers.list(it) }
-    app.get("/beer/{idbeer}") { Beers.find(it) }
+    app.get("/beer/list") { BeerController.list(it) }
+    app.get("/beer/{idbeer}") { BeerController.find(it) }
 }
