@@ -1,4 +1,12 @@
 package beer.store.controllers
 
-class Beers {
+import io.javalin.http.Context
+
+object Beers {
+    fun list(ctx: Context) {
+        ctx.result("aaa")
+    }
+    fun find(it: Context) {
+
+    }
 }
