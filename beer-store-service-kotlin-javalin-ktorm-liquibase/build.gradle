@@ -1,4 +1,3 @@
-
 plugins {
     id 'org.jetbrains.kotlin.jvm' version '1.6.10'
     id 'application'
@@ -15,6 +14,7 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib"
     implementation "io.javalin:javalin:4.4.0"
     implementation 'org.ktorm:ktorm-core:3.4.1'
+    implementation "org.ktorm:ktorm-support-sqlite:3.4.1"
     implementation 'org.liquibase:liquibase-core:4.9.0'
     implementation 'org.slf4j:slf4j-simple:1.7.36'
     implementation 'com.zaxxer:HikariCP:5.0.1'

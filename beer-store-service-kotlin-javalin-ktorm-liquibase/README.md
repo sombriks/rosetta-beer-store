@@ -8,7 +8,7 @@ Sample service using kotlin on backend and other fancy things.
   and connection
 - [Liquibase](https://liquibase.org/) for database migrations
 
-Project requires Java11 or newer to run
+Project requires Java 11 or newer to run
 
 ## How do I run this
 
@@ -18,9 +18,12 @@ It uses [gradle](https://gradle.org/) as build tool, so:
 gradle run
 ```
 
-will build the project and run it
+will build the project and run it.
 
-## trivia
+You also can open the project on Intellij Ultimate, everything will feel like
+_home_ :-) 
+
+## Trivia
 
 Liquibase and HikariCP aren't kotlin-native libraries. However, one of biggest
 kotlin advantages is to be able to use everything java ecosystem has to offer.
@@ -32,14 +35,14 @@ tools, Liquibase does not offer a tool to create migrate templates. I covered it
 in [this article](https://sombriks.com.br/#/blog/0025-migrations-with-liquibase-and-sql.md)
 about what liquibase can do.
 
-### jackson and ktorm had a fight 
+### jackson and ktorm had a fight
 
 jackson had a difficult time serializing ktorm proxies when I used the
 _recommended_ strategy for object-relational mapping. i left `Media` mapping as
 an example of what ktorm recommends.
 
 However, javalin endpoint keeps throwing exceptions and no research produced a
-solution. 
+solution.
 
 Except when I used the alternative mapping method offered by ktorm:
 
@@ -72,7 +75,7 @@ object Beers : BaseTable<Beer>("beer") {
     override fun doCreateEntity(
         row: QueryRowSet,
         withReferences: Boolean
-    ) = Beer (
+    ) = Beer(
         idBeer = row[idBeer],
         creationDateBeer = row[creationDateBeer],
         titleBeer = row[titleBeer],
@@ -82,5 +85,11 @@ object Beers : BaseTable<Beer>("beer") {
 }
 ```
 
-Mapping got more verbose, but it doesn't use dynamic proxies anymore and then
-jackson started to work again.
+Mapping got way more verbose, but it doesn't use dynamic proxies anymore and
+then jackson started to work again.
+
+So far the least pleasant ORM framework is ktorm.
+
+## Would I use this in production
+
+Kotlin/Javalin/Liquibase? Sure!

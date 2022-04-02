@@ -19,8 +19,8 @@ object Db {
         private set
 
     fun migrate(){
-        val database = DatabaseFactory.getInstance()
+        val lqdb = DatabaseFactory.getInstance()
             .findCorrectDatabaseImplementation(JdbcConnection(ds.connection))
-        Liquibase("changelog.xml",ClassLoaderResourceAccessor(),database).update("")
+        Liquibase("changelog.xml",ClassLoaderResourceAccessor(),lqdb).update("")
     }
 }
