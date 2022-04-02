@@ -3,13 +3,17 @@ package beer.store
 import beer.store.config.Db
 import beer.store.controllers.BeerController
 import beer.store.controllers.MediaContoller
+import com.fasterxml.jackson.databind.ObjectMapper
 import io.javalin.Javalin
 
 // service entry point
 fun main() {
     Db.migrate()
 
-    val app = Javalin.create().start(3000)
+    val app = Javalin.create {
+//        it.jsonMapper(ObjectMapper())
+    }.start(3000)
+
 
     app.get(BeerController.BEER_LIST) { BeerController.list(it) }
     app.get(BeerController.BEER_FIND) { BeerController.find(it) }

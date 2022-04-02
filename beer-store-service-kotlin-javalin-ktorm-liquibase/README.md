@@ -21,7 +21,7 @@ gradle run
 will build the project and run it.
 
 You also can open the project on Intellij Ultimate, everything will feel like
-_home_ :-) 
+_home_ :-)
 
 ## Trivia
 
@@ -38,11 +38,12 @@ about what liquibase can do.
 ### jackson and ktorm had a fight
 
 jackson had a difficult time serializing ktorm proxies when I used the
-_recommended_ strategy for object-relational mapping. i left `Media` mapping as
-an example of what ktorm recommends.
+_recommended_ strategy for object-relational mapping. I've left `Media` mapping
+as an example of what ktorm recommends.
 
-However, javalin endpoint keeps throwing exceptions and no research produced a
-solution.
+~~However, javalin endpoint keeps throwing exceptions and no research produced a
+solution.~~ [This configuration](https://www.ktorm.org/api-docs/org.ktorm.jackson/-ktorm-module/index.html)
+must be made in order to make jackson understand how to deal with ktorm proxies.
 
 Except when I used the alternative mapping method offered by ktorm:
 
