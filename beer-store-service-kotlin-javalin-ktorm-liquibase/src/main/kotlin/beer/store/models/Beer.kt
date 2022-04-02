@@ -1,15 +1,36 @@
 package beer.store.models
 
-import org.ktorm.entity.Entity
-import java.util.Date
+import org.ktorm.dsl.QueryRowSet
+
+import org.ktorm.schema.*
+
+import java.time.LocalDateTime
 
 // https://www.ktorm.org/en/entities-and-column-binding.html
-interface Beer : Entity<Beer> {
-    companion object : Entity.Factory<Beer>()
+// https://www.ktorm.org/en/define-entities-as-any-kind-of-classes.html
+data class Beer(
+    var idBeer: Int?,
+    var creationDateBeer: LocalDateTime?,
+    var titleBeer: String?,
+    var descriptionBeer: String?,
+    var idMedia: Int?,
+)
 
-    var idBeer: Int//    idbeer           integer primary key autoincrement,
-    var creationDateBeer: Date//    creationdatebeer timestamp not null default CURRENT_TIMESTAMP,
-    var titleBeer: String//    titlebeer        varchar(255),
-    var descriptionBeer: String //    descriptionbeer  text,
-    var idMedia: Int//    idmedia          integer,
+object Beers : BaseTable<Beer>("beer") {
+    var idBeer = int("idbeer").primaryKey()
+    var creationDateBeer = datetime("creationdatebeer")
+    var titleBeer = varchar("titlebeer")
+    var descriptionBeer = varchar("descriptionbeer")
+    var idMedia = int("idmedia")
+
+    override fun doCreateEntity(
+        row: QueryRowSet,
+        withReferences: Boolean
+    ) = Beer (
+        idBeer = row[idBeer],
+        creationDateBeer = row[creationDateBeer],
+        titleBeer = row[titleBeer],
+        descriptionBeer = row[descriptionBeer],
+        idMedia = row[idMedia]
+    )
 }

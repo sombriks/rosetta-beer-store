@@ -1,14 +1,24 @@
 package beer.store.models
 
 import org.ktorm.entity.Entity
-import java.util.Date
+import org.ktorm.schema.*
+import java.time.LocalDateTime
 
 interface Media : Entity<Media> {
     companion object : Entity.Factory<Media>()
 
-    val idMedia: Int //    idmedia           integer primary key autoincrement,
-    val creationDateMedia: Date //    creationdatemedia timestamp    not null default CURRENT_TIMESTAMP,
-    val dataMedia: ByteArray //    datamedia         blob         not null,
-    val nomeMedia: String //    nomemedia         varchar(255) not null,
-    val mimeMedia: String //    mimemedia         varchar(255) not null
+    val idMedia: Int
+    val creationDateMedia: LocalDateTime
+    val dataMedia: ByteArray
+    val nomeMedia: String
+    val mimeMedia: String
+}
+
+object Medias : Table<Media>("media") {
+    val idMedia = int("idmedia").primaryKey().bindTo { it.idMedia }
+    val creationDateMedia =
+        datetime("creationdatemedia").bindTo { it.creationDateMedia }
+    val dataMedia = blob("datamedia").bindTo { it.dataMedia }
+    val nomeMedia = varchar("nomemedia").bindTo { it.nomeMedia }
+    val mimeMedia = varchar("mimemedia").bindTo { it.mimeMedia }
 }

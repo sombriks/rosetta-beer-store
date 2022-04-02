@@ -19,6 +19,12 @@ dependencies {
     implementation 'org.slf4j:slf4j-simple:1.7.36'
     implementation 'com.zaxxer:HikariCP:5.0.1'
     implementation 'org.xerial:sqlite-jdbc:3.36.0.3'
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.13.2.2'
+    implementation 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.13.2'
+    implementation 'com.fasterxml.jackson.module:jackson-module-kotlin:2.13.2'
+
+    testImplementation 'org.jetbrains.kotlin:kotlin-test'
+    testImplementation 'com.google.code.gson:gson:2.9.0'
 }
 
 application {

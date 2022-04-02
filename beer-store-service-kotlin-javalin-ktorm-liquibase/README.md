@@ -32,3 +32,55 @@ tools, Liquibase does not offer a tool to create migrate templates. I covered it
 in [this article](https://sombriks.com.br/#/blog/0025-migrations-with-liquibase-and-sql.md)
 about what liquibase can do.
 
+### jackson and ktorm had a fight 
+
+jackson had a difficult time serializing ktorm proxies when I used the
+_recommended_ strategy for object-relational mapping. i left `Media` mapping as
+an example of what ktorm recommends.
+
+However, javalin endpoint keeps throwing exceptions and no research produced a
+solution. 
+
+Except when I used the alternative mapping method offered by ktorm:
+
+```kotlin
+package beer.store.models
+
+import org.ktorm.dsl.QueryRowSet
+
+import org.ktorm.schema.*
+
+import java.time.LocalDateTime
+
+// https://www.ktorm.org/en/entities-and-column-binding.html
+// https://www.ktorm.org/en/define-entities-as-any-kind-of-classes.html
+data class Beer(
+    var idBeer: Int?,
+    var creationDateBeer: LocalDateTime?,
+    var titleBeer: String?,
+    var descriptionBeer: String?,
+    var idMedia: Int?,
+)
+
+object Beers : BaseTable<Beer>("beer") {
+    var idBeer = int("idbeer").primaryKey()
+    var creationDateBeer = datetime("creationdatebeer")
+    var titleBeer = varchar("titlebeer")
+    var descriptionBeer = varchar("descriptionbeer")
+    var idMedia = int("idmedia")
+
+    override fun doCreateEntity(
+        row: QueryRowSet,
+        withReferences: Boolean
+    ) = Beer (
+        idBeer = row[idBeer],
+        creationDateBeer = row[creationDateBeer],
+        titleBeer = row[titleBeer],
+        descriptionBeer = row[descriptionBeer],
+        idMedia = row[idMedia]
+    )
+}
+```
+
+Mapping got more verbose, but it doesn't use dynamic proxies anymore and then
+jackson started to work again.
