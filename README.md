@@ -19,18 +19,21 @@ Also because it's fun.
 
 ### Service Implementation
 
-| **technology / feature**     | REST API | CORS | Transparent JSON serialization | DB schema migration | Pooled db connection | Hot-reload development mode |
-| ---------------------------  | -------- | ---- | ------------------------------ | ------------------- | -------------------- | --------------------------- |
-| javascript, knex, express    | YES      | YES  | YES                            | YES                 | YES                  | YES                         |
-| typescript, typeorm, nestjs  | YES      | YES  | YES                            | YES                 | YES                  | YES                         |
-| java, JEE                    | YES      | NO*  | YES                            | YES                 | YES                  | YES                         |
-| java, flywaydb, spring boot  | YES      | YES  | YES                            | YES                 | YES                  | NO                          |
-| python, sqlalchemy, flask    | YES      | YES  | YES                            | YES                 | YES                  | NO                          |
-| go, gorm, gomigrate, martini | YES      | YES  | YES                            | YES                 | NO                   | NO                          |
-| go, ent, sql-migrate, gin    | YES      | YES  | YES                            | YES                 | NO                   | NO                          |
-| ruby, rails                  | YES      | YES  | YES                            | YES                 | NO                   | YES                         |
+| **technology / feature**          | REST API | CORS | Transparent JSON serialization | DB schema migration | Pooled db connection | Hot-reload development mode |
+|-----------------------------------| -------- | ---- |--------------------------------| ------------------- | -------------------- | --------------------------- |
+| javascript, knex, express         | YES      | YES  | YES                            | YES                 | YES                  | YES                         |
+| typescript, typeorm, nestjs       | YES      | YES  | YES                            | YES                 | YES                  | YES                         |
+| java, JEE                         | YES      | NO*  | YES                            | YES                 | YES                  | YES                         |
+| java, flywaydb, spring boot       | YES      | YES  | YES                            | YES                 | YES                  | NO                          |
+| kotlin, ktorm, liquibase, javalin | YES      | YES  | YES**                          | YES                 | YES                  | NO                          |
+| python, sqlalchemy, flask         | YES      | YES  | YES                            | YES                 | YES                  | NO                          |
+| go, gorm, gomigrate, martini      | YES      | YES  | YES                            | YES                 | NO                   | NO                          |
+| go, ent, sql-migrate, gin         | YES      | YES  | YES                            | YES                 | NO                   | NO                          |
+| ruby, rails                       | YES      | YES  | YES                            | YES                 | NO                   | YES                         |
 
-*for java project a simple filter can be set to adjust CORS
+* for java project a simple filter can be set to adjust CORS
+** ktorm and javalin/jackson needs special configuration, see [retails](./beer-store-service-kotlin-javalin-ktorm-liquibase/README.md)
+[here](https://stackoverflow.com/questions/71721581/how-to-configure-the-default-jackson-json-mapper-on-javalin/71722025#71722025).
 
 ### Client Implementation
 
@@ -56,13 +59,13 @@ We'll have clients and services.
 Services must provide the very same REST API so their clients shall connect on
 it in a transparent way.
 
-Therefore all services must use port 3000.
+Therefore, all services must use port 3000.
 
 You shall run just one service at time.
 
 The clients have not such limitation.
 
-However you must correctly point them to the service address.
+However, you must correctly point them to the service address.
 
 This is not a simple language comparison, but tooling as well.
 
