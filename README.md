@@ -32,6 +32,7 @@ Also because it's fun.
 | ruby, rails                       | YES      | YES  | YES                            | YES                 | NO                   | YES                         |
 
 * for java project a simple filter can be set to adjust CORS
+
 ** ktorm and javalin/jackson needs special configuration, see [retails](./beer-store-service-kotlin-javalin-ktorm-liquibase/README.md)
 [here](https://stackoverflow.com/questions/71721581/how-to-configure-the-default-jackson-json-mapper-on-javalin/71722025#71722025).
 
