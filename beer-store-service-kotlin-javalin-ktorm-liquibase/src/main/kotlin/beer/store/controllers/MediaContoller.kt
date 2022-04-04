@@ -4,6 +4,7 @@ import beer.store.config.Db
 import beer.store.models.Medias
 import io.javalin.http.Context
 import org.ktorm.dsl.*
+import org.ktorm.entity.*
 
 object MediaContoller {
 
@@ -16,14 +17,12 @@ object MediaContoller {
         val page = (ctx.queryParam("page") ?: "1").toInt()
         val pageSize = (ctx.queryParam("pageSize") ?: "10").toInt()
 
-        val result = Db.database.from(Medias).select()
-            .where {
-                Medias.nomeMedia like "%$search%"
-            }
-            .orderBy(Medias.idMedia.asc())
-            .limit(pageSize)
-            .offset((page - 1) * pageSize)
-            .map { Medias.createEntity(it) }
+        val result = Db.database.sequenceOf(Medias)
+            .filter { it.nomeMedia like "%$search%" }
+            .sortedBy { it.idMedia.asc() }
+            .drop((page - 1) * pageSize)
+            .take(pageSize)
+            .toList()
 
         ctx.json(result)
 

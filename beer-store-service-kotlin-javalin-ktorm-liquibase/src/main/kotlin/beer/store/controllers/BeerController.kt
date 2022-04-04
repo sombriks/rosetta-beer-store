@@ -20,8 +20,8 @@ object BeerController {
 
         val rows = Db.database.from(Beers).select()
             .whereWithOrConditions {
-                it += Beers.titleBeer like "%$search%"
                 it += Beers.descriptionBeer like "%$search%"
+                it += Beers.titleBeer like "%$search%"
             }
             .orderBy(Beers.idBeer.asc())
             .limit(pageSize)
