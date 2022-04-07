@@ -4,10 +4,7 @@ import beer.store.config.Db
 import beer.store.models.Beers
 import io.javalin.http.Context
 import org.ktorm.dsl.*
-import org.ktorm.entity.filter
-import org.ktorm.entity.find
-import org.ktorm.entity.sequenceOf
-import javax.management.Query.or
+import org.ktorm.entity.*
 
 object BeerController {
 
@@ -22,10 +19,10 @@ object BeerController {
 
         val rows = Db.database.sequenceOf(Beers)
             .filter{
-                (Beers.descriptionBeer like "%$search%")
-                or (Beers.titleBeer like "%$search%")
+                (Beers.descriptionBeer like "%$search%") or
+                (Beers.titleBeer like "%$search%")
             }
-            .orderBy(Beers.idBeer.asc())
+            .sortedBy { it.idBeer.asc() }
             .drop((page - 1) * pageSize)
             .take(pageSize)
             .toList()
