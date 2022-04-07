@@ -5,23 +5,24 @@ import org.ktorm.dsl.QueryRowSet
 import org.ktorm.schema.*
 
 import java.time.LocalDateTime
+import javax.swing.text.html.parser.Entity
 
-// https://www.ktorm.org/en/entities-and-column-binding.html
-// https://www.ktorm.org/en/define-entities-as-any-kind-of-classes.html
-data class Beer(
-    var idBeer: Int?,
-    var creationDateBeer: LocalDateTime?,
-    var titleBeer: String?,
-    var descriptionBeer: String?,
-    var idMedia: Int?,
+interface Beer : Entity <Beer> (
+    companion object : Entity.Factory<Beer>()
+
+    val idBeer: Int
+    val creationDateBeer: LocalDateTime
+    val titleBeer: String
+    val descriptionBeer: String
+    val idMedia: Int
 )
 
-object Beers : BaseTable<Beer>("beer") {
-    var idBeer = int("idbeer").primaryKey()
-    var creationDateBeer = datetime("creationdatebeer")
-    var titleBeer = varchar("titlebeer")
-    var descriptionBeer = varchar("descriptionbeer")
-    var idMedia = int("idmedia")
+object Beers : Table<Beer>("beer") {
+    var idBeer = int("idbeer").primaryKey().bindTo { it.idBeer }
+    var creationDateBeer = datetime("creationdatebeer").bindTo { it.creationDateBeer }
+    var titleBeer = varchar("titlebeer").bindTo { it.titleBeer }
+    var descriptionBeer = varchar("descriptionbeer").bindTo { it.titleBeer }
+    var idMedia = int("idmedia").bindTo { it.idMedia }
 
     override fun doCreateEntity(
         row: QueryRowSet,
