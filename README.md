@@ -43,6 +43,7 @@ Also because it's fun.
 | javascript, vue, browserify       | YES                            | YES                            | YES | YES                         |
 | javascript, angularjs, CDN        | YES                            | YES                            | YES | NO                          |
 | javascript, react, webpack        | YES                            | YES                            | YES | YES                         |
+| typescript, sveltekit             | YES                            | NO                             | N/A | YES                         |
 | C++, Qt, qml, qt-creator          | NO                             | NO                             | N/A | NO                          |
 | javascript, cordova, vue, vue-cli | YES                            | YES                            | YES | NO                          |
 | kotlin, android, android-studio   | YES                            | YES                            | N/A | NO                          |
