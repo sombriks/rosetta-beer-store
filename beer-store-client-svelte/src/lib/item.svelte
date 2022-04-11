@@ -1,5 +1,20 @@
 <script lang="ts">
-	export let beer: any;
+	import type { Beer } from './Beer';
+
+	export let beer: Beer;
 </script>
 
-<p>{beer.name}</p>
+<div class="item">
+	<h3>{beer.titlebeer}</h3>
+	<p>{beer.descriptionbeer}</p>
+</div>
+
+
+<style>
+.item {
+	display:flex;
+	justify-items: center;
+	align-items: center;
+	justify-content: space-between;
+}
+</style>
