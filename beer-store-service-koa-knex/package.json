@@ -9,9 +9,9 @@
     "dev": "cross-env NODE_ENV=development nodemon -r dotenv-flow/config ",
     "test": "cross-env NODE_ENV=test mocha  -r dotenv-flow/config app",
     "test:coverage": "cross-env NODE_ENV=test c8 mocha -r dotenv-flow/config app",
-    "migrate:make": "knex migrate:make --knexfile knexfile.cjs -x mjs -- ",
-    "migrate:latest": "knex migrate:latest --knexfile knexfile.cjs",
-    "migrate:rollback": "knex migrate:rollback --knexfile knexfile.cjs"
+    "migrate:make": "knex migrate:make --knexfile app/configs/knexfile.cjs -x mjs -- ",
+    "migrate:latest": "knex migrate:latest --knexfile app/configs/knexfile.cjs",
+    "migrate:rollback": "knex migrate:rollback --knexfile app/configs/knexfile.cjs"
   },
   "keywords": [],
   "author": "Leonardo Silveira <sombriks@gmail.com>",
@@ -37,7 +37,7 @@
   "c8": {
     "exclude": [
       "**/*.spec.mjs",
-      "migrations/*"
+      "**/migrations/*"
     ]
   }
 }
