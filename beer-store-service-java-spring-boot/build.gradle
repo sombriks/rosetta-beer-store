@@ -41,7 +41,7 @@ repositories {
 // There is no point on cover main methor or model classes, so we instruct jacoco to ignore it
 jacocoTestReport {
 	afterEvaluate {
-		classDirectories = files(classDirectories.files.collect {
+		classDirectories.from = files(classDirectories.files.collect {
 			fileTree(dir: it, exclude:  [
 				'beer/store/model/*',
 				'beer/store/BeerStoreApplication*',

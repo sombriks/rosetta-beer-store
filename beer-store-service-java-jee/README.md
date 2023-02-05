@@ -26,7 +26,7 @@ Our last development environment piece is a vanilla
 [eclipse photon](https://www.eclipse.org/) IDE.
 Any fresh eclipse, TBH. install the JEE version, grab payara tools from the
 [eclipse marketplace](https://marketplace.eclipse.org/content/payara-tools) and
-unzip payara somewhere so you can point the IDE to it.
+unzip payara somewhere, so you can point the IDE to it.
 
 ## How to run this
 

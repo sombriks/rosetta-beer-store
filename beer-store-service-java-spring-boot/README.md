@@ -11,7 +11,7 @@ It's a [gradle](https://gradle.org/install/) based project and you must have the
 **5.1.1 version** or superior.
 
 If you wish to develop using visual studio code, don't forget to run gradle
-tasks to generate `.classpath` eclipse files, since it uses it to proper
+tasks to generate `.classpath` eclipse files, since it uses it to properly
 configure a java project.
 
 See `gradle tasks` output to see complete list of available tasks.

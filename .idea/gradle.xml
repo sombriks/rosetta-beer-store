@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="GradleSettings">
+    <option name="linkedExternalProjectsSettings">
+      <GradleProjectSettings>
+        <option name="distributionType" value="DEFAULT_WRAPPED" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/beer-store-client-kotlin-android" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/beer-store-client-kotlin-android" />
+            <option value="$PROJECT_DIR$/beer-store-client-kotlin-android/app" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+      <GradleProjectSettings>
+        <option name="distributionType" value="DEFAULT_WRAPPED" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/beer-store-service-java-jee" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/beer-store-service-java-jee" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+      <GradleProjectSettings>
+        <option name="distributionType" value="DEFAULT_WRAPPED" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/beer-store-service-java-spring-boot" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/beer-store-service-java-spring-boot" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+      <GradleProjectSettings>
+        <option name="distributionType" value="DEFAULT_WRAPPED" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/beer-store-service-kotlin-javalin-ktorm-liquibase" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/beer-store-service-kotlin-javalin-ktorm-liquibase" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+    </option>
+  </component>
+</project>
