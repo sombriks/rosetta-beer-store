@@ -1,23 +1,22 @@
 import Router from "@koa/router"
 
-import {database} from "../configs/database.mjs";
+import { database } from "../configs/database.mjs";
 
 export const listBeers = (search, page, pageSize) =>
-    database("beer").select()
+    database("beer")
         .whereLike("titlebeer", `%${search}%`)
         .orWhereLike("descriptionbeer", `%${search}%`)
         .offset((page - 1) * pageSize)
         .limit(pageSize)
 
-export const findBeer = (idbeer) => database("beer")
-    .select().where({idbeer}).first();
+export const findBeer = (idbeer) => database("beer").where({ idbeer }).first();
 
 export const insertBeer = (beer) => database("beer").insert(beer);
 export const updateBeer = (idbeer, beer) =>
-    database("beer").update(beer).where({idbeer});
+    database("beer").update(beer).where({ idbeer });
 
 export const deleteBeer = (idbeer) =>
-    database("beer").del().where({idbeer});
+    database("beer").del().where({ idbeer });
 
 export const beerRouter = new Router();
 
