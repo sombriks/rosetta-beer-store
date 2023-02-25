@@ -1,11 +1,11 @@
-arguments=
-auto.sync=false
+arguments=--init-script /home/sombriks/.config/Code/User/globalStorage/redhat.java/1.15.0/config_linux/org.eclipse.osgi/52/0/.cp/gradle/init/init.gradle --init-script /home/sombriks/.config/Code/User/globalStorage/redhat.java/1.15.0/config_linux/org.eclipse.osgi/52/0/.cp/gradle/protobuf/init.gradle
+auto.sync=true
 build.scans.enabled=false
-connection.gradle.distribution=GRADLE_DISTRIBUTION(VERSION(5.4))
+connection.gradle.distribution=GRADLE_DISTRIBUTION(WRAPPER)
 connection.project.dir=
 eclipse.preferences.version=1
 gradle.user.home=
-java.home=
+java.home=/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.362.b09-2.fc37.x86_64
 jvm.arguments=
 offline.mode=false
 override.workspace.settings=true
