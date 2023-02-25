@@ -2,7 +2,19 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/rosetta-beer-store.iml" filepath="$PROJECT_DIR$/.idea/rosetta-beer-store.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/beer-store-service-java-spring-boot.iml"
+        filepath="$PROJECT_DIR$/.idea/modules/beer-store-service-java-spring-boot.iml" />
+      <module
+        fileurl="file://$PROJECT_DIR$/.idea/modules/beer-store-service-java-spring-boot.main.iml"
+        filepath="$PROJECT_DIR$/.idea/modules/beer-store-service-java-spring-boot.main.iml" />
+      <module
+        fileurl="file://$PROJECT_DIR$/.idea/modules/beer-store-service-java-spring-boot.test.iml"
+        filepath="$PROJECT_DIR$/.idea/modules/beer-store-service-java-spring-boot.test.iml" />
+      <module
+        fileurl="file://$PROJECT_DIR$/.idea/modules/beer-store-service-kotlin-javalin-ktorm-liquibase.iml"
+        filepath="$PROJECT_DIR$/.idea/modules/beer-store-service-kotlin-javalin-ktorm-liquibase.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/rosetta-beer-store.iml"
+        filepath="$PROJECT_DIR$/.idea/rosetta-beer-store.iml" />
     </modules>
   </component>
 </project>

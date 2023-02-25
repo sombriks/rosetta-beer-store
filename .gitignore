@@ -4,9 +4,6 @@ package-lock.json
 .nyc_output
 gin-bin
 .gradle
-gradle
-gradlew
-gradlew.bat
 build
 bin
 *.db
@@ -16,3 +13,4 @@ golang.org
 gopkg.in
 build-*
 *.log
+.DS_Store
